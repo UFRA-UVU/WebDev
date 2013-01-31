@@ -1,0 +1,66 @@
+CREATE TABLE Type
+(
+TypeID int NOT NULL PRIMARY KEY IDENTITY,
+TypeName varchar(50) NOT NULL
+)
+CREATE TABLE Area
+(
+AreaID int NOT NULL PRIMARY KEY IDENTITY,
+AreaName varchar(100) NOT NULL
+)
+CREATE TABLE Bldg
+(
+BldgID char(2) NOT NULL PRIMARY KEY,
+BldgName varchar(100) NOT NULL
+)
+CREATE TABLE Dept
+(
+DeptID int NOT NULL PRIMARY KEY IDENTITY,
+DeptName varchar(100) NOT NULL
+)
+CREATE TABLE User
+(
+UserUVID char(10) NOT NULL PRIMARY KEY IDENTITY,
+UserFName varchar(50) NOT NULL,
+UserFName varchar(50) NOT NULL,
+FullTime bit NOT NULL,
+Title vchar(100),
+PhoneExt varchar(10),
+HomePhone varchar(15),
+CellPhone varchar(15),
+Bday Date,
+Email varchar(75),
+DeptID int FOREIGN KEY REFERENCES Dept(DeptID),
+AreaID int FOREIGN KEY REFERENCES Area(AreaID)
+)
+CREATE TABLE Mfg
+(
+MfgID int NOT NULL PRIMARY KEY IDENTITY,
+MfgName varchar(50) Not Null
+)
+CREATE TABLE Model
+(
+ModelID int NOT NULL PRIMARY KEY IDENTITY,
+ModelName varchar (50) NOT NULL,
+MfgID int FOREIGN KEY REFERENCES Mfg(MfgID)
+)
+CREATE TABLE Equipment
+(
+EquipID int NOT NULL PRIMARY KEY IDENTITY,
+UVUInvID varchar(20) UNIQUE,
+OtherInvID varchar(50) UNIQUE,
+PurchDate Date,
+ModelID int FOREIGN KEY REFERENCES Model(ModelID),
+TypeID int FOREIGN KEY REFERENCES Type(TypeID),
+SerialNum varchar(50),
+UserPrimaryComp bit,
+UserID char(10) FOREIGN KEY REFERENCES User(UserUVID),
+DepID int FOREIGN KEY REFERENCES Dept(DeptID),
+BldgID char(2) FOREIGN KEY REFERENCES Bldg(BldgID),
+Room varchar(10),
+Comments varchar(max),
+Other varchar(max),
+AreaID int FOREIGN KEY REFERENCES Area(AreaID)
+)
+
+
