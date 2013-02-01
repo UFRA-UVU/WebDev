@@ -3,7 +3,6 @@ CREATE TABLE Type
 TypeID int NOT NULL PRIMARY KEY IDENTITY,
 TypeName varchar(50) NOT NULL
 )
-Use TechInventory
 CREATE TABLE Area
 (
 AreaID int NOT NULL PRIMARY KEY IDENTITY,
@@ -21,7 +20,7 @@ DeptName varchar(100) NOT NULL
 )
 CREATE TABLE Users
 (
-UserUVID int NOT NULL PRIMARY KEY IDENTITY,
+UserUVID char(10) NOT NULL PRIMARY KEY,
 UserFName varchar(50) NOT NULL,
 UserLName varchar(50) NOT NULL,
 FullTime bit NOT NULL,
@@ -55,7 +54,7 @@ ModelID int FOREIGN KEY REFERENCES Model(ModelID),
 TypeID int FOREIGN KEY REFERENCES Type(TypeID),
 SerialNum varchar(50),
 UserPrimaryComp bit,
-UserUVID int FOREIGN KEY REFERENCES Users(UserUVID),
+UserUVID char(10) FOREIGN KEY REFERENCES Users(UserUVID),
 DepID int FOREIGN KEY REFERENCES Dept(DeptID),
 BldgID char(2) FOREIGN KEY REFERENCES Bldg(BldgID),
 Room varchar(10),
@@ -63,5 +62,3 @@ Comments varchar(max),
 Other varchar(max),
 AreaID int FOREIGN KEY REFERENCES Area(AreaID)
 )
-
-
