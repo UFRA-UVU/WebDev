@@ -15,7 +15,7 @@ BldgName varchar(100) NOT NULL
 )
 CREATE TABLE Dept
 (
-DeptID int NOT NULL PRIMARY KEY IDENTITY,
+DeptID char(10) NOT NULL PRIMARY KEY,
 DeptName varchar(100) NOT NULL
 )
 CREATE TABLE Users
