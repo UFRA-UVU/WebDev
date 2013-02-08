@@ -1,0 +1,167 @@
+/* http://www.uvu.edu/lib/css/topmenu.css
+
+* {
+margin:0;
+padding:0;
+}
+*/
+
+
+
+/* Menu background */
+.toptabMenu {
+	background: transparent;
+	z-index:998;
+	position:relative;
+	width: 929px;
+	height:18px;
+	margin:auto;
+	padding:0px;
+	}
+
+/* Top tabs container */		
+ul.toptabs {
+list-style:none;
+	height:18px;
+	width:929px;
+	top:0px;
+	position:absolute;
+	z-index:1;
+	margin: 0;
+	}
+li.toptab1{
+	text-align:left;
+	position:absolute;
+	left:0px;
+	top:0px;
+	width: 135px;
+	background:url(/homepage/images/Tab1-2Top.gif) no-repeat scroll 100%;
+	margin-left: 0px;
+	padding: 0px;
+	height:18px;
+	z-index:1;
+	}
+li.toptab2{
+	position:absolute;
+	text-align:center;
+	left:131px;
+	top:0px;
+	width: 110px;
+	background:url(/homepage/images/Tab1-2Top.gif) no-repeat scroll 100%;
+	margin-left: 0px;
+	padding: 0px;
+	height:18px;
+	z-index:1;
+	}
+	
+li.toptab3{
+	position:absolute;
+	text-align:center;
+	left:237px;
+	top:0px;
+	width: 130px;
+	background:url(/homepage/images/Tab1-2Top.gif) no-repeat scroll 100%;
+	margin-left: 0px;
+	height:18px;
+	z-index:1;
+	}
+	
+li.toptab4{
+	position:absolute;
+	text-align:center;
+	left:363px;
+	top:0px;
+	width: 120px;
+	background:url(/homepage/images/Tab1-2Top.gif) no-repeat scroll 100%;
+	margin-left: 0px;
+	padding: 0px;
+	height:18px;
+	z-index:1;
+	}
+	
+li.toptab5{
+	position:absolute;
+	text-align:center;
+	left:479px;
+	top:0px;
+	width: 110px;
+	background:url(/homepage/images/Tab1-2Top.gif) no-repeat scroll 100%;
+	margin-left: 0px;
+	padding: 0px;
+	height:18px;
+	z-index:1;
+	}
+	
+li.toptab6{
+	position:absolute;
+	text-align:center;
+	left:585px;
+	top:0px;
+	width: 125px;
+	background:url(/homepage/images/Tab1-2Top.gif) no-repeat scroll 100%;
+	margin-left: 0px;
+	padding: 0px;
+	height:18px;
+	z-index:1;
+	}
+	
+li.toptab7{
+	position:absolute;
+	text-align:center;
+	left:708px;
+	top:0px;
+	width: 110px;
+	background:transparent;
+	margin-left: 0px;
+	padding: 0px;
+	height:18px;
+	z-index:1;
+	}
+
+/* Tab hover effects */		
+li.toptab1:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+	
+li.toptab2:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+	
+li.toptab3:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+	
+li.toptab4:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+	
+li.toptab5:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+	
+li.toptab6:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+	
+li.toptab7:hover { background:url(/homepage/images/Tab1-2TopHvr.gif) no-repeat scroll 100%;	}
+
+
+
+/* Submenu items */
+li.menu {
+	height:20px;
+	margin:0em;	
+	padding:0px 0px 0px;
+	padding-left:5px;
+	width: 133px;
+	}
+
+/* Submenu items hover effects */
+li.menu:hover {
+	background: #e7e7d5;
+	border-left:solid 1px #9fa6ad;
+	border-right:solid 1px #000000;
+	padding-left:4px;
+	}
+
+/* Submenu link text positioning and color and styles */	
+
+a.toptabMenuLink {
+	position:relative;
+	bottom:2px;
+	color:#557630;
+	text-transform:uppercase;
+	font-size: 11px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	font-weight: bold;
+	}
+

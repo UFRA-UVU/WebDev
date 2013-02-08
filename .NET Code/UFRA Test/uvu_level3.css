@@ -1,0 +1,256 @@
+/* http://www.uvu.edu/lib/css/uvu_level3.css 
+CSS Document */
+
+body { /*behavior:url("/lib/css/csshover.htc");*/}
+
+/*level 3 Web Pages Attributes */
+
+table {
+	clear: both;
+}
+
+#topheadercontainter {
+    
+    width: 929px;
+	float: left;
+	position:relative;
+}
+
+#L3mainareacontainer {
+	margin: 0px 0 5px 0;
+	background:url(/images/deptbackground.gif) repeat-x;
+	width: 929px;
+	position:relative;
+	float:left;
+	
+}
+
+#L3mainarea {
+	position:relative;
+	float: left;
+}
+
+#L3grayspacer {
+	background:url(/images/graybox.gif) no-repeat;
+	height: 95px;
+	float: left;
+	width: 21px;
+}
+
+/*-- Top Departmental Navigation */
+#L3deptnavcontainer {
+	float:left;
+	border-bottom: 4px solid #557631;
+	padding: 0px;
+	margin: 0;
+	width:929px;
+	position:relative;
+	z-index:100;
+	border-top:2px solid #A3AD00;
+	
+	
+	
+}
+
+#L3topdeptnav {
+	display: inline;
+	float: left;
+	margin: 0px 1px;
+}
+#ul.L3topdeptnav {
+	display: inline;
+	position: relative;
+	margin: 7px 0px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+#L3nav_link {
+	text-decoration: none;
+	font-size: 10px;
+	color:#284e36;
+	text-transform:uppercase;
+	margin: 0px 8px 0px 8px;
+}
+
+
+#L3deptarea {	
+	float: left;
+	padding-left: 8px;
+	min-width:40px;
+	height: 93px;
+}
+
+#L3depttitle_text {
+    padding-right: 5px;
+	color: #A3Ad00;
+	padding-top: 17px;
+	font-size: 1.05em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	height: 46px;
+	position:relative;
+	font-weight:bold;
+}
+
+
+#L3deptsubtitle_text {
+	padding-right: 5px;
+	color: #FFFFFF;
+	padding-top: 7px;
+	font-size: .70em;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	position:relative;
+}
+
+.home {
+	text-decoration:none;
+	padding-right: 5px;
+	color: #A3Ad00;
+	padding-top: 7px;
+	font-size: 1.12em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	min-height: 46px;
+	position:relative;
+	font-weight:bold;
+}
+
+
+#mainBodyText{
+	clear:both;
+	font-size: .75em;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	padding-top: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	text-align: left;
+	color: #000000;
+	background-color: #ffffff;
+	height: 100%;
+	width: 909px;
+	max-height: 100%;
+	overflow:hidden;
+}
+
+.rssimage{
+	border: none;
+	float: right;
+}
+
+/*-- Departmental Contact Footer */
+#L3contactbottomdept {
+	text-transform:uppercase;
+	float: left;
+	color:#284e36;
+	font-size: 9px;
+	text-decoration: none;
+	width: 929px;
+	border-top: 2px solid #a3ad00;
+	vertical-align: middle;
+	padding-top: 5px;
+	text-align: left;
+	min-height: 17px;
+	position:inherit;
+	display:inline;
+	}
+
+#L3contactbottomdept_link {
+	text-decoration: none;
+	color: #284e36;
+}
+
+#L3contactbottomdept_link:hover {
+	text-decoration: underline;
+	color: #284e36;
+}
+
+
+
+/*Printer Friendly Button*/
+#printerfriendlycontainer {
+	z-index: 2;
+	text-decoration: none;
+	color: #284e36;
+	font-size: 10px;
+	position: relative;
+	float:right;
+	right:15px;
+	
+	
+}
+
+#printerfriendly {
+	text-decoration: none;
+	color: #284e36;
+}
+
+#printerfriendly a:hover {
+	text-decoration: none;
+	color: #284e36;
+}
+#printerfriendly a:link {
+	text-decoration: none;
+	color: #284e36;
+}
+#printerfriendly a:visited {
+	text-decoration: none;
+	color: #284e36;
+}
+
+
+#ox-fullpage-edit-button img {
+margin-top:30px;
+z-index: 1000;
+}
+
+
+/* ======================= Breadcrumbs Attibutes ======================= */
+#breadcrumbcontainer {
+	z-index: 2;
+	text-decoration: none;
+	color: #284e36;
+	font-size: 10px;
+	position:relative;
+	float:left;
+	
+}
+
+.breadCrumbNav {
+	float: left;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	color:  #284e36;
+	font-size: 10px;
+	text-align: left;
+	text-decoration: none;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+.breadCrumbNav a:link {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	color:  #284e36;
+} 
+
+.breadCrumbNav a:visited {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	color:  #284e36;
+	font-size: 10px;
+	text-decoration: none;
+} 
+
+.breadCrumbNav a:hover {
+
+	text-decoration: underline;
+}
+
+
+/* End CSS */
+
+

@@ -1,0 +1,1123 @@
+/* http://www.uvu.edu/lib/css/uvu_standards.css
+CSS Document */
+/* 
+ code 6  to 20 is used to create cross browser compatability - don't Mess!!! 
+*/
+/*
+
+   * {
+  		 padding:0;
+   		 margin:0;
+		 }
+		 
+    body {
+		padding:5px;
+		}
+		
+    h1, h2, h3, h4, h5, h6, p, pre, blockquote, form, label, ul, ol, dl, fieldset, address { 
+		margin:20px 0; 
+	}
+	
+    li, dd, blockquote {
+		 margin-left: 40px; 
+		}
+		
+    fieldset { 
+		padding:10px;
+	 }
+*/
+
+
+
+
+
+/*=========Body Attributes=========*/
+
+a { 
+	color:#557630;
+	text-decoration:none;
+}
+
+a:hover {text-decoration:underline;}
+
+
+body {
+	font-family: arial,helvetica;
+	color: #000000;
+	margin: 0;
+	padding: 0;
+}
+
+div#bg{
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-bottom:10px;
+	width: 1000px;
+	/*background:url(/homepage/images/background.gif) ;*/
+	background-color: #f8f1d9;
+	border-bottom-style:ridge;
+	border-bottom-color:#EFEFEF; 
+}
+
+	
+#big_wrapper
+{
+	margin: auto;
+	background-image: url(../../images/border.jpg);
+	background-repeat: repeat-y;
+	width: 1020px;
+	height: 100%;
+	
+}
+
+#container {
+	width: 933px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#footercontainer {
+	width: 929px;
+	clear: both;
+	border-top: 4px #284E36 solid; 
+	margin-bottom:20px;
+}
+
+#ob {
+float:right;
+position:relative;
+height:17px;
+
+}
+
+
+/* UVU Header */
+#header{
+	margin-bottom: 5px;
+	margin-left: 330px;
+	height: 90px;
+	float: none;
+
+}
+
+/*UVU Level 2 Header */
+#L2header{
+	background-image: url(/homepage/images/header2.gif);
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: -43px;
+	height: 84px;
+	width: 970px;
+}
+
+#uvlink {
+	padding-top: 23px;
+	float: left;
+	border: none;
+	text-decoration: none;
+
+}
+
+img.uvlink_img {
+	border: none;
+	text-decoration:none;
+
+}
+
+
+#az_index_link {
+	margin-right: 2px;
+	float: right;
+	margin-top: -5px;
+	border: none;
+	border: hidden;
+	text-decoration: none;
+}
+
+#help_link {
+	margin-right: 13px;
+	float: right;
+	margin-top: -5px;
+	border: none;
+	border: hidden;
+	text-decoration: none;
+}
+
+#find_link {
+	margin-right: 9px;
+	float: right;
+	margin-top: -5px;
+	border: none;
+	border: hidden;
+	text-decoration: none;
+}
+
+/* commented out because this rule is on the homepage dept.css 
+#topgraphic{
+	width: 140px;
+	height: 63px;
+	float: left;
+}
+*/
+
+
+/* Top Naviagation Menu */
+
+#topnav2 {
+	width: 929px;
+	border-top: 2px solid #A3AD00;
+	border-bottom: 4px solid #557631;
+	margin-bottom: 5px;
+	float: left;
+}
+
+#topnavbar {
+	border-top:2px #a3ad00 solid; 
+	height:0px ;
+	width: 929px;
+	
+}
+
+ul.topnav {
+	display: inline;
+	position: relative;
+	margin: 5px 0px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+li.topnavitem {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 20px;
+	padding-left: 12px;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	font-size: 9px;
+	background: url(/homepage/images/border.gif) scroll 100% no-repeat;
+	color:#284e36;
+}
+
+li.topnavitem:hover {
+	background: #a2ad00 url(/homepage/images/shadow.gif) scroll 100% no-repeat;
+}
+
+li.topnavitemstart {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 20px;
+	padding-left: 0px;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	font-size: 9px;
+	background: url(/homepage/images/border.gif) scroll 100% no-repeat;
+	color:#284e36;
+}
+
+li.topnavitemstart:hover {
+	background: #a2ad00 url(/homepage/images/shadow.gif) scroll 100% no-repeat;
+}
+
+li.topnavitemend {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 20px;
+	padding-left: 12px;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	font-size: 9px;
+	color:#284e36;
+}
+
+li.topnavitemend:hover {
+	background: #a2ad00 url(/homepage/images/shadow.gif) scroll 100% no-repeat;
+}
+
+.nav_link {
+	text-decoration: none;
+	font-size: 11px;
+	color:#557630;
+	font-weight: bold;
+}
+
+/* Bottom Navigation Menu */
+
+#bottomnavbar{
+	border-top: 4px #557631 solid; 
+	width: 929px;
+	margin-bottom: 3px;
+}
+
+/* Bottom Navigation */
+/* commented out because this rule is on the homepage dept.css 
+ul.bottomnav {
+	display: inline;
+	position: relative;
+	margin: 5px 0px;
+}
+
+&nbsp;ul.bottomnav li {
+	margin: 0;
+}
+*/ 
+ 
+/* commented out because this rule is on the homepage dept.css 
+li.bottomnavitem {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 20px;
+	padding-left: 12px;
+	font-size: 9px;
+	background: #f8f7ef url(/homepage/images/border.gif) scroll 100% no-repeat;
+	color:#284e36;
+}
+*/
+
+li.bottomnavitem:hover {
+	background: #a2ad00 url(/homepage/images/shadow.gif) scroll 100% no-repeat;
+}
+/* commented out because this rule is on the homepage dept.css 
+li.bottomnavitemstart {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 20px;
+	padding-left: 10px;
+	font-size: 9px;
+	background: #f8f7ef url(/homepage/images/border.gif) scroll 100% no-repeat;
+	color: #284e36;
+	font-family: Arial, Helvetica, sans-serif;
+}
+*/
+
+li.bottomnavitemstart:hover {
+	background: #a2ad00 url(/homepage/images/shadow.gif) scroll 100% no-repeat;
+}
+
+/* commented out because this rule is on the homepage dept.css 
+li.bottomnavitemend {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 20px;
+	padding-left: 12px;
+	font-size: 9px;
+	color:#284e36;	
+}
+*/
+
+li.bottomnavitemend:hover {
+	background: #a2ad00 url(/homepage/images/shadow.gif) scroll 100% no-repeat;
+}
+
+/* Main Area */ 
+
+#mainarea{
+	height: 328px;
+	width: 640px;
+	float: left;
+	background: url(/homepage/images/corkboard.jpg) no-repeat;
+}
+
+#cork_imgs_wrapper{
+	width: 640px;
+	float: left;
+}
+
+#middle_section{
+	float: left;
+	width: 100%;
+}
+
+/* taken out because the same rule is on the home dept.css file 
+#weather{
+   float: left;
+   margin-right: 3px;
+   text-align: center;
+   height: 62px;
+   width: 146px;
+   font-size: 9px;
+   font-family: Arial, Helvetica, sans-serif;
+   background-color:#cccccc;
+}
+*/
+
+
+#campuspic{
+	background-image: url(/homepage/images/leavespicture.gif);
+	background-repeat: no-repeat;
+	float: left;
+	margin-bottom: 3px; 
+	height: 62px;
+	width: 140px;
+	
+}
+
+/* commented out because the same rule is on the homepage dept.css
+#schoolpic {
+    background-image: url(/homepage/imagespicture.gif);
+	background-repeat: no-repeat; 
+	float: left;
+	height: 260px;
+	width: 289px;
+	margin-top: 3px;
+}
+*/
+
+/* commented out per same rule is on homepage dept.css
+#bottom_section{
+	float: left;
+	width: 100%;
+	margin-top: 3px;
+}
+*/
+
+
+/*Prospective Student Section */
+/* commented out per same rule is on homepage dept.css#prospectivestudent {
+	background-image: url(/homepage/images/prospectivestudent.gif);
+	background-repeat: no-repeat; 
+	height: 339px;
+	width: 174px;
+	float: left;
+	padding-bottom: 10px;
+}
+*/
+
+
+/*Prospective Students Start Here Section */
+/* commented out per same rule is on homepage dept.css
+#start_here_link {
+	float: left;
+	text-align: left;
+	margin-left: 8px;
+	margin-top: 113px;
+	border: none;
+	border: hidden;
+	
+}
+*/
+
+
+/*Ask the Wolverine Section */
+/* commented out per same rule is on homepage dept.css
+#ask_wolverine {
+	float: left;
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 7px;
+}
+*/
+
+/* commented out per same rule is on homepage dept.css
+#espanol  {
+	font-size: 9px;
+   font-family: Arial, Helvetica, sans-serif;
+   text-decoration: none;
+   color: #284e36;	
+}
+*/
+
+
+ /*News, Announcements, Campus Updates and UVSC Experts Section */ 
+/* commented out per same rule is on homepage dept.css
+#news {
+    background-color: #284e36;
+	background-repeat: no-repeat; 
+	height: 149px;
+	width: 463px;
+	float: left;
+	margin-left: 3px;
+	border-bottom:3px solid #A3AD00;
+}
+*/
+
+
+#news h1{
+	font-size: 1.5em;
+}
+
+#news_text {
+	color: #ffffff;
+	margin-left: 20px;
+	font-size: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#news_text a{
+	color: #fff;
+	text-decoration: none;
+}
+
+#news_text a:hover{
+	text-decoration: underline;
+}
+
+/* commented out per same rule is on homepage dept.css
+#news_text_h1 {
+	color: #ffffff;
+	margin-left: 10px;
+	font-size: 0.85em;
+	font-weight:bold;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+*/
+
+
+/*Home Footer */
+#mainfooter_text {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+	font-size:x-small;
+	color:#776F65;
+	font-family: Arial, Helvetica, sans-serif;
+	z-index:1;
+	width:780px;
+	display:inline;
+}
+
+#bottomnav{
+	background-repeat: no-repeat; 
+	height: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#homefooter_link {
+	text-decoration: none;
+	color: #776F65;
+}
+
+#homefooter_link:hover {
+	text-decoration: underline;
+	color: #776F65;
+}
+
+/*Highlights Section */
+/* commented out per same rule is on homepage dept.css
+#highlights{
+    background-image: url(/homepage/images/highlights.gif);
+	background-repeat: no-repeat;  
+	height: 175px;
+	float: left;
+	width: 463px;
+	margin-left: 3px;
+}
+*/
+
+/* commented out because this rule is on the homepage dept.css 
+#highlights_text_h1 {
+	color: #ffffff;
+	margin-left: 10px;
+	padding-top: 5px;
+	font-size: 0.85em;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#highlights_text {
+	color: #284e36;
+	margin-left: 20px;
+	margin-top: 20px;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+*/
+
+/*Academics, Arts and Athletics Section */
+#departments{
+    background-image: url(/homepage/images/departments.gif); 
+	background-repeat: no-repeat; 
+	height: 175px;
+	float: left;
+	width: 292px;
+}
+
+#academics_link {
+	float: left;
+	text-align: left;
+	margin-left: 8px;
+	margin-top:0px;
+	border: none;
+	border: hidden;
+}
+
+#arts_link {
+	float: left;
+	text-align: left;
+	margin-left: 8px;
+	margin-top: 9px;
+	border: none;
+	border: hidden;
+}
+
+#athletics_link {
+	float: left;
+	text-align: left;
+	margin-left: 8px;
+	margin-top: 9px;
+	border: none;
+	border: hidden;
+}
+
+
+#bottombar{
+	background-image: url(/homepage/images/dkgreenbar.jpg) ;
+	background-repeat: repeat-x;
+	height: 4px;
+	
+}
+
+
+/*Success Starts Here Section */
+/* commented out per same rule is on homepage dept.css
+#success {
+	background-color: #557630;
+	height: 149px;
+	width: 290px;
+	float: left;
+	border-bottom:3px solid #A3AD00;
+}
+*/
+
+
+#success_text {
+	color: #ffffff;
+	margin-left: 10px;
+	font-size: 8px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#success_text_h1 {
+	color: #ffffff;
+	margin-left: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#success_image {
+	float: right;
+	margin-top: -27px;
+	margin-right: 10px;
+}
+
+
+/*Search Botton attributes */
+#searchbutton {
+  float: right;
+  position: absolute;
+  padding: 4px;
+	margin-right: 33px;
+	margin-left: 725px;
+	padding-left: 0px;
+	margin-top: 20px;
+	height: 2px;
+	width: 170px;
+	z-index: 1500;
+	white-space: nowrap;
+}
+
+input.uvsearchinput {
+	float: none;
+	font-size: .9em;
+	width: 142px !important;
+	height: 22px;
+	margin-bottom: 12px;
+	color: #557630;
+	font-family: arial;
+	vertical-align: middle;
+	border: 1px solid #E0E0E2;
+	border-top: 2px solid #949494;
+	border-left: 2px solid #949494;
+	background-color: #F7EFDE;
+}
+
+#uvsearchsubmit {
+  width: 60px;
+  height: 22px;
+  font-family: arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: .69em;
+  letter-spacing: .1em;
+  border: none;
+  background: transparent url(/lib/css/s_submit.gif) no-repeat center top;
+  cursor: pointer;
+}
+
+#livesearch {
+	max-height:200px;
+	overflow:auto;
+	background: #ffffff;
+	font-size: 0.75em;
+	white-space: normal;
+	display: none;
+	padding: 5px;
+	border: 1px solid green;
+}
+
+#livesearch ul {
+	list-style:none;
+	padding:0;
+	margin: 0;
+	margin-bottom:10px;
+}
+
+#livesearch li {
+	padding: 0;
+	margin: 0;
+	margin-bottom: .5em;
+}
+
+#livesearch a {
+	text-decoration: none;
+	color:#284E36;
+	font-weight: bold;
+}
+
+#searchfooter {
+	height:13px;
+	font-size:.7em;
+	width: 18.3em;
+	vertical-align:middle;
+	color:#284E36;
+	font-family: arial;
+	text-decoration: none;
+}
+
+#searchfooter a{
+	color:#284E36;
+	font-family: arial;
+	text-decoration: none;
+}
+
+/*-- AJAX Errors/Feedback Box */
+#feedback {
+  position: fixed;
+  bottom: 0px;
+  left: 25%;
+  height: 210px;
+  width: 50%;
+  background: #fef7e6;
+  color: #4d4d4d;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  border: 5px solid #284e36;
+  border-bottom: 0px;
+  z-index: 5;
+}
+
+#feedback a {
+  font-size: xx-small;
+  cursor: pointer;
+}
+
+#feedback p.right{
+  position: absolute;
+  right: 5%;
+  margin-top: -1%;
+}
+
+#feedback p.success{
+  position: absolute;
+  right: 5%;
+  margin-top: 0%;
+}
+
+#feedback p.regsuccess{
+  margin-top: 20px;
+  text-align: justify;
+  padding-left: 20px;
+}
+
+#feedback p.regular {
+  margin-top: 0px;
+  padding-left: 3px;
+}
+
+
+/*-- DD-FormMailer CSS Settings*/
+form.ddfm .required {
+  color: #FF0000;
+}
+
+.ddfmerrors {
+  color: #FF0000;
+}
+
+.ddfmwrap .ddfmerrors {
+  display: block; 
+  float: left; 
+  width: 27%; 
+  text-align: right;
+  margin: 0 10px 0 0; 
+  padding-bottom: 15px;
+}
+
+.ddfmwrap .errorlist {
+  float: left; 
+  display: block;
+  width: 65%;
+  margin-bottom: 15px;  
+  padding: 3px;
+  text-align: left;
+}
+
+.ddfmwrap .recaptcha {
+  width: 100%;
+  text-align: right;
+  clear: both; 
+  height: 120px;
+  margin-right: 7px;
+  padding-bottom: 10px;
+}
+
+.ddfmwrap .recaptcha-inner {
+  float: right;
+  margin-right: 3px;
+}
+
+/*-- Top Departmental Navigation */
+
+#topdeptnav {
+	display: inline;
+	position: relative;
+	margin: 5px 0px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+ul.topdeptnav {
+	display: inline;
+	position: relative;
+	margin: 5px 0px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+li.topdeptnav {
+	text-transform:uppercase;
+	float: left;
+	list-style: none;
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-size: 9px;
+	color:#284e36;
+	
+}
+
+.mainBodyText{
+	font-size: .75em;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+padding:20px;
+	text-align: left;
+	color: #000000;
+	background-color:#FFFFFF;
+	min-height: 275px;
+	max-height:none;
+	width: 888px;
+	clear: both;
+	overflow:hidden;
+}
+.mainBodyText a{
+	text-decoration: underline;
+}
+.mainBodyText a:hover {
+	text-decoration: none;
+}
+
+#bottom_info{
+clear: both;
+}
+
+#ox-fullpage-edit-button img{
+margin-top:60px;
+z-index:1000;
+}
+/*-- This is for the new shorter header template */
+#shortmainareacontainer {
+	margin: 0px 0 5px 0;
+	background:url(/images/deptbackgroundshort.gif) repeat-x;
+	width: 929px;
+	position:relative;
+	float:left;
+	
+}
+#shortgrayspacer {
+	background:url(/images/grayboxshort.gif) no-repeat;
+	height: 58px;
+	float: left;
+	width: 21px;
+}
+#shortdeptarea {	
+	float: left;
+	padding-left: 8px;
+	min-width:40px;
+	height: 58px;
+}
+
+
+
+
+
+
+/*************** this is for UVU Disclaimer**************/
+#popup_container {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	min-width: 300px; /* Dialog will be no smaller than this */
+	max-width: 450px; /* Dialog will wrap after this width */
+	background: #FFF;
+	text-align:center;
+	border: solid 3px #999;
+	color: #000;
+	/* -moz-border-radius: 5px;*/
+	/*-webkit-border-radius: 5px;*/
+	/*border-radius: 3px;*/
+}
+
+#popup_title {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 1.75em;
+	color: #666;
+	background: #CCC url(../../images/sprite.png) top repeat-x;
+	border: solid 1px #FFF;
+	border-bottom: solid 1px #999;
+	cursor: default;
+	padding: 0em;
+	margin: 0em;
+}
+
+#popup_content {
+	background: 16px 16px no-repeat url(../../images/info.gif);
+	padding: 5em 1em 1em 1em;
+	margin: 0em;
+}
+
+
+#popup_content.confirm 
+{        
+	margin-top:5px;
+	background: top center url(../../images/uvuLongLogo.jpg) no-repeat;
+}
+
+
+#popup_message {
+	padding-left: 5px;
+	padding-top: 15px;
+}
+
+#popup_panel {
+	text-align: center;
+	margin: 1em 0em 0em 1em;
+}
+
+/* This is for the edit content button */
+
+.ox-regioneditbutton {
+position: absolute;
+z-index: 1000;
+}
+/*This is a bit to style a menu in housing*/
+.menu li{
+	border-right:1px solid;
+	display:inline;
+	margin-right:10px;
+	padding-right:10px;
+}
+
+
+
+
+
+
+
+
+
+/* this is for the admissions banner
+@charset "UTF-8";
+
+#deadline_banner{
+	position: relative; 
+	 left: -20px; top: 0px;
+	 width: 928px; 
+	 height: auto; 
+	 background-color: #fff;
+	 z-index: 10;
+}
+
+
+#deadline_banner #expand_btn div h1 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	color: #360;
+	padding: 5px;
+}
+#deadline_banner #opendiv {
+	position: absolute;
+	padding-top: 5px; 
+	top: 0px; 
+	right: 0px; 
+	width: 300px; 
+	height: 25px; 
+	background-color:#a6be7b; 
+	color: white; 
+	font-family: Arial, Helvetica, sans-serifs; 
+	font-size: 13px; 
+	text-indent: 45px;
+}
+#deadline_banner #opendiv div {
+	position: absolute;
+	width: 6px; 
+	height: 12px;  
+	left: 0px;
+	top: 30%; 
+	background-image: url('../../images/admissionsbanner/arrow.png'); 
+	background-repeat: no-repeat;
+}
+#deadline_text{
+	 width: 600px;
+	 height: 170px;
+}
+#deadline_links{
+	position: absolute;
+	width: 300px; 
+	height: 265px;
+	top: 25px; 
+	right: 0px;
+	background-color: #a6be7b; 
+	color: white; 
+	font-family: Arial, Helvetica, sans-serifs; 
+}
+#deadline_body{
+	 
+	 display: none; 
+	 padding: 0px 5px;
+	 height:230px;
+	 margin-bottom:20px;
+	 z-index:-5;
+}
+#deadline_body #deadline_links ul li {
+	font-size: 14px;
+}
+#deadline_body #deadline_links ul li a {
+	color: #557630;
+}
+#deadline_body #deadline_links #CLOSE {
+	position: absolute;  
+	bottom: 0px;
+	width: 75px;
+	background-color: #666; 
+	padding: 2px 0; 
+	font-family: Arial, Helvetica, sans-serif; 
+}
+
+#deadline_bar {
+	position:relative;
+	background-image:url("/images/admissionsbanner/colorbar2.jpg");
+	width: 928px;
+	height: 6px;
+	margin-bottom: 2em;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the overflow:hidden on the .container is removed */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+*/
+/* admissions banner 2 */
+body{
+	padding:0px;
+	margin:0px;
+}
+
+#deadline_banner {
+	position:relative;
+	width:924px;
+	height: auto;
+}
+#deadline_bar {
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	background-image:url(http://resource.uvsc.edu/images/deadline/colorbar2.jpg);
+	background-repeat:no-repeat;
+	width:924px;
+	height:60px;
+}
+#rotationText{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:924px;
+	height:60px;
+	padding:5px;
+	margin-bottom: 10px;
+}
+#info_btn {
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	width:60px;
+	height:60px;
+}
+#deadline_text{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	padding: 0px 10px 0px 10px;
+	
+	position: relative;
+    top: -39px;
+}
+#details{
+	position:relative;
+	
+}
+#CLOSE{
+	background:#CCC;
+	padding-left:20px;
+	margin-bottom:20px;
+}
+
+
+.images div {
+	display:none;
+	position:absolute;
+	width:924px;
+	height:60px;
+	top:15px;
+	left:10px;	
+		
+}
+
+.images div span{
+	color:#b95915;
+	font-weight:bold;
+		
+}
+.images div a{
+	color:#677617;
+	
+}
+.images div a:hover{
+	color:#b2bb1e;
+	
+}
+.slidetabs{ display:none;}
+
