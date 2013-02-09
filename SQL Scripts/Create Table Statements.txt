@@ -1,7 +1,7 @@
-CREATE TABLE Type
+CREATE TABLE EquipType
 (
-TypeID int NOT NULL PRIMARY KEY IDENTITY,
-TypeName varchar(50) NOT NULL
+EquipTypeID int NOT NULL PRIMARY KEY IDENTITY,
+EquipTypeName varchar(50) NOT NULL
 )
 CREATE TABLE Area
 (
@@ -30,7 +30,7 @@ HomePhone varchar(15),
 CellPhone varchar(15),
 Bday Date,
 Email varchar(75),
-DeptID int FOREIGN KEY REFERENCES Dept(DeptID),
+DeptID char(10) FOREIGN KEY REFERENCES Dept(DeptID),
 AreaID int FOREIGN KEY REFERENCES Area(AreaID)
 )
 CREATE TABLE Mfg
@@ -51,11 +51,11 @@ UVUInvID varchar(20) UNIQUE,
 OtherInvID varchar(50) UNIQUE,
 PurchDate Date,
 ModelID int FOREIGN KEY REFERENCES Model(ModelID),
-TypeID int FOREIGN KEY REFERENCES Type(TypeID),
+EquipTypeID int FOREIGN KEY REFERENCES EquipType(EquipTypeID),
 SerialNum varchar(50),
 UserPrimaryComp bit,
 UserUVID char(10) FOREIGN KEY REFERENCES Users(UserUVID),
-DepID int FOREIGN KEY REFERENCES Dept(DeptID),
+DeptID char(10) FOREIGN KEY REFERENCES Dept(DeptID),
 BldgID char(2) FOREIGN KEY REFERENCES Bldg(BldgID),
 Room varchar(10),
 Comments varchar(max),
