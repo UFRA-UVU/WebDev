@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" inherits="Site, App_Web_00z2fqg5" %>
+﻿<%@ master language="C#" inherits="Site, App_Web_5tn0xvgw" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,7 +10,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <h1 class="DDMainHeader">Dynamic Data Site</h1>
+    <h1 class="DDMainHeader">UFRA Tech Tracker</h1>
     <div class="DDNavigation">
         <a runat="server" href="~/"><img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>

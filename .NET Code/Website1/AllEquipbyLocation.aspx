@@ -1,15 +1,12 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="AllEquipbyLocation, App_Web_00z2fqg5" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="AllEquipbyLocation, App_Web_0yfkjmwn" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
-    
+    <div class="DDNavigation">
+        <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
+    </div>
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
@@ -44,6 +41,6 @@ order by Bldg.BldgID, dept.deptID, Equipment.Room, Equipment.UVUInvID ">
         </asp:SqlDataSource>
     
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
+
