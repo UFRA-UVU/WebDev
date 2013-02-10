@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_vmzzaitu" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_euqlmqpo" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -24,6 +24,9 @@
     <p />
         <asp:Button ID="btnAllEquip" runat="server" Text="All Equipment" 
             onclick="btnAllEquip_Click" Width="300px" />
+        <asp:Label ID="Label1" runat="server" Width="100px"></asp:Label>
+        <asp:Button ID="btnModifyTables" runat="server" Text="Edit Tables" 
+            Width="300px" onclick="btnModifyTables_Click" />
         <br /> <br />
         <asp:Button ID="btnAllEquipLoc" runat="server" onclick="Button1_Click" 
             Text="All Equipment by Location" Width="300px" />

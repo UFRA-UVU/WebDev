@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="GridViewPager, App_Web_3tu0etjf" %>
+﻿<%@ control language="C#" inherits="GridViewPager, App_Web_h1oiidxq" %>
 
 <div class="DDPager">
     <span class="DDFloatLeft">
