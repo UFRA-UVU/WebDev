@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="CountEquipbyRoom, App_Web_countequipbyroom.aspx.cdcab7d2" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="CountEquipbyRoom, App_Web_xcqylpjv" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

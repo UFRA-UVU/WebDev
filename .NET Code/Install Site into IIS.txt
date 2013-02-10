@@ -1,0 +1,6 @@
+.NET Framework Extended must be installed
+	May need to be installed manually into IIS -- %windir%\Microsoft.NET\Framework\<version number>\aspnet_regiis.exe -i
+Copy website files into inetpub/wwwroot/<name>
+Right-click on new site folder --> Convert to Application
+Set the Application Pool to ASP.NET Framework 4
+IN Application Pools, set ASP.NET v4.0 pool identity to LocalSystem

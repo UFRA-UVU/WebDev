@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="DateTime_EditField, App_Web_datetime_edit.ascx.3bbd1c1b" %>
+﻿<%@ control language="C#" inherits="DateTime_EditField, App_Web_cujboswf" %>
 
 <asp:TextBox ID="TextBox1" runat="server" CssClass="DDTextBox" Text='<%# FieldValueEditString %>' Columns="20"></asp:TextBox>
 
