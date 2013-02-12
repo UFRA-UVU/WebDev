@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_euqlmqpo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="UserAssignEquipReport.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -38,7 +38,7 @@
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSrcUserAssign" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechTrackerConnectionString %>" SelectCommand="select Users.UserUVID as 'User UVID', Users.UserFName + ' ' + Users.UserLName as 'User''s Name', Equipment.UVUInvID as 'UVU Inventory ID', Mfg.MfgName + ' ' + Model.ModelName as 'Model', EquipType.EquipTypeName as 'Type', Equipment.SerialNum as 'Computer Serial #'
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select Users.UserUVID as 'User UVID', Users.UserFName + ' ' + Users.UserLName as 'User''s Name', Equipment.UVUInvID as 'UVU Inventory ID', Mfg.MfgName + ' ' + Model.ModelName as 'Model', EquipType.EquipTypeName as 'Type', Equipment.SerialNum as 'Computer Serial #'
 from Equipment
 Inner Join Model on Equipment.ModelID = Model.ModelID
 Inner Join EquipType on Equipment.EquipTypeID = EquipType.EquipTypeID

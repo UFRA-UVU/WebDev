@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="UserReport, App_Web_euqlmqpo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="UserReport.aspx.cs" Inherits="UserReport" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -36,7 +36,7 @@
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSrcUserReport" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechTrackerConnectionString %>" SelectCommand="select Area.AreaName as 'Area', dept.DeptName as 'Department', UserFName + ' ' + Users.UserLName as 'Name', Users.Title as 'Title', CASE WHEN (Users.FullTime = 0 or Users.FullTime IS NULL) THEN 'PT' ELSE 'FT' END AS 'Full Time'
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select Area.AreaName as 'Area', dept.DeptName as 'Department', UserFName + ' ' + Users.UserLName as 'Name', Users.Title as 'Title', CASE WHEN (Users.FullTime = 0 or Users.FullTime IS NULL) THEN 'PT' ELSE 'FT' END AS 'Full Time'
 from Users
 Inner Join Dept on Dept.DeptID = Users.DeptID
 Inner Join Area on Area.AreaID = Users.AreaID
@@ -44,4 +44,5 @@ Inner Join Area on Area.AreaID = Users.AreaID
 Order By 'Area', 'Department', Users.UserFName"></asp:SqlDataSource>
     
     </div>
+
 </asp:Content>

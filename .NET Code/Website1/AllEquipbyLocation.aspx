@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="AllEquipbyLocation, App_Web_zp4dctvm" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AllEquipbyLocation.aspx.cs" Inherits="AllEquipbyLocation" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -33,7 +33,7 @@
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSrcAllEquipbyLocation" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechTrackerConnectionString %>" SelectCommand="select Bldg.BldgID as 'Building', dept.deptID as 'Department', Equipment.Room as 'Room', Equipment.UVUInvID as 'Equipment ID'
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select Bldg.BldgID as 'Building', dept.deptID as 'Department', Equipment.Room as 'Room', Equipment.UVUInvID as 'Equipment ID'
 from Equipment
 Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
 Inner Join Dept on dept.deptID = Equipment.deptID

@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="Text_EditField, App_Web_1e0rrfzg" %>
+﻿<%@ Control Language="C#" CodeFile="Text_Edit.ascx.cs" Inherits="Text_EditField" %>
 
 <asp:TextBox ID="TextBox1" runat="server" Text='<%# FieldValueEditString %>' CssClass="DDTextBox"></asp:TextBox>
 

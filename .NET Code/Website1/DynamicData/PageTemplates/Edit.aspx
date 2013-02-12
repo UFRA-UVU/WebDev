@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="Edit, App_Web_htjkz2as" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" CodeFile="Edit.aspx.cs" Inherits="Edit" %>
 
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">

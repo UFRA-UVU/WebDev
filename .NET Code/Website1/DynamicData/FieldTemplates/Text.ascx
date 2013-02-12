@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="TextField, App_Web_1e0rrfzg" %>
+﻿<%@ Control Language="C#" CodeFile="Text.ascx.cs" Inherits="TextField" %>
 
 <asp:Literal runat="server" ID="Literal1" Text="<%# FieldValueString %>" />
 

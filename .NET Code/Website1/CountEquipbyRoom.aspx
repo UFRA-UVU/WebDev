@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="CountEquipbyRoom, App_Web_euqlmqpo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="CountEquipbyRoom.aspx.cs" Inherits="CountEquipbyRoom" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -35,7 +35,7 @@
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSrcCountEquipRom" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechTrackerConnectionString %>" SelectCommand="select Bldg.BldgID as 'Building', Dept.DeptID as 'Department', Equipment.Room as 'Room', COUNT(Equipment.EquipID)as 'Total Count'
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select Bldg.BldgID as 'Building', Dept.DeptID as 'Department', Equipment.Room as 'Room', COUNT(Equipment.EquipID)as 'Total Count'
 from Equipment
 Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
 Inner Join Dept on dept.deptID = Equipment.deptID
