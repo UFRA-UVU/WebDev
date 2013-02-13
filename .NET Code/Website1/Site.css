@@ -1,10 +1,23 @@
 ﻿/*	Global classes	*/
+body
+{
+    background-color: #557630;
+}
+
+input
+ {
+ background-color: #f8f1d9;
+ font-weight:bolder; 
+ color:#284E36;
+ 
+ }
 .DDMainHeader
 {
 	font: small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;
-	color:#888;
+	color:#f8f1d9;
 	padding-bottom: 12px;
     border-bottom: 1px dotted #bbbbbb;
+}
 }
 
 .DDSubHeader
@@ -157,7 +170,7 @@ table.DDDetailsTable .td
 table.DDGridView, table.DDListView
 {
 	width: 100%;
-	color: #666;
+	color: #f8f1d9;
 	border:solid 1px #dbddff;
 	font: .7em Tahoma, Arial, Sans-Serif;
 }

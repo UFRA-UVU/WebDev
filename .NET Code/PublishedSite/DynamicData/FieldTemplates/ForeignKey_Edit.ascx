@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="ForeignKey_EditField, App_Web_hubi04j4" %>
+﻿<%@ control language="C#" inherits="ForeignKey_EditField, App_Web_jgzzipyl" %>
 
 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="DDDropDown">
 </asp:DropDownList>

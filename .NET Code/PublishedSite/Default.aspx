@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_ghuc0z43" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_t0pjbnpd" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -22,11 +22,8 @@
     </asp:GridView>-->
     <h2 class="DDSubHeader">Choose a Report</h2>
     <p />
-        <asp:Button ID="btnAllEquip" runat="server" Text="All Equipment" 
-            onclick="btnAllEquip_Click" Width="300px" />
-        <asp:Label ID="Label1" runat="server" Width="100px"></asp:Label>
-        <asp:Button ID="btnModifyTables" runat="server" Text="Edit Tables" 
-            Width="300px" onclick="btnModifyTables_Click" />
+        <div style="width:300px; float:left; padding-right:100px;"><asp:Button ID="btnAllEquip" runat="server" Text="All Equipment" 
+            onclick="btnAllEquip_Click" Width="300px" />        
         <br /> <br />
         <asp:Button ID="btnAllEquipLoc" runat="server" onclick="Button1_Click" 
             Text="All Equipment by Location" Width="300px" />
@@ -42,6 +39,11 @@
         <asp:Button ID="btnUserReport" runat="server" Text="User Report" 
             onclick="btnUserReport_Click" Width="300px" />
         <br /> <br />
+        </div>
+        <div>        
+        <asp:Button class="buttonFontWeight" ID="btnModifyTables" runat="server" Text="Edit Tables" 
+            Width="300px" onclick="btnModifyTables_Click" />
+        </div>
         <p />
 
     <asp:SqlDataSource ID="AllEquipDataSource" runat="server" 

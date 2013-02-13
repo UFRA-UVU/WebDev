@@ -23,20 +23,12 @@
         <asp:LinqDataSource ID="LinqDataSource1" runat="server" 
             ContextTypeName="TechInventoryDataContext" EntityTypeName="" OrderBy="AreaID, Bldg, Dept" 
             TableName="Equipments" 
-                Select="select Area.AreaName as 'Area', Bldg.BldgID as 'Building', dept.deptID as 'Department', Equipment.Room as 'Room', Equipment.UVUInvID as 'Equipment ID', Equipment.UserUVID as 'User', EquipType.EquipTypeName as 'Equip Typ', Mfg.MfgName as 'Mfg', Model.ModelName as 'Model', equipment.UserPrimaryComp
-from Equipment
-Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
-Inner Join Dept on dept.deptID = Equipment.deptID
-Inner Join Area on Area.AreaID = Equipment.AreaID
-Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
-Inner Join Model on Model.MfgID = Equipment.ModelID
-Inner Join Mfg on Mfg.MfgID = Model.MfgID
-order by Bldg.BldgID, dept.deptID, Equipment.Room, Equipment.UVUInvID " >
+                
+                Select="new (UVUInvID, UserPrimaryComp, UserUVID, Dept, EquipType, Model, Area, Bldg, Room)" >
         </asp:LinqDataSource>
     
     </div>
-    <asp:GridView ID="GridView1" runat="server" 
-        DataSourceID="LinqDataSource1" BackColor="LightGoldenrodYellow" 
+    <asp:GridView ID="GridView1" runat="server" BackColor="LightGoldenrodYellow" 
         BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" 
         GridLines="None" Visible="False" AllowPaging="True" AllowSorting="True">
         <AlternatingRowStyle BackColor="PaleGoldenrod" />

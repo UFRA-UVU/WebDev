@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="QueryTest_Default, App_Web_ai4xwahc" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="QueryTest_Default, App_Web_pmjw03rk" %>
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 
@@ -8,8 +8,11 @@
     </div>
     <div>
     
+        <asp:TextBox ID="TextBox1" runat="server" Font-Bold="True" Width="129px">Select a Room:</asp:TextBox>
+    
         <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
             DataSourceID="LinqDataSrcRoom" DataTextField="Room" DataValueField="Room">
+            <asp:ListItem Value="*">All</asp:ListItem>
         </asp:DropDownList>
         <p />
         <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Submit" />
@@ -18,42 +21,33 @@
             Select="new (Room)" TableName="Equipments">
         </asp:LinqDataSource>
         <asp:LinqDataSource ID="LinqDataSource1" runat="server" 
-            ContextTypeName="TechInventoryDataContext" EntityTypeName="" OrderBy="UVUInvID" 
-            TableName="Equipments">
+            ContextTypeName="TechInventoryDataContext" EntityTypeName="" OrderBy="AreaID, Bldg, Dept" 
+            TableName="Equipments" 
+                Select="select Area.AreaName as 'Area', Bldg.BldgID as 'Building', dept.deptID as 'Department', Equipment.Room as 'Room', Equipment.UVUInvID as 'Equipment ID', Equipment.UserUVID as 'User', EquipType.EquipTypeName as 'Equip Typ', Mfg.MfgName as 'Mfg', Model.ModelName as 'Model', equipment.UserPrimaryComp
+from Equipment
+Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
+Inner Join Dept on dept.deptID = Equipment.deptID
+Inner Join Area on Area.AreaID = Equipment.AreaID
+Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
+Inner Join Model on Model.MfgID = Equipment.ModelID
+Inner Join Mfg on Mfg.MfgID = Model.MfgID
+order by Bldg.BldgID, dept.deptID, Equipment.Room, Equipment.UVUInvID " >
         </asp:LinqDataSource>
     
     </div>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="EquipID" DataSourceID="LinqDataSource1">
-        <Columns>
-            <asp:BoundField DataField="EquipID" HeaderText="EquipID" InsertVisible="False" 
-                ReadOnly="True" SortExpression="EquipID" />
-            <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
-                SortExpression="UVUInvID" />
-            <asp:BoundField DataField="OtherInvID" HeaderText="OtherInvID" 
-                SortExpression="OtherInvID" />
-            <asp:BoundField DataField="PurchDate" HeaderText="PurchDate" 
-                SortExpression="PurchDate" />
-            <asp:BoundField DataField="ModelID" HeaderText="ModelID" 
-                SortExpression="ModelID" />
-            <asp:BoundField DataField="EquipTypeID" HeaderText="EquipTypeID" 
-                SortExpression="EquipTypeID" />
-            <asp:BoundField DataField="SerialNum" HeaderText="SerialNum" 
-                SortExpression="SerialNum" />
-            <asp:CheckBoxField DataField="UserPrimaryComp" HeaderText="UserPrimaryComp" 
-                SortExpression="UserPrimaryComp" />
-            <asp:BoundField DataField="UserUVID" HeaderText="UserUVID" 
-                SortExpression="UserUVID" />
-            <asp:BoundField DataField="DeptID" HeaderText="DeptID" 
-                SortExpression="DeptID" />
-            <asp:BoundField DataField="BldgID" HeaderText="BldgID" 
-                SortExpression="BldgID" />
-            <asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
-            <asp:BoundField DataField="Comments" HeaderText="Comments" 
-                SortExpression="Comments" />
-            <asp:BoundField DataField="Other" HeaderText="Other" SortExpression="Other" />
-            <asp:BoundField DataField="AreaID" HeaderText="AreaID" 
-                SortExpression="AreaID" />
-        </Columns>
+    <asp:GridView ID="GridView1" runat="server" 
+        DataSourceID="LinqDataSource1" BackColor="LightGoldenrodYellow" 
+        BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" 
+        GridLines="None" Visible="False" AllowPaging="True" AllowSorting="True">
+        <AlternatingRowStyle BackColor="PaleGoldenrod" />
+        <FooterStyle BackColor="Tan" />
+        <HeaderStyle BackColor="Tan" Font-Bold="True" />
+        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
+            HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+        <SortedAscendingCellStyle BackColor="#FAFAE7" />
+        <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+        <SortedDescendingCellStyle BackColor="#E1DB9C" />
+        <SortedDescendingHeaderStyle BackColor="#C2A47B" />
     </asp:GridView>
 </asp:Content>
