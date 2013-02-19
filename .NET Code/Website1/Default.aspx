@@ -2,7 +2,6 @@
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<!--dude-->
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <!--<asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server" />
