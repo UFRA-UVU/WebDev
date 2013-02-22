@@ -13,26 +13,26 @@ public partial class _Default : System.Web.UI.Page {
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Server.Transfer("AllEquipbyLocation.aspx", true);
+        Server.Transfer("TechnicianReports/AllEquipbyLocation.aspx", true);
     }
     protected void btnAllEquip_Click(object sender, EventArgs e)
     {
-        Server.Transfer("AllEquipReport.aspx", true);
+        Server.Transfer("TechnicianReports/AllEquipReport.aspx", true);
     }
     protected void btnCntEquipRoom_Click(object sender, EventArgs e)
     {
-        Server.Transfer("CountEquipbyRoom.aspx", true);
+        Server.Transfer("TechnicianReports/CountEquipbyRoom.aspx", true);
     }
     protected void btnUserAssignEquip_Click(object sender, EventArgs e)
     {
-        Server.Transfer("UserAssignEquipReport.aspx", true);
+        Server.Transfer("TechnicianReports/UserAssignEquipReport.aspx", true);
     }
     protected void btnUserReport_Click(object sender, EventArgs e)
     {
-        Server.Transfer("UserReport.aspx", true);
+        Server.Transfer("UserReports/UserReport.aspx", true);
     }
     protected void btnModifyTables_Click(object sender, EventArgs e)
     {
-        Server.Transfer("DBModify.aspx", true);
+        Server.Transfer("Admin/DBModify.aspx", true);
     }
 }

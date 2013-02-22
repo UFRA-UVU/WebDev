@@ -9,6 +9,7 @@
         <asp:DropDownList ID="DropDownList1" runat="server" 
             DataSourceID="SqlDataSrcRoom" DataTextField="Room" DataValueField="Room">
         </asp:DropDownList>
+        
         <asp:SqlDataSource ID="SqlDataSrcRoom" runat="server" 
             ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
             SelectCommand="SELECT DISTINCT [Room] FROM [Equipment]"></asp:SqlDataSource>
