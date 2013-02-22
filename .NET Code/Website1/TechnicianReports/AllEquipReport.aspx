@@ -29,6 +29,9 @@
             <asp:DropDownList ID="DropDownListEquipValue" runat="server" 
                 AutoPostBack="True">
             </asp:DropDownList>
+            <p />
+            <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
+                    onclick="BtnSubmit_Click" Width="135px" />
     </div>
 
     <div>
