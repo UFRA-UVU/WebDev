@@ -1,44 +1,45 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_wvpn0gly" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_vdi0nh0q" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
+
+
     <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>
+    <div class="Content1">
+        <asp:Label ID="LabelEquipFilter" runat="server" Text="Choose a Filter" 
+            Width="150px"></asp:Label>
+        <asp:DropDownList ID="DropDownListEquipFilter" runat="server" Width="203px" 
+            AutoPostBack="True" Height="25px" 
+            onselectedindexchanged="DropDownListEquipFilter_SelectedIndexChanged">
+            <asp:ListItem Selected="True">(choose)</asp:ListItem>
+            <asp:ListItem Value="All">All Data</asp:ListItem>
+            <asp:ListItem Value="DeptID">Department</asp:ListItem>
+            <asp:ListItem>Room</asp:ListItem>
+            <asp:ListItem Value="UserUVID">Primary User</asp:ListItem>
+            <asp:ListItem Value="ModelID">Model</asp:ListItem>
+            <asp:ListItem Value="EquipTypeID">Type</asp:ListItem>
+        </asp:DropDownList>
+        <p />
+            <asp:Label ID="LabelEquipValue" runat="server" Text="Select a Value" 
+                Width="150px"></asp:Label>
+            <asp:DropDownList ID="DropDownListEquipValue" runat="server">
+            </asp:DropDownList>
+            <p />
+            <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
+                    onclick="BtnSubmit_Click" Width="135px" />
+    </div>
+
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
-            AllowSorting="True" AutoGenerateColumns="False" 
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="false"
+            OnPageIndexChanging="gridView_PageIndexChanging" OnSorting="gridView_Sorting" 
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-            CellPadding="2" DataSourceID="SqlDataSrcAllEquip" ForeColor="Black" 
+            CellPadding="2" ForeColor="Black" 
             GridLines="None">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
-            <Columns>
-                <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-                <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
-                    SortExpression="UVUInvID" />
-                <asp:BoundField DataField="OtherInvID" HeaderText="OtherInvID" 
-                    SortExpression="OtherInvID" />
-                <asp:BoundField DataField="Model" HeaderText="Model" ReadOnly="True" 
-                    SortExpression="Model" />
-                <asp:BoundField DataField="PurchDate" HeaderText="PurchDate" 
-                    SortExpression="PurchDate" />
-                <asp:BoundField DataField="SerialNum" HeaderText="SerialNum" 
-                    SortExpression="SerialNum" />
-                <asp:BoundField DataField="Primary" HeaderText="Primary" ReadOnly="True" 
-                    SortExpression="Primary" />
-                <asp:BoundField DataField="UserUVID" HeaderText="UserUVID" 
-                    SortExpression="UserUVID" />
-                <asp:BoundField DataField="DeptID" HeaderText="DeptID" 
-                    SortExpression="DeptID" />
-                <asp:BoundField DataField="BldgID" HeaderText="BldgID" 
-                    SortExpression="BldgID" />
-                <asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
-                <asp:BoundField DataField="Comments" HeaderText="Comments" 
-                    SortExpression="Comments" />
-                <asp:BoundField DataField="Other" HeaderText="Other" SortExpression="Other" />
-            </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
             <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
@@ -55,6 +56,7 @@ FROM  dbo.Equipment
 Inner Join Model on Model.ModelID = Equipment.ModelID
 Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
 Inner Join Mfg on Mfg.MfgID = Model.MfgID
+Where 
 Order By Type"></asp:SqlDataSource>
     </div>
 </asp:Content>

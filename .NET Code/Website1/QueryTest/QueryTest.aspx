@@ -22,7 +22,8 @@
     
         <asp:GridView ID="GridView1" runat="server" BackColor="LightGoldenrodYellow" 
             BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" 
-            GridLines="None">
+            GridLines="None" AllowPaging="True" AllowSorting="True" 
+            DataSourceID="SqlDataSrcRoom">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />

@@ -10,18 +10,9 @@
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-            CellPadding="2" DataSourceID="SqlDataSrcAllEquipbyLocation" ForeColor="Black" 
+            CellPadding="2" ForeColor="Black" 
             GridLines="None">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
-            <Columns>
-                <asp:BoundField DataField="Building" HeaderText="Building" 
-                    SortExpression="Building" />
-                <asp:BoundField DataField="Department" HeaderText="Department" 
-                    SortExpression="Department" />
-                <asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
-                <asp:BoundField DataField="Equipment ID" HeaderText="Equipment ID" 
-                    SortExpression="Equipment ID" />
-            </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
             <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 

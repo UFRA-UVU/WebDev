@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="QueryTest_QueryTest, App_Web_fdjqlktj" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="QueryTest_QueryTest, App_Web_wugruk4q" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -9,6 +9,7 @@
         <asp:DropDownList ID="DropDownList1" runat="server" 
             DataSourceID="SqlDataSrcRoom" DataTextField="Room" DataValueField="Room">
         </asp:DropDownList>
+        
         <asp:SqlDataSource ID="SqlDataSrcRoom" runat="server" 
             ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
             SelectCommand="SELECT DISTINCT [Room] FROM [Equipment]"></asp:SqlDataSource>
@@ -21,7 +22,8 @@
     
         <asp:GridView ID="GridView1" runat="server" BackColor="LightGoldenrodYellow" 
             BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" 
-            GridLines="None">
+            GridLines="None" AllowPaging="True" AllowSorting="True" 
+            DataSourceID="SqlDataSrcRoom">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />

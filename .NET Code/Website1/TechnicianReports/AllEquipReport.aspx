@@ -26,8 +26,7 @@
         <p />
             <asp:Label ID="LabelEquipValue" runat="server" Text="Select a Value" 
                 Width="150px"></asp:Label>
-            <asp:DropDownList ID="DropDownListEquipValue" runat="server" 
-                AutoPostBack="True">
+            <asp:DropDownList ID="DropDownListEquipValue" runat="server">
             </asp:DropDownList>
             <p />
             <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
@@ -35,8 +34,8 @@
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
-            AllowSorting="True" 
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="false"
+            OnPageIndexChanging="gridView_PageIndexChanging" OnSorting="gridView_Sorting" 
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
             CellPadding="2" ForeColor="Black" 
             GridLines="None">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class Default2 : System.Web.UI.Page
 {
@@ -19,27 +20,27 @@ public partial class Default2 : System.Web.UI.Page
         //var query = from eq in db.Equipments select eq;
         if (strFilter == "All")
         {
-            var query = from equip in db.Equipments
+            var queryGrid = from equip in db.Equipments
                         join mod in db.Models on equip.ModelID equals mod.ModelID
                         join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
                         join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                         join area in db.Areas on equip.AreaID equals area.AreaID
-                        join usr in db.Users on equip.UserUVID equals usr.UserUVID
-
-                        //where equip.Room == strRoom
+                        join u in db.Users on equip.UserUVID equals u.UserUVID
                         select new
                         {
-                            Area_Name = area.AreaName,
-                            Building = equip.BldgID,
+                            AreaName = area.AreaName,
+                            BldgID = equip.BldgID,
                             Department = equip.DeptID,
                             Room = equip.Room,
-                            UVU_Inventory_ID = equip.UVUInvID,
-                            User_Name = usr.UserLName + ", " + usr.UserFName,
+                            UVUInvID = equip.UVUInvID,
+                            UserUVID = equip.UserUVID,
                             Type = etype.EquipTypeName,
-                            Model = mfg.MfgName + " " + mod.ModelName,
-                            Primary = equip.UserPrimaryComp
+                            Mfg = mfg.MfgName,
+                            Model = mod.ModelName,
+                            UserName = u.UserLName + ", " + u.UserFName,
+                            PrimaryComputer = equip.UserPrimaryComp
                         };
-            FillGrid(this, query);
+            FillGrid(this, queryGrid);
         };
 
         if (strFilter == "DeptID")
@@ -75,10 +76,14 @@ public partial class Default2 : System.Web.UI.Page
         else if (strFilter == "Room")
         {
             var query = from rm in db.Equipments
-                        select rm.Room.Distinct();
+                        group rm by rm.Room into g
+                        select new
+                        {
+                            Room = g.Key
+                        };
             FillDDL(this, query, strFilter);
         }
-        else if (strFilter == "EquipType")
+        else if (strFilter == "EquipTypeID")
         {
             var query = from etype in db.EquipTypes
                         select new
@@ -126,8 +131,8 @@ public partial class Default2 : System.Web.UI.Page
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
         TechInventoryDataContext db = new TechInventoryDataContext();
-        string strVal2 = DropDownListEquipValue.SelectedValue;
         string strVal1 = DropDownListEquipFilter.SelectedValue;
+        string strVal2 = DropDownListEquipValue.SelectedValue;
 
         if (strVal1 == "DeptID")
         {
@@ -137,20 +142,20 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.DeptID == strVal2
+                            where equip.DeptID.ToString() == strVal2
                             select new
                             {
-                                area.AreaName,
-                                equip.BldgID,
-                                equip.DeptID,
-                                equip.Room,
-                                equip.UVUInvID,
-                                equip.UserUVID,
-                                etype.EquipTypeName,
-                                mfg.MfgName,
-                                mod.ModelName,
-                                u.UserLName,
-                                equip.UserPrimaryComp
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
                             };
             FillGrid(this, queryGrid);
         }
@@ -162,20 +167,20 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserUVID == strVal2
+                            where equip.UserUVID.ToString() == strVal2
                             select new
                             {
-                                area.AreaName,
-                                equip.BldgID,
-                                equip.DeptID,
-                                equip.Room,
-                                equip.UVUInvID,
-                                equip.UserUVID,
-                                etype.EquipTypeName,
-                                mfg.MfgName,
-                                mod.ModelName,
-                                u.UserLName,
-                                equip.UserPrimaryComp
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
                             };
             FillGrid(this, queryGrid);
         }
@@ -190,17 +195,17 @@ public partial class Default2 : System.Web.UI.Page
                             where equip.ModelID.ToString() == strVal2
                             select new
                             {
-                                area.AreaName,
-                                equip.BldgID,
-                                equip.DeptID,
-                                equip.Room,
-                                equip.UVUInvID,
-                                equip.UserUVID,
-                                etype.EquipTypeName,
-                                mfg.MfgName,
-                                mod.ModelName,
-                                u.UserLName,
-                                equip.UserPrimaryComp
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
                             };
             FillGrid(this, queryGrid);
         }
@@ -212,20 +217,20 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.DeptID.ToString() == strVal2
+                            where equip.EquipTypeID.ToString() == strVal2
                             select new
                             {
-                                area.AreaName,
-                                equip.BldgID,
-                                equip.DeptID,
-                                equip.Room,
-                                equip.UVUInvID,
-                                equip.UserUVID,
-                                etype.EquipTypeName,
-                                mfg.MfgName,
-                                mod.ModelName,
-                                u.UserLName,
-                                equip.UserPrimaryComp
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
                             };
             FillGrid(this, queryGrid);
         }
@@ -237,20 +242,21 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.DeptID == strVal2
+                            where equip.Room == strVal2
+                            
                             select new
                             {
-                                area.AreaName,
-                                equip.BldgID,
-                                equip.DeptID,
-                                equip.Room,
-                                equip.UVUInvID,
-                                equip.UserUVID,
-                                etype.EquipTypeName,
-                                mfg.MfgName,
-                                mod.ModelName,
-                                u.UserLName,
-                                equip.UserPrimaryComp
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
                             };
             FillGrid(this, queryGrid);
         }
@@ -291,5 +297,46 @@ public partial class Default2 : System.Web.UI.Page
         GridView1.DataBind();
         GridView1.AutoGenerateColumns = true;
         GridView1.Visible = true;
+        GridView1.EnableSortingAndPagingCallbacks = true;
+    }
+
+    private string ConvertSortDirectionToSql(SortDirection sortDirection)
+    {
+        string newSortDirection = String.Empty;
+
+        switch (sortDirection)
+        {
+            case SortDirection.Ascending:
+                newSortDirection = "ASC";
+                break;
+
+            case SortDirection.Descending:
+                newSortDirection = "DESC";
+                break;
+        }
+
+        return newSortDirection;
+    }
+
+    protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        GridView1.DataBind();
+    }
+
+    protected void gridView_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        Response.Write(GridView1.DataSource.GetType()); //Add this line
+
+        DataTable dataTable = GridView1.DataSource as DataTable;
+        
+        if (dataTable != null)
+        {
+            DataView dataView = new DataView(dataTable);
+            dataView.Sort = e.SortExpression + " " + ConvertSortDirectionToSql(e.SortDirection);
+
+            GridView1.DataSource = dataView;
+            GridView1.DataBind();
+        }
     }
 }
