@@ -6,14 +6,15 @@
 
 
 
-    <div class="DDNavigation">
+   <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
-    </div>
+    </div>-->
     <div class="Content1">
         <asp:Label ID="LabelEquipFilter" runat="server" Text="Choose a Filter" 
-            Width="150px"></asp:Label>
+            Width="150px" ForeColor="#f8f1d9" Font-Bold="true"></asp:Label>
         <asp:DropDownList ID="DropDownListEquipFilter" runat="server" Width="203px" 
-            AutoPostBack="True" Height="25px" 
+            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
+            style="background-color: #f8f1d9"
             onselectedindexchanged="DropDownListEquipFilter_SelectedIndexChanged">
             <asp:ListItem Selected="True">(choose)</asp:ListItem>
             <asp:ListItem Value="All">All Data</asp:ListItem>
@@ -25,8 +26,9 @@
         </asp:DropDownList>
         <p />
             <asp:Label ID="LabelEquipValue" runat="server" Text="Select a Value" 
-                Width="150px"></asp:Label>
-            <asp:DropDownList ID="DropDownListEquipValue" runat="server">
+                Width="150px" ForeColor="#f8f1d9" Font-Bold="true"></asp:Label>
+            <asp:DropDownList ID="DropDownListEquipValue" runat="server" ForeColor="#2e401a" Font-Bold="true"
+            style="background-color: #f8f1d9">
             </asp:DropDownList>
             <p />
             <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 

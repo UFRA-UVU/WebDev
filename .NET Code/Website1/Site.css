@@ -11,6 +11,11 @@ input
  color:#284E36;
  
  }
+ 
+ label
+ {
+     color: #f8f1d9;
+ }
 .DDMainHeader
 {
 	font: small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;
@@ -22,9 +27,9 @@ input
 
 .DDSubHeader
 {
-	margin-bottom: 10px;
-    font:1.2em Trebuchet MS, Arial, sans-serif;
-    color: #888;
+	margin-bottom: 100px;
+    font: bold 1.2em Trebuchet MS, Arial, sans-serif;
+    color: #f8f1d9;
 }
 
 .DD 
@@ -103,11 +108,12 @@ div.DDNoItem
 
 div.DDNavigation
 {
-	font:.75em Tahoma, Arial, Sans-Serif;
+	font:1.00em Tahoma, Arial, Sans-Serif;
 	position: relative;
     top: -28px;
     margin-bottom: -10px;
     padding: 0px 5px;
+    
 }
 
 div.DDNavigation img
@@ -116,21 +122,23 @@ div.DDNavigation img
     margin-top: 0em;
     padding: 0px 8px;
     border: none;
-    background-color: #fff;
+    background-color: #f8f1d9;
 }
 div.DDNavigation a
 {
-    color: #839ce7;
+    color: #557630;
     text-decoration: none;
-    background-color: #fff;
+    background-color: #f8f1d9;
     padding-right: 8px;
+    padding-bottom: 2px;
     top: -.2em;
     left: .25em;
 }
 div.DDNavigation a:hover
 {
-    color: #000099;
+    color: #2e401a;
     text-decoration: underline !important;
+    
 }
 
 
