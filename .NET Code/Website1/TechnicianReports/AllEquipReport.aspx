@@ -31,16 +31,31 @@
             style="background-color: #f8f1d9">
             </asp:DropDownList>
             <p />
+
+                <asp:Label ID="LabelEquipSort" runat="server" Text="Sort by" Width="150px"></asp:Label>
+                <asp:DropDownList ID="DropDownListSort" runat="server" AutoPostBack="True">
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem></asp:ListItem>
+                </asp:DropDownList>
+
+            <p />
             <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
                     onclick="BtnSubmit_Click" Width="135px" />
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="false"
-            OnPageIndexChanging="gridView_PageIndexChanging" OnSorting="gridView_Sorting" 
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="true"
+             
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
             CellPadding="2" ForeColor="Black" 
-            GridLines="None">
+            GridLines="None" ViewStateMode="Enabled">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
