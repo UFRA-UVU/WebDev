@@ -12,10 +12,7 @@ input
  
  }
  
- label
- {
-     color: #f8f1d9;
- }
+
 .DDMainHeader
 {
 	font: small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;
@@ -27,7 +24,7 @@ input
 
 .DDSubHeader
 {
-	margin-bottom: 100px;
+	margin-bottom: 10px;
     font: bold 1.2em Trebuchet MS, Arial, sans-serif;
     color: #f8f1d9;
 }
