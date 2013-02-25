@@ -108,6 +108,9 @@ public partial class Default2 : System.Web.UI.Page
     {
         TechInventoryDataContext db = new TechInventoryDataContext();
         ReturnResults(sender);
+    //
+    //****   Code Moved to ReturnResults Method
+    //
     //    string strVal1 = DropDownListEquipFilter.SelectedValue;
     //    string strVal2 = DropDownListEquipValue.SelectedValue;
 
@@ -428,6 +431,7 @@ public partial class Default2 : System.Web.UI.Page
     //    }
 
     //}
+
     private void ReturnResults(object sender)
     {
         TechInventoryDataContext db = new TechInventoryDataContext();
@@ -607,8 +611,12 @@ public partial class Default2 : System.Web.UI.Page
         GridView1.DataBind();
         GridView1.AutoGenerateColumns = true;
         GridView1.Visible = true;
-        //GridView1.EnableSortingAndPagingCallbacks = true;
     }
+    
+    //
+    //   STUFF BEING WORKED ON FOR SORTING
+    //
+    
     //private string ConvertSortDirectionToSql(SortDirection sortDirection)
     //{
     //    string newSortDirection = String.Empty;
