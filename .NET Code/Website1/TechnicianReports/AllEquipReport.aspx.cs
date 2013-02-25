@@ -444,6 +444,7 @@ public partial class Default2 : System.Web.UI.Page
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
@@ -469,6 +470,7 @@ public partial class Default2 : System.Web.UI.Page
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
@@ -494,6 +496,7 @@ public partial class Default2 : System.Web.UI.Page
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
@@ -519,6 +522,7 @@ public partial class Default2 : System.Web.UI.Page
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
@@ -544,6 +548,7 @@ public partial class Default2 : System.Web.UI.Page
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
@@ -569,6 +574,7 @@ public partial class Default2 : System.Web.UI.Page
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID

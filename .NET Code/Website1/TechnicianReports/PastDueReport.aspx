@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="UserReport.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="PastDueReport.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -10,24 +10,19 @@
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>-->
     <div class="Content1">
-        <asp:Label ID="LabelUserFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
-        <asp:DropDownList ID="DropDownListUserFilter" runat="server" Width="203px" 
+        <asp:Label ID="LabelDateRange" runat="server" Text="Choose a Past Due Report" 
+            Width="188px" ForeColor="#F8F1D9" Font-Bold="True" Height="23px"></asp:Label>
+            <br />
+        <asp:DropDownList ID="DropDownListDateRange" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
-            style="background-color: #f8f1d9"
-            onselectedindexchanged="DropDownListUserFilter_SelectedIndexChanged">
-            <asp:ListItem Selected="True">(choose)</asp:ListItem>
-            <asp:ListItem Value="All">All Data</asp:ListItem>
-            <asp:ListItem Value="AreaID">AreaName</asp:ListItem>
-            <asp:ListItem Value="DeptID">Department</asp:ListItem>
-        </asp:DropDownList>
-        <p />
-            <asp:Label ID="LabelUserValue" runat="server" Text="Select a Value" 
-                Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
-            <asp:DropDownList ID="DropDownListUserValue" runat="server" ForeColor="#2e401a" Font-Bold="true"
             style="background-color: #f8f1d9">
-            </asp:DropDownList>
-            
+            <asp:ListItem Selected="True">(choose)</asp:ListItem>
+            <asp:ListItem Value="PastDue">Past Due</asp:ListItem>
+            <asp:ListItem Value="3">Expire in 3 Months</asp:ListItem>
+            <asp:ListItem Value="6">Expire in 6 Months</asp:ListItem>
+            <asp:ListItem Value="12">Expire in 12 Months</asp:ListItem>
+        </asp:DropDownList>
+
             <p />
             <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
                     onclick="BtnSubmit_Click" Width="135px" />

@@ -11,22 +11,12 @@ public partial class _Default : System.Web.UI.Page {
         Menu1.DataSource = visibleTables;
         Menu1.DataBind();
     }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Server.Transfer("TechnicianReports/AllEquipbyLocation.aspx", true);
-    }
+    
     protected void btnAllEquip_Click(object sender, EventArgs e)
     {
         Server.Transfer("TechnicianReports/AllEquipReport.aspx", true);
     }
-    protected void btnCntEquipRoom_Click(object sender, EventArgs e)
-    {
-        Server.Transfer("TechnicianReports/CountEquipbyRoom.aspx", true);
-    }
-    protected void btnUserAssignEquip_Click(object sender, EventArgs e)
-    {
-        Server.Transfer("TechnicianReports/UserAssignEquipReport.aspx", true);
-    }
+    
     protected void btnUserReport_Click(object sender, EventArgs e)
     {
         Server.Transfer("UserReports/UserReport.aspx", true);
@@ -34,5 +24,9 @@ public partial class _Default : System.Web.UI.Page {
     protected void btnModifyTables_Click(object sender, EventArgs e)
     {
         Server.Transfer("Admin/DBModify.aspx", true);
+    }
+    protected void btnPastDueReports_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("TechnicianReports/PastDueReport.aspx", true);
     }
 }

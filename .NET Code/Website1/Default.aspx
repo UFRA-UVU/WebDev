@@ -22,23 +22,17 @@
     </asp:GridView>-->
     <h2 class="DDSubHeader">Choose a Report</h2>
     <p />
-        <div style="width:300px; float:left; padding-right:100px;"><asp:Button ID="btnAllEquip" runat="server" Text="All Equipment" 
+        <div style="width:300px; float:left; padding-right:100px;">
+            <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        
         <br /> <br />
-        <asp:Button ID="btnAllEquipLoc" runat="server" onclick="Button1_Click" 
-            Text="All Equipment by Location" Width="300px" />
-         <br /> <br />
 
-        <asp:Button ID="btnCntEquipRoom" runat="server" Text="All Equipment by Room" 
-            onclick="btnCntEquipRoom_Click" Width="300px" />
-        <br /> <br />
-        <asp:Button ID="btnUserAssignEquip" runat="server" 
-            Text="User Assigned Equipment" onclick="btnUserAssignEquip_Click" 
-            Width="300px" />
-        <br /> <br />
-        <asp:Button ID="btnUserReport" runat="server" Text="User Report" 
+        <asp:Button ID="btnUserReport" runat="server" Text="User Reports" 
             onclick="btnUserReport_Click" Width="300px" />
         <br /> <br />
+            <asp:Button ID="btnPastDueReports" runat="server" Text="Past Due Reports" 
+                onclick="btnPastDueReports_Click" Width="300px" />
+            <br />
         </div>
         <div>        
         <asp:Button class="buttonFontWeight" ID="btnModifyTables" runat="server" Text="Edit Tables" 
