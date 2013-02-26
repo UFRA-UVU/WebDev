@@ -27,7 +27,7 @@ public partial class Default2 : System.Web.UI.Page
                          };
             FillDDL(this, query, strFilter);
         }
-        else if (strFilter == "Area")
+        if (strFilter == "AreaID")
         {
             var query = from area in db.Areas
                         select new

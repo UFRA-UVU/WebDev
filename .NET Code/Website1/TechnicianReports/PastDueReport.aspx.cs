@@ -26,7 +26,7 @@ public partial class Default2 : System.Web.UI.Page
         
         if (strVal1 == "PastDue")
         {
-            DateTime expiryDate = DateTime.Now.AddYears(-2);
+            DateTime expiryDate = DateTime.Now.AddYears(-3);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -57,7 +57,8 @@ public partial class Default2 : System.Web.UI.Page
         };
         if (strVal1 == "3")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-21);
+            DateTime expiryDate = DateTime.Now.AddMonths(-33);
+            DateTime expireRange = DateTime.Now.AddMonths(-36);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -68,7 +69,7 @@ public partial class Default2 : System.Web.UI.Page
                             join u in db.Users on equip.UserUVID equals u.UserUVID
                             where equip.UserPrimaryComp != null
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where equip.PurchDate <= expiryDate && equip.PurchDate >= expireRange
                             select new
                             {
                                 AreaName = area.AreaName,
@@ -87,7 +88,8 @@ public partial class Default2 : System.Web.UI.Page
         }
         if (strVal1 == "6")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-18);
+            DateTime expiryDate = DateTime.Now.AddMonths(-30);
+            DateTime expireRange = DateTime.Now.AddMonths(-36);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -98,7 +100,7 @@ public partial class Default2 : System.Web.UI.Page
                             join u in db.Users on equip.UserUVID equals u.UserUVID
                             where equip.UserPrimaryComp != null
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where equip.PurchDate <= expiryDate && equip.PurchDate >= expireRange
                             select new
                             {
                                 AreaName = area.AreaName,
@@ -117,7 +119,8 @@ public partial class Default2 : System.Web.UI.Page
         }
         if (strVal1 == "12")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-12);
+            DateTime expiryDate = DateTime.Now.AddMonths(-24);
+            DateTime expireRange = DateTime.Now.AddMonths(-36);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -128,7 +131,7 @@ public partial class Default2 : System.Web.UI.Page
                             join u in db.Users on equip.UserUVID equals u.UserUVID
                             where equip.UserPrimaryComp != null
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where equip.PurchDate <= expiryDate && equip.PurchDate >= expireRange
                             select new
                             {
                                 AreaName = area.AreaName,
