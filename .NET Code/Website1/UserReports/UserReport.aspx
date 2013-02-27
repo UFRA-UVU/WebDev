@@ -23,9 +23,9 @@
         </asp:DropDownList>
         <p />
             <asp:Label ID="LabelUserValue" runat="server" Text="Select a Value" 
-                Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+                Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False"></asp:Label>
             <asp:DropDownList ID="DropDownListUserValue" runat="server" ForeColor="#2e401a" Font-Bold="true"
-            style="background-color: #f8f1d9">
+            style="background-color: #f8f1d9" Visible="False">
             </asp:DropDownList>
             
             <p />

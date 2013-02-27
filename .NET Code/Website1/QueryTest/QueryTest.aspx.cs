@@ -7,101 +7,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Linq;
 using System.Linq.Dynamic;
-using System.DirectoryServices;
-using System.Text;
-using System.DirectoryServices.ActiveDirectory;
-using System.Web.Security;
 
 
 
 public partial class QueryTest_QueryTest : System.Web.UI.Page
 {
-    public static string DomainName = "billgood.local";
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        //{
-        //    //   success
-        //}
-        //else
-        //{
-        //    //deny access
-        //}
 
     }
-    /* Checking wheather the user belongs to Your Group.*/
-    //private bool CheckUserAuthentication(String userAccount)
-    //{
-
-
-    //    DirectoryEntry entry = GetDirectoryEntry("/" + GetLDAPDomain());
-
-    //    String account = userAccount.Replace(@"DomainName\", "");
-    //    string group = "AdminGroup";
-    //    try
-    //    {
-
-    //        DirectorySearcher search = new DirectorySearcher(entry);
-    //        search.Filter = "(SAMAccountName=" + account + ")";
-    //        search.PropertiesToLoad.Add("memberOf");
-    //        SearchResult result = search.FindOne();
-
-    //        DirectorySearcher groupSearch = new DirectorySearcher(entry);
-    //        groupSearch.Filter = "(SAMAccountName=" + group + ")";
-    //        groupSearch.PropertiesToLoad.Add("member");
-    //        SearchResult groupResult = groupSearch.FindOne();
-    //        if (result != null)
-    //        {
-    //            int allGroupCount = result.Properties["memberOf"].Count;
-
-    //            int checkGroupCount = groupResult.Properties["member"].Count;
-
-    //            for (int i = 0; i < allGroupCount; i++)
-    //            {
-    //                string number = result.Properties["memberOf"][i].ToString();
-    //                for (int j = 0; j < checkGroupCount; j++)
-    //                {
-    //                    if (number == groupResult.Properties["member"][j].ToString())
-    //                    {
-
-    //                        return true;
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        string debug = ex.Message;
-
-    //        return false;
-    //    }
-    //    return false;
-    //}
-    //public static DirectoryEntry GetDirectoryEntry(string DomainReference)
-    //{
-    //    string ADFullPath = String.Format("LDAP://{0}", DomainName);
-    //    DirectoryEntry de = new DirectoryEntry(ADFullPath + DomainReference, "username", "password", AuthenticationTypes.Secure);
-    //    return de;
-    //}
-    //private static string GetLDAPDomain()
-    //{
-    //    StringBuilder LDAPDomain = new StringBuilder();
-    //    string[] LDAPDC = "domianNAme.com".Split('.');
-    //    for (int i = 0; i < LDAPDC.GetUpperBound(0) + 1; i++)
-    //    {
-    //        LDAPDomain.Append("DC=" + LDAPDC[i]);
-    //        if (i < LDAPDC.GetUpperBound(0))
-    //        {
-    //            LDAPDomain.Append(",");
-    //        }
-    //    }
-    //    return LDAPDomain.ToString();
-    //}
     protected void Button1_Click(object sender, EventArgs e)
     {
         TechInventoryDataContext db = new TechInventoryDataContext();

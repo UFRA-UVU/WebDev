@@ -19,6 +19,11 @@ public partial class Default2 : System.Web.UI.Page
         string strSort = DropDownListSort.SelectedValue;
         //var query = from eq in db.Equipments select eq;
 
+        if (strFilter == "All")
+        {
+            DropDownListEquipValue.Visible = false;
+            LabelEquipValue.Visible = false;
+        }
         if (strFilter == "DeptID")
         {
             var query = from dept in db.Depts
@@ -79,6 +84,7 @@ public partial class Default2 : System.Web.UI.Page
         {
             DropDownListEquipValue.DataTextField = "DeptName";
             DropDownListEquipValue.DataValueField = "DeptID";
+            
         }
         if (strFilter == "ModelID")
         {
@@ -101,6 +107,7 @@ public partial class Default2 : System.Web.UI.Page
             DropDownListEquipValue.DataValueField = "EquipTypeID";
         }
         DropDownListEquipValue.DataBind();
+        LabelEquipValue.Visible = true;
         DropDownListEquipValue.Visible = true;
     }
 
