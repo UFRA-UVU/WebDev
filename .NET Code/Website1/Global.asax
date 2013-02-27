@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.ComponentModel.DataAnnotations" %>
 <%@ Import Namespace="System.Web.Routing" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web" %>
 
 <script RunAt="server">
     private static MetaModel s_defaultModel = new MetaModel();
