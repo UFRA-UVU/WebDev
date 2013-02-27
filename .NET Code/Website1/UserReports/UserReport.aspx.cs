@@ -17,11 +17,6 @@ public partial class Default2 : System.Web.UI.Page
         TechInventoryDataContext db = new TechInventoryDataContext();
         string strFilter = DropDownListUserFilter.SelectedValue;
 
-        if (strFilter == "All")
-        {
-            LabelUserValue.Visible = false;
-            DropDownListUserValue.Visible = false;
-        }
         if (strFilter == "DeptID")
         {
             var query = from dept in db.Depts
@@ -32,7 +27,7 @@ public partial class Default2 : System.Web.UI.Page
                          };
             FillDDL(this, query, strFilter);
         }
-        if (strFilter == "AreaID")
+        else if (strFilter == "Area")
         {
             var query = from area in db.Areas
                         select new
@@ -59,7 +54,6 @@ public partial class Default2 : System.Web.UI.Page
             DropDownListUserValue.DataValueField = "AreaID";
         }
         DropDownListUserValue.DataBind();
-        LabelUserValue.Visible = true;
         DropDownListUserValue.Visible = true;
     }
 
