@@ -26,14 +26,16 @@
         </asp:DropDownList>
         <p />
             <asp:Label ID="LabelEquipValue" runat="server" Text="Select a Value" 
-                Width="150px" ForeColor="#f8f1d9" Font-Bold="true"></asp:Label>
-            <asp:DropDownList ID="DropDownListEquipValue" runat="server" ForeColor="#2e401a" Font-Bold="true"
-            style="background-color: #f8f1d9">
+                Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False"></asp:Label>
+            <asp:DropDownList ID="DropDownListEquipValue" runat="server" 
+                ForeColor="#2e401a" Font-Bold="true"
+            style="background-color: #f8f1d9" Visible="False">
             </asp:DropDownList>
             <p />
 
                 <asp:Label ID="LabelEquipSort" runat="server" Text="Sort by" Width="150px"></asp:Label>
-                <asp:DropDownList ID="DropDownListSort" runat="server" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownListSort" runat="server" AutoPostBack="True" 
+                    Visible="False">
                     <asp:ListItem></asp:ListItem>
                     <asp:ListItem></asp:ListItem>
                     <asp:ListItem></asp:ListItem>

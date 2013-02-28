@@ -10,7 +10,16 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        ADAuthStrings authString = new ADAuthStrings();
 
+        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
+        {
+
+        }
+        else
+        {
+            Server.Transfer("~/login.aspx", true);
+        }
     }
     protected void DropDownListUserFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -27,7 +36,7 @@ public partial class Default2 : System.Web.UI.Page
                          };
             FillDDL(this, query, strFilter);
         }
-        else if (strFilter == "Area")
+        else if (strFilter == "AreaID")
         {
             var query = from area in db.Areas
                         select new
@@ -53,8 +62,10 @@ public partial class Default2 : System.Web.UI.Page
             DropDownListUserValue.DataTextField = "AreaName";
             DropDownListUserValue.DataValueField = "AreaID";
         }
-        DropDownListUserValue.DataBind();
+        LabelUserValue.Visible = true;
         DropDownListUserValue.Visible = true;
+        DropDownListUserValue.DataBind();
+
     }
 
     protected void BtnSubmit_Click(object sender, EventArgs e)

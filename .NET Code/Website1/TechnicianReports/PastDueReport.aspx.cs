@@ -10,7 +10,17 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        ADAuthStrings authString = new ADAuthStrings();
 
+        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
+        {
+            //   success
+
+        }
+        else
+        {
+            Server.Transfer("~/login.aspx", true);
+        }
     }
     
     protected void BtnSubmit_Click(object sender, EventArgs e)

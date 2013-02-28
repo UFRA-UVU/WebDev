@@ -5,13 +5,93 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.DirectoryServices;
+using System.Text;
 
 public partial class Default2 : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        ADAuthStrings authString = new ADAuthStrings();
 
+        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
+        {
+            //   success
+
+        }
+        else
+        {
+            Server.Transfer("~/login.aspx", true);
+        }
     }
+    //private bool CheckUserAuthentication(String userAccount)
+    //{
+    //    string LDAPConnString = "LDAP://billgood.local/OU=bgm,DC=billgood,DC=local";
+    //    string LDAPContextString = "LDAP://billgood.local/";
+    //    string DomainName = "billgood.local";
+    //    string UserName = "dupuser";
+    //    string Password = "kilroy";
+    //    string AuthorizedGroup = "AdminGroup";
+
+    //    DirectoryEntry entry = new DirectoryEntry(LDAPConnString);
+    //    DirectoryEntry entry = new DirectoryEntry(LDAPConnString, UserName, Password);
+
+    //    Change the domain name to match the target domain
+    //    String account = userAccount;
+    //    string group = "AdminGroup";
+    //    try
+    //    {
+
+    //        DirectorySearcher search = new DirectorySearcher(entry);
+    //        search.Filter = "(SAMAccountName=" + account + ")";
+    //        search.PropertiesToLoad.Add("memberOf");
+    //        SearchResult result = search.FindOne();
+
+    //        DirectorySearcher groupSearch = new DirectorySearcher(entry);
+    //        groupSearch.Filter = "(SAMAccountName=" + AuthorizedGroup + ")";
+    //        groupSearch.PropertiesToLoad.Add("member");
+    //        SearchResult groupResult = groupSearch.FindOne();
+    //        if (result != null)
+    //        {
+    //            int allGroupCount = result.Properties["memberOf"].Count;
+
+    //            int checkGroupCount = groupResult.Properties["member"].Count;
+
+    //            string match = result.Properties["memberOf"].ToString();
+    //            if (groupResult.Properties["member"].Contains(result))
+    //            {
+    //                return true;
+    //            }
+
+    //            for (int i = 0; i < allGroupCount; i++)
+    //            {
+    //                string number = LDAPContextString + result.Properties["memberOf"][i].ToString();
+    //                for (int j = 0; j < checkGroupCount; j++)
+    //                {
+    //                    string grp = groupResult.Path[j].ToString();
+    //                    string usr = result.Path.ToString();
+
+    //                    if (number == groupResult.Path.ToString())
+    //                    {
+    //                        return true;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        string debug = ex.Message;
+
+    //        return false;
+    //    }
+    //    return false;
+    //}
     protected void DropDownListEquipFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
         TechInventoryDataContext db = new TechInventoryDataContext();
@@ -102,6 +182,7 @@ public partial class Default2 : System.Web.UI.Page
         }
         DropDownListEquipValue.DataBind();
         DropDownListEquipValue.Visible = true;
+        LabelEquipValue.Visible = true;
     }
 
     protected void BtnSubmit_Click(object sender, EventArgs e)

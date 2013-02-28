@@ -8,8 +8,6 @@ using System.Text;
 
 public partial class _Default : System.Web.UI.Page {
     
-    public static string LDAPConnString = "LDAP://billgood.local/OU=bgm,DC=billgood,DC=local";
-    public static string DomainName = "billgood.local";
 
     protected void Page_Load(object sender, EventArgs e) 
     {
@@ -29,100 +27,108 @@ public partial class _Default : System.Web.UI.Page {
         Response.Write("<br/>UserData: " + ticket.UserData);
         Response.Write("<br/>Version: " + ticket.Version.ToString());
         //*** END Debug Code
-
-        //if (CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        //{
-        //    //   success
-
-        //    System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
-        //    if (visibleTables.Count == 0)
-        //    {
-        //        throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
-        //    }
-
-
-        //    Menu1.DataSource = visibleTables;
-        //    Menu1.DataBind();
-        //}
-        //else
-        //{
-        //    Server.Transfer("~/login.aspx", true);
-        //}
+        ADAuthStrings authString = new ADAuthStrings();
         
-        System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
-        if (visibleTables.Count == 0)
+        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
         {
-            throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
+            //   success
+
+            System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
+            if (visibleTables.Count == 0)
+            {
+                throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
+            }
+
+
+            Menu1.DataSource = visibleTables;
+            Menu1.DataBind();
+        }
+        else
+        {
+            Server.Transfer("~/login.aspx", true);
         }
 
+        //System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
+        //if (visibleTables.Count == 0)
+        //{
+        //    throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
+        //}
 
-        Menu1.DataSource = visibleTables;
-        Menu1.DataBind();
+        //Menu1.DataSource = visibleTables;
+        //Menu1.DataBind();
     }
 
     //**** BEGIN AD Group Validation ****//
     /* Checking wheather the user belongs to Your Group.*/
-    private bool CheckUserAuthentication(String userAccount)
-    {
+    //private bool CheckUserAuthentication(String userAccount)
+    //{
+    //    //string LDAPConnString = "LDAP://billgood.local/OU=bgm,DC=billgood,DC=local";
+    //    //string LDAPContextString = "LDAP://billgood.local/";
+    //    ////string DomainName = "billgood.local";
+    //    //string UserName = "dupuser";
+    //    //string Password = "kilroy";
+    //    //string AuthorizedGroup = "AdminGroup";
 
+    //    ADAuthStrings authString = new ADAuthStrings();
+        
+    //    //DirectoryEntry entry = new DirectoryEntry(LDAPConnString);
+    //    DirectoryEntry entry = new DirectoryEntry(authString.LDAPConnString, authString.UserName, authString.Password);
 
-        DirectoryEntry entry = new DirectoryEntry(LDAPConnString);
+    //    //Change the domain name to match the target domain
+    //    String account = userAccount;
+    //    //string group = "AdminGroup";
+    //    try
+    //    {
 
-        //Change the domain name to match the target domain
-        String account = userAccount;
-        string group = "AdminGroup";
-        try
-        {
+    //        DirectorySearcher search = new DirectorySearcher(entry);
+    //        search.Filter = "(SAMAccountName=" + account + ")";
+    //        search.PropertiesToLoad.Add("memberOf");
+    //        SearchResult result = search.FindOne();
 
-            DirectorySearcher search = new DirectorySearcher(entry);
-            search.Filter = "(SAMAccountName=" + account + ")";
-            search.PropertiesToLoad.Add("memberOf");
-            SearchResult result = search.FindOne();
+    //        DirectorySearcher groupSearch = new DirectorySearcher(entry);
+    //        groupSearch.Filter = "(SAMAccountName=" + authString.AuthorizedGroup + ")";
+    //        groupSearch.PropertiesToLoad.Add("member");
+    //        SearchResult groupResult = groupSearch.FindOne();
+    //        if (result != null)
+    //        {
+    //            int allGroupCount = result.Properties["memberOf"].Count;
 
-            DirectorySearcher groupSearch = new DirectorySearcher(entry);
-            groupSearch.Filter = "(SAMAccountName=" + group + ")";
-            groupSearch.PropertiesToLoad.Add("member");
-            SearchResult groupResult = groupSearch.FindOne();
-            if (result != null)
-            {
-                int allGroupCount = result.Properties["memberOf"].Count;
+    //            int checkGroupCount = groupResult.Properties["member"].Count;
 
-                int checkGroupCount = groupResult.Properties["member"].Count;
+    //            //string match = result.Properties["memberOf"].ToString();
+    //            //if (groupResult.Properties["member"].Contains(result))
+    //            //{
+    //            //    return true;
+    //            //}
 
-                //string match = result.Properties["memberOf"].ToString();
-                //if (groupResult.Properties["member"].Contains(result))
-                //{
-                //    return true;
-                //}
+    //            for (int i = 0; i < allGroupCount; i++)
+    //            {
+    //                string number = authString.LDAPContextString + result.Properties["memberOf"][i].ToString();
+    //                for (int j = 0; j < checkGroupCount; j++)
+    //                {
+    //                    string grp = groupResult.Path[j].ToString();
+    //                    string usr = result.Path.ToString();
 
-                for (int i = 0; i < allGroupCount; i++)
-                {
-                    string number = "LDAP://billgood.local/" + result.Properties["memberOf"][i].ToString();
-                    for (int j = 0; j < checkGroupCount; j++)
-                    {
-                        string grp = ("LDAP://billgood.local/" + groupResult.Properties["member"][j]);
-                        string usr = result.Path.ToString();
+    //                    if (number == groupResult.Path.ToString())
+    //                    {
+    //                        return true;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        string debug = ex.Message;
 
-                        if (number == groupResult.Path[j].ToString())
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-        catch (Exception ex)
-        {
-            string debug = ex.Message;
-
-            return false;
-        }
-        return false;
-    }
+    //        return false;
+    //    }
+    //    return false;
+    //}
     //public static DirectoryEntry GetDirectoryEntry(string DomainReference)
     //{
     //    string ADFullPath = String.Format("LDAP://{0}", DomainName);
