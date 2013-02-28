@@ -1,7 +1,7 @@
 ﻿/*	Global classes	*/
 body
 {
-    background-color: #557630;
+    background-color: #ffffff;
 }
 
 input
@@ -16,7 +16,7 @@ input
 .DDMainHeader
 {
 	font: small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;
-	color:#f8f1d9;
+	color:#2e401a;
 	padding-bottom: 12px;
     border-bottom: 1px dotted #bbbbbb;
 }
@@ -26,7 +26,7 @@ input
 {
 	margin-bottom: 10px;
     font: bold 1.2em Trebuchet MS, Arial, sans-serif;
-    color: #f8f1d9;
+    color: #2e401a;
 }
 
 .DD 
