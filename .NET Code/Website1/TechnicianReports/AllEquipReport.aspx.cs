@@ -14,6 +14,7 @@ public partial class Default2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ADAuthStrings authString = new ADAuthStrings();
+        authString.AuthorizedGroup = "AdminGroup";
 
         if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
         {
@@ -22,7 +23,7 @@ public partial class Default2 : System.Web.UI.Page
         }
         else
         {
-            Server.Transfer("~/login.aspx", true);
+            Server.Transfer("AuthFailed.aspx", true);
         }
     }
     //private bool CheckUserAuthentication(String userAccount)

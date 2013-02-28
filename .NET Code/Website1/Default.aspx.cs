@@ -12,20 +12,20 @@ public partial class _Default : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) 
     {
         //*** Debug code to view authentication data
-        Response.Write("Hello, " + Server.HtmlEncode(User.Identity.Name));
+        //Response.Write("Hello, " + Server.HtmlEncode(User.Identity.Name));
 
-        FormsIdentity id = (FormsIdentity)User.Identity;
-        FormsAuthenticationTicket ticket = id.Ticket;
+        //FormsIdentity id = (FormsIdentity)User.Identity;
+        //FormsAuthenticationTicket ticket = id.Ticket;
 
-        Response.Write("<p/>TicketName: " + ticket.Name);
-        Response.Write("<br/>Cookie Path: " + ticket.CookiePath);
-        Response.Write("<br/>Ticket Expiration: " +
-                        ticket.Expiration.ToString());
-        Response.Write("<br/>Expired: " + ticket.Expired.ToString());
-        Response.Write("<br/>Persistent: " + ticket.IsPersistent.ToString());
-        Response.Write("<br/>IssueDate: " + ticket.IssueDate.ToString());
-        Response.Write("<br/>UserData: " + ticket.UserData);
-        Response.Write("<br/>Version: " + ticket.Version.ToString());
+        //Response.Write("<p/>TicketName: " + ticket.Name);
+        //Response.Write("<br/>Cookie Path: " + ticket.CookiePath);
+        //Response.Write("<br/>Ticket Expiration: " +
+        //                ticket.Expiration.ToString());
+        //Response.Write("<br/>Expired: " + ticket.Expired.ToString());
+        //Response.Write("<br/>Persistent: " + ticket.IsPersistent.ToString());
+        //Response.Write("<br/>IssueDate: " + ticket.IssueDate.ToString());
+        //Response.Write("<br/>UserData: " + ticket.UserData);
+        //Response.Write("<br/>Version: " + ticket.Version.ToString());
         //*** END Debug Code
         ADAuthStrings authString = new ADAuthStrings();
         
@@ -57,100 +57,6 @@ public partial class _Default : System.Web.UI.Page {
         //Menu1.DataSource = visibleTables;
         //Menu1.DataBind();
     }
-
-    //**** BEGIN AD Group Validation ****//
-    /* Checking wheather the user belongs to Your Group.*/
-    //private bool CheckUserAuthentication(String userAccount)
-    //{
-    //    //string LDAPConnString = "LDAP://billgood.local/OU=bgm,DC=billgood,DC=local";
-    //    //string LDAPContextString = "LDAP://billgood.local/";
-    //    ////string DomainName = "billgood.local";
-    //    //string UserName = "dupuser";
-    //    //string Password = "kilroy";
-    //    //string AuthorizedGroup = "AdminGroup";
-
-    //    ADAuthStrings authString = new ADAuthStrings();
-        
-    //    //DirectoryEntry entry = new DirectoryEntry(LDAPConnString);
-    //    DirectoryEntry entry = new DirectoryEntry(authString.LDAPConnString, authString.UserName, authString.Password);
-
-    //    //Change the domain name to match the target domain
-    //    String account = userAccount;
-    //    //string group = "AdminGroup";
-    //    try
-    //    {
-
-    //        DirectorySearcher search = new DirectorySearcher(entry);
-    //        search.Filter = "(SAMAccountName=" + account + ")";
-    //        search.PropertiesToLoad.Add("memberOf");
-    //        SearchResult result = search.FindOne();
-
-    //        DirectorySearcher groupSearch = new DirectorySearcher(entry);
-    //        groupSearch.Filter = "(SAMAccountName=" + authString.AuthorizedGroup + ")";
-    //        groupSearch.PropertiesToLoad.Add("member");
-    //        SearchResult groupResult = groupSearch.FindOne();
-    //        if (result != null)
-    //        {
-    //            int allGroupCount = result.Properties["memberOf"].Count;
-
-    //            int checkGroupCount = groupResult.Properties["member"].Count;
-
-    //            //string match = result.Properties["memberOf"].ToString();
-    //            //if (groupResult.Properties["member"].Contains(result))
-    //            //{
-    //            //    return true;
-    //            //}
-
-    //            for (int i = 0; i < allGroupCount; i++)
-    //            {
-    //                string number = authString.LDAPContextString + result.Properties["memberOf"][i].ToString();
-    //                for (int j = 0; j < checkGroupCount; j++)
-    //                {
-    //                    string grp = groupResult.Path[j].ToString();
-    //                    string usr = result.Path.ToString();
-
-    //                    if (number == groupResult.Path.ToString())
-    //                    {
-    //                        return true;
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        string debug = ex.Message;
-
-    //        return false;
-    //    }
-    //    return false;
-    //}
-    //public static DirectoryEntry GetDirectoryEntry(string DomainReference)
-    //{
-    //    string ADFullPath = String.Format("LDAP://{0}", DomainName);
-    //    DirectoryEntry de = new DirectoryEntry(ADFullPath + DomainReference, "username", "password", AuthenticationTypes.Secure);
-    //    return de;
-    //}
-    //private static string GetLDAPDomain()
-    //{
-    //    StringBuilder LDAPDomain = new StringBuilder();
-    //    string[] LDAPDC = DomainName.Split('.');
-    //    for (int i = 0; i < LDAPDC.GetUpperBound(0) + 1; i++)
-    //    {
-    //        LDAPDomain.Append("DC=" + LDAPDC[i]);
-    //        if (i < LDAPDC.GetUpperBound(0))
-    //        {
-    //            LDAPDomain.Append(",");
-    //        }
-    //    }
-    //    return LDAPDomain.ToString();
-    //}
-
-    //**** END AD Group Validation ****//
 
     //Default buttons that redirect to appropriate report pages
     protected void btnAllEquip_Click(object sender, EventArgs e)

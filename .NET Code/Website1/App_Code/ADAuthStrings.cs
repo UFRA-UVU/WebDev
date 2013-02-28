@@ -42,12 +42,6 @@ public class ADAuthStrings
     }
     public bool CheckUserAuthentication(String userAccount)
     {
-        //string LDAPConnString = "LDAP://billgood.local/OU=bgm,DC=billgood,DC=local";
-        //string LDAPContextString = "LDAP://billgood.local/";
-        ////string DomainName = "billgood.local";
-        //string UserName = "dupuser";
-        //string Password = "kilroy";
-        //string AuthorizedGroup = "AdminGroup";
 
         //DirectoryEntry entry = new DirectoryEntry(LDAPConnString);
         DirectoryEntry entry = new DirectoryEntry(lDAPConnString, userName, password);
