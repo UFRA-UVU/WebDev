@@ -14,9 +14,9 @@ public class ADAuthStrings
         string lDAPConnString = @"LDAP://billgood.local/OU=bgm,DC=billgood,DC=local";
         string lDAPContextString = @"LDAP://billgood.local/";
         //string DomainName = "billgood.local";
-        string userName = "";
-        string password = "";
-        string authorizedGroup = "";
+        string userName = "dupuser";
+        string password = "kilroy";
+        string authorizedGroup = "AdminGroup";
 
     public string LDAPConnString
     {
