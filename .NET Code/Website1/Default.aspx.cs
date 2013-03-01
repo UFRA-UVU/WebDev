@@ -27,11 +27,14 @@ public partial class _Default : System.Web.UI.Page {
         //Response.Write("<br/>UserData: " + ticket.UserData);
         //Response.Write("<br/>Version: " + ticket.Version.ToString());
         //*** END Debug Code
+
+        //Instantiate an object from the ADAuthStrings class to pull LDAP info for connecting to Active Directory
         ADAuthStrings authString = new ADAuthStrings();
         
+        //Call CheckUserAuthentication method in ADAuthStrings class to check if logged on user is a member of the AD group name specified authString.authorizedGroup property
         if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
         {
-            //   success
+            //If success, just load the page
 
             System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
             if (visibleTables.Count == 0)
@@ -45,6 +48,7 @@ public partial class _Default : System.Web.UI.Page {
         }
         else
         {
+            //If authentication fails, load the login page
             Server.Transfer("~/login.aspx", true);
         }
 
