@@ -53,7 +53,7 @@
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="true"
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True"
              
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
             CellPadding="2" ForeColor="Black" 
