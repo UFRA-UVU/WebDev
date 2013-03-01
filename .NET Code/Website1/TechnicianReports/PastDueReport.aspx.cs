@@ -10,6 +10,7 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //BEGIN page authentication section
         ADAuthStrings authString = new ADAuthStrings();
         authString.AuthorizedGroup = "AdminGroup";
 
@@ -22,6 +23,7 @@ public partial class Default2 : System.Web.UI.Page
         {
             Server.Transfer("AuthFailed.aspx", true);
         }
+        //END page authentication section
     }
     
     protected void BtnSubmit_Click(object sender, EventArgs e)
@@ -30,14 +32,17 @@ public partial class Default2 : System.Web.UI.Page
         ReturnResults(sender);
     }
     
+    //Generate queries based on values in the drop-down lists and send to gridview data source
     private void ReturnResults(object sender)
     {
+        //Invoke new SQL connection
         TechInventoryDataContext db = new TechInventoryDataContext();
         string strVal1 = DropDownListDateRange.SelectedValue;
         
+        //Past Due Query
         if (strVal1 == "PastDue")
         {
-            DateTime expiryDate = DateTime.Now.AddYears(-2);
+            DateTime expiryDate = DateTime.Now.AddYears(-3);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -66,9 +71,11 @@ public partial class Default2 : System.Web.UI.Page
 
             FillGrid(this, queryGrid);
         };
+        
+        //Equipment coming due in 3 months query
         if (strVal1 == "3")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-21);
+            DateTime expiryDate = DateTime.Now.AddMonths(-33);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -96,9 +103,11 @@ public partial class Default2 : System.Web.UI.Page
                             };
             FillGrid(this, queryGrid);
         }
+        
+        //Equipment coming due in 6 months query
         if (strVal1 == "6")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-18);
+            DateTime expiryDate = DateTime.Now.AddMonths(-30);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -126,9 +135,11 @@ public partial class Default2 : System.Web.UI.Page
                             };
             FillGrid(this, queryGrid);
         }
+        
+        //Equipment coming due in 12 months query
         if (strVal1 == "12")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-12);
+            DateTime expiryDate = DateTime.Now.AddMonths(-24);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID

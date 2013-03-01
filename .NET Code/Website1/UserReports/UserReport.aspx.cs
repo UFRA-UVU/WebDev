@@ -10,6 +10,7 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //BEGIN page authentication section
         ADAuthStrings authString = new ADAuthStrings();
         authString.AuthorizedGroup = "UFRAGroup";
 
@@ -21,6 +22,8 @@ public partial class Default2 : System.Web.UI.Page
         {
             Server.Transfer("AuthFailed.aspx", true);
         }
+        //END page authentication section
+
     }
     protected void DropDownListUserFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -147,18 +150,7 @@ public partial class Default2 : System.Web.UI.Page
         }
      }
 
-    //Method to fill the contents of a grid view with an IQueryable argument
-    //protected void FillGrid(object sender, IQueryable q, GridViewSortEventArgs e)
-    //{
-    //    GridView1.DataSource = q;
-    //    //GridView1.DataSourceID = String.Empty;
-    //    gridView_Sorting(sender, e, GridView1);
-    //    //GridView1.DataBind();
-    //    GridView1.AutoGenerateColumns = true;
-    //    GridView1.Visible = true;
-    //    //GridView1.EnableSortingAndPagingCallbacks = true;
-    //}
-        protected void FillGrid(object sender, IQueryable q)
+    protected void FillGrid(object sender, IQueryable q)
     {
         GridView1.DataSource = q;
         //GridView1.DataSourceID = String.Empty;
