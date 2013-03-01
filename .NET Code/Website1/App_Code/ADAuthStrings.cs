@@ -30,8 +30,8 @@ public class ADAuthStrings
     string lDAPContextString = @"LDAP://billgood.local/";
     
     //Active Directory credentials with rights to view properties of AD users and groups
-    string userName = "dupuser";
-    string password = "kilroy";
+    string userName = "";
+    string password = "";
 
     //Default Active Directory group being used to filter access to specific pages
     string authorizedGroup = "AdminGroup";

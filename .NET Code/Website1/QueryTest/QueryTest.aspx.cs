@@ -1,193 +1,672 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.Linq;
-using System.Linq.Dynamic;
+using System.Data;
 using System.DirectoryServices;
 using System.Text;
-using System.DirectoryServices.ActiveDirectory;
-using System.Web.Security;
 
-
-
-public partial class QueryTest_QueryTest : System.Web.UI.Page
+public partial class Default2 : System.Web.UI.Page
 {
-    public static string DomainName = "billgood.local";
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        //{
-        //    //   success
-        //}
-        //else
-        //{
-        //    //deny access
-        //}
 
     }
-    /* Checking wheather the user belongs to Your Group.*/
-    //private bool CheckUserAuthentication(String userAccount)
-    //{
-
-
-    //    DirectoryEntry entry = GetDirectoryEntry("/" + GetLDAPDomain());
-
-    //    String account = userAccount.Replace(@"DomainName\", "");
-    //    string group = "AdminGroup";
-    //    try
-    //    {
-
-    //        DirectorySearcher search = new DirectorySearcher(entry);
-    //        search.Filter = "(SAMAccountName=" + account + ")";
-    //        search.PropertiesToLoad.Add("memberOf");
-    //        SearchResult result = search.FindOne();
-
-    //        DirectorySearcher groupSearch = new DirectorySearcher(entry);
-    //        groupSearch.Filter = "(SAMAccountName=" + group + ")";
-    //        groupSearch.PropertiesToLoad.Add("member");
-    //        SearchResult groupResult = groupSearch.FindOne();
-    //        if (result != null)
-    //        {
-    //            int allGroupCount = result.Properties["memberOf"].Count;
-
-    //            int checkGroupCount = groupResult.Properties["member"].Count;
-
-    //            for (int i = 0; i < allGroupCount; i++)
-    //            {
-    //                string number = result.Properties["memberOf"][i].ToString();
-    //                for (int j = 0; j < checkGroupCount; j++)
-    //                {
-    //                    if (number == groupResult.Properties["member"][j].ToString())
-    //                    {
-
-    //                        return true;
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        string debug = ex.Message;
-
-    //        return false;
-    //    }
-    //    return false;
-    //}
-    //public static DirectoryEntry GetDirectoryEntry(string DomainReference)
-    //{
-    //    string ADFullPath = String.Format("LDAP://{0}", DomainName);
-    //    DirectoryEntry de = new DirectoryEntry(ADFullPath + DomainReference, "username", "password", AuthenticationTypes.Secure);
-    //    return de;
-    //}
-    //private static string GetLDAPDomain()
-    //{
-    //    StringBuilder LDAPDomain = new StringBuilder();
-    //    string[] LDAPDC = "domianNAme.com".Split('.');
-    //    for (int i = 0; i < LDAPDC.GetUpperBound(0) + 1; i++)
-    //    {
-    //        LDAPDomain.Append("DC=" + LDAPDC[i]);
-    //        if (i < LDAPDC.GetUpperBound(0))
-    //        {
-    //            LDAPDomain.Append(",");
-    //        }
-    //    }
-    //    return LDAPDomain.ToString();
-    //}
-    protected void Button1_Click(object sender, EventArgs e)
+    
+    protected void DropDownListEquipFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
         TechInventoryDataContext db = new TechInventoryDataContext();
-        string strRoom = DropDownList1.SelectedValue;
-        //        LinqDataSource1.Select = "select Area.AreaName as 'Area', Bldg.BldgID as 'Building', dept.deptID as 'Department', Equipment.Room as 'Room', Equipment.UVUInvID as 'Equipment ID', Equipment.UserUVID as 'User', EquipType.EquipTypeName as 'Equip Typ', Mfg.MfgName as 'Mfg', Model.ModelName as 'Model', equipment.UserPrimaryComp" +
-        //"from Equipment " +
-        //"Inner Join Bldg on Bldg.BldgID = Equipment.BldgID " +
-        //"Inner Join Dept on dept.deptID = Equipment.deptID " +
-        //"Inner Join Area on Area.AreaID = Equipment.AreaID " +
-        //"Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID " +
-        //"Inner Join Model on Model.MfgID = Equipment.ModelID " +
-        //"Inner Join Mfg on Mfg.MfgID = Model.MfgID " +
-        //"order by Bldg.BldgID, dept.deptID, Equipment.Room, Equipment.UVUInvID " ;
-        string selectNew = "New(";
-        string selectTxt = "Equipment.UVUInvID";
-        selectTxt = selectTxt + ", Equipment.Room";
-        selectTxt = selectTxt + ", Model.ModelName";
-        string selectEnd = ")";
-        string selectQry = selectNew + selectTxt + selectEnd;
-                         //"area.AreaName, " +
-                         //"equip.BldgID, " +
-                         //"equip.DeptID, " +
-                         //"equip.Room, " +
-                         //"equip.UVUInvID, " +
-                         //"equip.UserUVID, " +
-                         //")";
-        string userUVID = "equip.UserUVID";
-        var selectStr = db.Equipments
-            .Join(db.Models,
-                eqmod => eqmod.ModelID,
-                mod => mod.ModelID,
-                (eqmod, mod) => new { Equipment = eqmod, Model = mod })
-            .Where(eqRoom => eqRoom.Equipment.Room == strRoom)
-            .Join(db.Users,
-                equser => equser.Equipment.UserUVID,
-                user => user.UserUVID,
-                (equser, user) => new { Equipment = equser, Users = user })
-            .Join(db.Mfgs,
-                modmfg => modmfg.Equipment.Model.MfgID,
-                mfg => mfg.MfgID,
-                (modmfg, mfg) => new { Model = modmfg, Mfg = mfg })
-            //.Join(db.Mfgs,
-            //    modmfg => modmfg.Model.MfgID,
-            //    mfg => mfg.MfgID,
-            //    (modmfg, mfg) => new { Model = modmfg, Mfg = mfg })
-            //.Join(db.Mfgs,
-            //    modmfg => modmfg.Model.MfgID,
-            //    mfg => mfg.MfgID,
-            //    (modmfg, mfg) => new { Model = modmfg, Mfg = mfg })            
+        string strFilter = DropDownListEquipFilter.SelectedValue;
+        string strSort = DropDownListSort.SelectedValue;
+        //var query = from eq in db.Equipments select eq;
 
-            .Select(eq => new
-            {
-                eq.Model.Equipment.Equipment.UVUInvID,
-                eq.Mfg.MfgName,
-                eq.Model.Equipment.Model.ModelName,
-                Name = eq.Model.Users.UserLName + eq.Model.Users.UserFName,
-            });
+        if (strFilter == "DeptID")
+        {
+            var query = from dept in db.Depts
+                        select new
+                        {
+                            DeptName = dept.DeptName,
+                            DeptID = dept.DeptID
+                        };
+            FillDDL(this, query, strFilter);
+        }
+        else if (strFilter == "ModelID")
+        {
+            var query = from mod in db.Models
+                        select new
+                        {
+                            ModelName = mod.ModelName,
+                            ModelID = mod.ModelID
+                        };
+            FillDDL(this, query, strFilter);
+        }
+        else if (strFilter == "UserUVID")
+        {
+            var query = from usr in db.Users
+                        select new
+                        {
+                            UserName = usr.UserLName + ", " + usr.UserFName,
+                            UserUVID = usr.UserUVID
+                        };
+            FillDDL(this, query, strFilter);
+        }
+        else if (strFilter == "Room")
+        {
+            var query = from rm in db.Equipments
+                        group rm by rm.Room into g
+                        select new
+                        {
+                            Room = g.Key
+                        };
+            FillDDL(this, query, strFilter);
+        }
+        else if (strFilter == "EquipTypeID")
+        {
+            var query = from etype in db.EquipTypes
+                        select new
+                        {
+                            EquipTypeName = etype.EquipTypeName,
+                            EquipTypeID = etype.EquipTypeID
+                        };
+            FillDDL(this, query, strFilter);
+        }
+    }
 
+    //Method to fill the drop-down list
+    protected void FillDDL(object sender, IQueryable q, string strFilter)
+    {
+        DropDownListEquipValue.DataSource = q;
+        if (strFilter == "DeptID")
+        {
+            DropDownListEquipValue.DataTextField = "DeptName";
+            DropDownListEquipValue.DataValueField = "DeptID";
+        }
+        if (strFilter == "ModelID")
+        {
+            DropDownListEquipValue.DataTextField = "ModelName";
+            DropDownListEquipValue.DataValueField = "ModelID";
+        }
+        if (strFilter == "UserUVID")
+        {
+            DropDownListEquipValue.DataTextField = "UserName";
+            DropDownListEquipValue.DataValueField = "UserUVID";
+        }
+        if (strFilter == "Room")
+        {
+            DropDownListEquipValue.DataTextField = "Room";
+            DropDownListEquipValue.DataValueField = "Room";
+        }
+        if (strFilter == "EquipTypeID")
+        {
+            DropDownListEquipValue.DataTextField = "EquipTypeName";
+            DropDownListEquipValue.DataValueField = "EquipTypeID";
+        }
+        DropDownListEquipValue.DataBind();
+        DropDownListEquipValue.Visible = true;
+        LabelEquipValue.Visible = true;
+    }
 
-        var query = from equip in db.Equipments
-                    join mod in db.Models on equip.ModelID equals mod.ModelID
-                    join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
-                    join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
-                    join area in db.Areas on equip.AreaID equals area.AreaID
-                    where equip.Room == strRoom
-                    select new
-                    {
-                        area.AreaName,
-                        equip.BldgID,
-                        equip.DeptID,
-                        equip.Room,
-                        equip.UVUInvID,
-                        equip.UserUVID,
-                        etype.EquipTypeName,
-                        mfg.MfgName,
-                        mod.ModelName,
-                        equip.UserPrimaryComp
-                    };
-          
-                    
-                    
-        GridView1.DataSource = query;
-        GridView1.DataSourceID = String.Empty;
+    protected void BtnSubmit_Click(object sender, EventArgs e)
+    {
+        TechInventoryDataContext db = new TechInventoryDataContext();
+        ReturnResults(sender);
+        //
+        //****   Code Moved to ReturnResults Method
+        //
+        //    string strVal1 = DropDownListEquipFilter.SelectedValue;
+        //    string strVal2 = DropDownListEquipValue.SelectedValue;
+
+        //    if (strVal1 == "All")
+        //    {
+
+        //        var queryGrid = from equip in db.Equipments
+        //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+        //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+        //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+        //                        join area in db.Areas on equip.AreaID equals area.AreaID
+        //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+        //                        orderby ge.SortExpression
+        //                        select new
+        //                        {
+        //                            AreaName = area.AreaName,
+        //                            BldgID = equip.BldgID,
+        //                            Department = equip.DeptID,
+        //                            Room = equip.Room,
+        //                            UVUInvID = equip.UVUInvID,
+        //                            UserUVID = equip.UserUVID,
+        //                            Type = etype.EquipTypeName,
+        //                            Mfg = mfg.MfgName,
+        //                            Model = mod.ModelName,
+        //                            UserName = u.UserLName + ", " + u.UserFName,
+        //                            PrimaryComputer = equip.UserPrimaryComp
+        //                        };
+
+        //        FillGrid(this, queryGrid, ge);
+        //    };
+        //    if (strVal1 == "DeptID")
+        //    {
+        //        var queryGrid = from equip in db.Equipments
+        //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+        //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+        //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+        //                        join area in db.Areas on equip.AreaID equals area.AreaID
+        //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+        //                        where equip.DeptID.ToString() == strVal2
+        //                        select new
+        //                        {
+        //                            AreaName = area.AreaName,
+        //                            BldgID = equip.BldgID,
+        //                            Department = equip.DeptID,
+        //                            Room = equip.Room,
+        //                            UVUInvID = equip.UVUInvID,
+        //                            UserUVID = equip.UserUVID,
+        //                            Type = etype.EquipTypeName,
+        //                            Mfg = mfg.MfgName,
+        //                            Model = mod.ModelName,
+        //                            UserName = u.UserLName + ", " + u.UserFName,
+        //                            PrimaryComputer = equip.UserPrimaryComp
+        //                        };
+        //        FillGrid(this, queryGrid, ge);
+        //    }
+        //    if (strVal1 == "UserUVID")
+        //    {
+        //        var queryGrid = from equip in db.Equipments
+        //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+        //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+        //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+        //                        join area in db.Areas on equip.AreaID equals area.AreaID
+        //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+        //                        where equip.UserUVID.ToString() == strVal2
+        //                        select new
+        //                        {
+        //                            AreaName = area.AreaName,
+        //                            BldgID = equip.BldgID,
+        //                            Department = equip.DeptID,
+        //                            Room = equip.Room,
+        //                            UVUInvID = equip.UVUInvID,
+        //                            UserUVID = equip.UserUVID,
+        //                            Type = etype.EquipTypeName,
+        //                            Mfg = mfg.MfgName,
+        //                            Model = mod.ModelName,
+        //                            UserName = u.UserLName + ", " + u.UserFName,
+        //                            PrimaryComputer = equip.UserPrimaryComp
+        //                        };
+        //        FillGrid(this, queryGrid, ge);
+        //    }
+        //    if (strVal1 == "ModelID")
+        //    {
+        //        var queryGrid = from equip in db.Equipments
+        //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+        //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+        //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+        //                        join area in db.Areas on equip.AreaID equals area.AreaID
+        //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+        //                        where equip.ModelID.ToString() == strVal2
+        //                        select new
+        //                        {
+        //                            AreaName = area.AreaName,
+        //                            BldgID = equip.BldgID,
+        //                            Department = equip.DeptID,
+        //                            Room = equip.Room,
+        //                            UVUInvID = equip.UVUInvID,
+        //                            UserUVID = equip.UserUVID,
+        //                            Type = etype.EquipTypeName,
+        //                            Mfg = mfg.MfgName,
+        //                            Model = mod.ModelName,
+        //                            UserName = u.UserLName + ", " + u.UserFName,
+        //                            PrimaryComputer = equip.UserPrimaryComp
+        //                        };
+        //        FillGrid(this, queryGrid, ge);
+        //    }
+        //    if (strVal1 == "EquipTypeID")
+        //    {
+        //        var queryGrid = from equip in db.Equipments
+        //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+        //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+        //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+        //                        join area in db.Areas on equip.AreaID equals area.AreaID
+        //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+        //                        where equip.EquipTypeID.ToString() == strVal2
+        //                        select new
+        //                        {
+        //                            AreaName = area.AreaName,
+        //                            BldgID = equip.BldgID,
+        //                            Department = equip.DeptID,
+        //                            Room = equip.Room,
+        //                            UVUInvID = equip.UVUInvID,
+        //                            UserUVID = equip.UserUVID,
+        //                            Type = etype.EquipTypeName,
+        //                            Mfg = mfg.MfgName,
+        //                            Model = mod.ModelName,
+        //                            UserName = u.UserLName + ", " + u.UserFName,
+        //                            PrimaryComputer = equip.UserPrimaryComp
+        //                        };
+        //        FillGrid(this, queryGrid, ge);
+        //    }
+        //    if (strVal1 == "Room")
+        //    {
+        //        var queryGrid = from equip in db.Equipments
+        //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+        //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+        //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+        //                        join area in db.Areas on equip.AreaID equals area.AreaID
+        //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+        //                        where equip.Room == strVal2
+
+        //                        select new
+        //                        {
+        //                            AreaName = area.AreaName,
+        //                            BldgID = equip.BldgID,
+        //                            Department = equip.DeptID,
+        //                            Room = equip.Room,
+        //                            UVUInvID = equip.UVUInvID,
+        //                            UserUVID = equip.UserUVID,
+        //                            Type = etype.EquipTypeName,
+        //                            Mfg = mfg.MfgName,
+        //                            Model = mod.ModelName,
+        //                            UserName = u.UserLName + ", " + u.UserFName,
+        //                            PrimaryComputer = equip.UserPrimaryComp
+        //                        };
+        //        FillGrid(this, queryGrid, ge);
+        //    }
+
+    }
+    //protected void ReturnResults(object sender, GridViewSortEventArgs ge)
+    //{
+    //    TechInventoryDataContext db = new TechInventoryDataContext();
+    //    string strVal1 = DropDownListEquipFilter.SelectedValue;
+    //    string strVal2 = DropDownListEquipValue.SelectedValue;
+
+    //    if (strVal1 == "All")
+    //    {
+
+    //        var queryGrid = from equip in db.Equipments
+    //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+    //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+    //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+    //                        join area in db.Areas on equip.AreaID equals area.AreaID
+    //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+    //                        orderby ge.SortExpression
+    //                        select new
+    //                        {
+    //                            AreaName = area.AreaName,
+    //                            BldgID = equip.BldgID,
+    //                            Department = equip.DeptID,
+    //                            Room = equip.Room,
+    //                            UVUInvID = equip.UVUInvID,
+    //                            UserUVID = equip.UserUVID,
+    //                            Type = etype.EquipTypeName,
+    //                            Mfg = mfg.MfgName,
+    //                            Model = mod.ModelName,
+    //                            UserName = u.UserLName + ", " + u.UserFName,
+    //                            PrimaryComputer = equip.UserPrimaryComp
+    //                        };
+
+    //        FillGrid(this, queryGrid, ge);
+    //    };
+    //    if (strVal1 == "DeptID")
+    //    {
+    //        var queryGrid = from equip in db.Equipments
+    //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+    //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+    //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+    //                        join area in db.Areas on equip.AreaID equals area.AreaID
+    //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+    //                        where equip.DeptID.ToString() == strVal2
+    //                        orderby ge.SortExpression
+    //                        select new
+    //                        {
+    //                            AreaName = area.AreaName,
+    //                            BldgID = equip.BldgID,
+    //                            Department = equip.DeptID,
+    //                            Room = equip.Room,
+    //                            UVUInvID = equip.UVUInvID,
+    //                            UserUVID = equip.UserUVID,
+    //                            Type = etype.EquipTypeName,
+    //                            Mfg = mfg.MfgName,
+    //                            Model = mod.ModelName,
+    //                            UserName = u.UserLName + ", " + u.UserFName,
+    //                            PrimaryComputer = equip.UserPrimaryComp
+    //                        };
+    //        FillGrid(this, queryGrid, ge);
+    //    }
+    //    if (strVal1 == "UserUVID")
+    //    {
+    //        var queryGrid = from equip in db.Equipments
+    //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+    //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+    //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+    //                        join area in db.Areas on equip.AreaID equals area.AreaID
+    //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+    //                        where equip.UserUVID.ToString() == strVal2
+    //                        select new
+    //                        {
+    //                            AreaName = area.AreaName,
+    //                            BldgID = equip.BldgID,
+    //                            Department = equip.DeptID,
+    //                            Room = equip.Room,
+    //                            UVUInvID = equip.UVUInvID,
+    //                            UserUVID = equip.UserUVID,
+    //                            Type = etype.EquipTypeName,
+    //                            Mfg = mfg.MfgName,
+    //                            Model = mod.ModelName,
+    //                            UserName = u.UserLName + ", " + u.UserFName,
+    //                            PrimaryComputer = equip.UserPrimaryComp
+    //                        };
+    //        FillGrid(this, queryGrid, ge);
+    //    }
+    //    if (strVal1 == "ModelID")
+    //    {
+    //        var queryGrid = from equip in db.Equipments
+    //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+    //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+    //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+    //                        join area in db.Areas on equip.AreaID equals area.AreaID
+    //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+    //                        where equip.ModelID.ToString() == strVal2
+    //                        select new
+    //                        {
+    //                            AreaName = area.AreaName,
+    //                            BldgID = equip.BldgID,
+    //                            Department = equip.DeptID,
+    //                            Room = equip.Room,
+    //                            UVUInvID = equip.UVUInvID,
+    //                            UserUVID = equip.UserUVID,
+    //                            Type = etype.EquipTypeName,
+    //                            Mfg = mfg.MfgName,
+    //                            Model = mod.ModelName,
+    //                            UserName = u.UserLName + ", " + u.UserFName,
+    //                            PrimaryComputer = equip.UserPrimaryComp
+    //                        };
+    //        FillGrid(this, queryGrid, ge);
+    //    }
+    //    if (strVal1 == "EquipTypeID")
+    //    {
+    //        var queryGrid = from equip in db.Equipments
+    //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+    //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+    //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+    //                        join area in db.Areas on equip.AreaID equals area.AreaID
+    //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+    //                        where equip.EquipTypeID.ToString() == strVal2
+    //                        select new
+    //                        {
+    //                            AreaName = area.AreaName,
+    //                            BldgID = equip.BldgID,
+    //                            Department = equip.DeptID,
+    //                            Room = equip.Room,
+    //                            UVUInvID = equip.UVUInvID,
+    //                            UserUVID = equip.UserUVID,
+    //                            Type = etype.EquipTypeName,
+    //                            Mfg = mfg.MfgName,
+    //                            Model = mod.ModelName,
+    //                            UserName = u.UserLName + ", " + u.UserFName,
+    //                            PrimaryComputer = equip.UserPrimaryComp
+    //                        };
+    //        FillGrid(this, queryGrid, ge);
+    //    }
+    //    if (strVal1 == "Room")
+    //    {
+    //        var queryGrid = from equip in db.Equipments
+    //                        join mod in db.Models on equip.ModelID equals mod.ModelID
+    //                        join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+    //                        join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+    //                        join area in db.Areas on equip.AreaID equals area.AreaID
+    //                        join u in db.Users on equip.UserUVID equals u.UserUVID
+    //                        where equip.Room == strVal2
+
+    //                        select new
+    //                        {
+    //                            AreaName = area.AreaName,
+    //                            BldgID = equip.BldgID,
+    //                            Department = equip.DeptID,
+    //                            Room = equip.Room,
+    //                            UVUInvID = equip.UVUInvID,
+    //                            UserUVID = equip.UserUVID,
+    //                            Type = etype.EquipTypeName,
+    //                            Mfg = mfg.MfgName,
+    //                            Model = mod.ModelName,
+    //                            UserName = u.UserLName + ", " + u.UserFName,
+    //                            PrimaryComputer = equip.UserPrimaryComp
+    //                        };
+    //        FillGrid(this, queryGrid, ge);
+    //    }
+
+    //}
+
+    private void ReturnResults(object sender)
+    {
+        TechInventoryDataContext db = new TechInventoryDataContext();
+        string strVal1 = DropDownListEquipFilter.SelectedValue;
+        string strVal2 = DropDownListEquipValue.SelectedValue;
+
+        if (strVal1 == "All")
+        {
+
+            var queryGrid = from equip in db.Equipments
+                            join mod in db.Models on equip.ModelID equals mod.ModelID
+                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
+                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+                            join area in db.Areas on equip.AreaID equals area.AreaID
+                            join u in db.Users on equip.UserUVID equals u.UserUVID
+                            select new
+                            {
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
+                            };
+
+            FillGrid(this, queryGrid);
+        };
+        if (strVal1 == "DeptID")
+        {
+            var queryGrid = from equip in db.Equipments
+                            join mod in db.Models on equip.ModelID equals mod.ModelID
+                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
+                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+                            join area in db.Areas on equip.AreaID equals area.AreaID
+                            join u in db.Users on equip.UserUVID equals u.UserUVID
+                            where equip.DeptID.ToString() == strVal2
+                            select new
+                            {
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
+                            };
+            FillGrid(this, queryGrid);
+        }
+        if (strVal1 == "UserUVID")
+        {
+            var queryGrid = from equip in db.Equipments
+                            join mod in db.Models on equip.ModelID equals mod.ModelID
+                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
+                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+                            join area in db.Areas on equip.AreaID equals area.AreaID
+                            join u in db.Users on equip.UserUVID equals u.UserUVID
+                            where equip.UserUVID.ToString() == strVal2
+                            select new
+                            {
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
+                            };
+            FillGrid(this, queryGrid);
+        }
+        if (strVal1 == "ModelID")
+        {
+            var queryGrid = from equip in db.Equipments
+                            join mod in db.Models on equip.ModelID equals mod.ModelID
+                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
+                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+                            join area in db.Areas on equip.AreaID equals area.AreaID
+                            join u in db.Users on equip.UserUVID equals u.UserUVID
+                            where equip.ModelID.ToString() == strVal2
+                            select new
+                            {
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
+                            };
+            FillGrid(this, queryGrid);
+        }
+        if (strVal1 == "EquipTypeID")
+        {
+            var queryGrid = from equip in db.Equipments
+                            join mod in db.Models on equip.ModelID equals mod.ModelID
+                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
+                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+                            join area in db.Areas on equip.AreaID equals area.AreaID
+                            join u in db.Users on equip.UserUVID equals u.UserUVID
+                            where equip.EquipTypeID.ToString() == strVal2
+                            select new
+                            {
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
+                            };
+            FillGrid(this, queryGrid);
+        }
+        if (strVal1 == "Room")
+        {
+            var queryGrid = from equip in db.Equipments
+                            join mod in db.Models on equip.ModelID equals mod.ModelID
+                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
+                            join dept in db.Depts on equip.DeptID equals dept.DeptID
+                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
+                            join area in db.Areas on equip.AreaID equals area.AreaID
+                            join u in db.Users on equip.UserUVID equals u.UserUVID
+                            where equip.Room == strVal2
+
+                            select new
+                            {
+                                AreaName = area.AreaName,
+                                BldgID = equip.BldgID,
+                                Department = equip.DeptID,
+                                Room = equip.Room,
+                                UVUInvID = equip.UVUInvID,
+                                UserUVID = equip.UserUVID,
+                                Type = etype.EquipTypeName,
+                                Mfg = mfg.MfgName,
+                                Model = mod.ModelName,
+                                UserName = u.UserLName + ", " + u.UserFName,
+                                PrimaryComputer = equip.UserPrimaryComp
+                            };
+            FillGrid(this, queryGrid);
+        }
+
+    }
+
+    //Method to fill the contents of a grid view with an IQueryable argument
+    //protected void FillGrid(object sender, IQueryable q, GridViewSortEventArgs e)
+    //{
+    //    GridView1.DataSource = q;
+    //    //GridView1.DataSourceID = String.Empty;
+    //    gridView_Sorting(sender, e, GridView1);
+    //    //GridView1.DataBind();
+    //    GridView1.AutoGenerateColumns = true;
+    //    GridView1.Visible = true;
+    //    //GridView1.EnableSortingAndPagingCallbacks = true;
+    //}
+    protected void FillGrid(object sender, IQueryable q)
+    {
+        GridView1.DataSource = q;
+        //GridView1.DataSourceID = String.Empty;
         GridView1.DataBind();
         GridView1.AutoGenerateColumns = true;
         GridView1.Visible = true;
     }
+
+    //
+    //   STUFF BEING WORKED ON FOR SORTING
+    //
+
+    //private string ConvertSortDirectionToSql(SortDirection sortDirection)
+    //{
+    //    string newSortDirection = String.Empty;
+
+    //    switch (sortDirection)
+    //    {
+    //        case SortDirection.Ascending:
+    //            newSortDirection = "ASC";
+    //            break;
+
+    //        case SortDirection.Descending:
+    //            newSortDirection = "DESC";
+    //            break;
+    //    }
+
+    //    return newSortDirection;
+    //}
+
+    //protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    //{
+    //    GridView1.PageIndex = e.NewPageIndex;
+    //    GridView1.DataBind();
+    //}
+
+    //protected void gridView_Sorting(object sender, GridViewSortEventArgs e, GridView g)
+    //{
+    //    //Response.Write(GridView1.DataSource.GetType()); //Add this line
+
+    //    string strTest = g.DataSource.ToString();
+    //    DataTable dataTable = g.DataSource as DataTable;
+
+    //    if (dataTable != null)
+    //    {
+    //        DataView dataView = new DataView(dataTable);
+    //        dataView.Sort = e.SortExpression + " " + ConvertSortDirectionToSql(e.SortDirection);
+
+    //        g.DataSource = dataView;
+    //        GridView1.DataBind();
+    //    }
+    //}
 
 }
