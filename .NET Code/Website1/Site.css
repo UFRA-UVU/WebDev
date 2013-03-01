@@ -138,6 +138,14 @@ div.DDNavigation a:hover
     
 }
 
+/* Login */
+
+.LoginPadding
+{
+    padding-left: 8px;
+    
+}
+
 
 /*	Details VIEW/EDIT	*/
 table.DDDetailsTable

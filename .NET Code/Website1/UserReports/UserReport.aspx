@@ -11,7 +11,7 @@
     </div>-->
     <div class="Content1">
         <asp:Label ID="LabelUserFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#2e401a" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownListUserFilter" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
@@ -23,7 +23,7 @@
         </asp:DropDownList>
         <p />
             <asp:Label ID="LabelUserValue" runat="server" Text="Select a Value" 
-                Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False"></asp:Label>
+                Width="150px" ForeColor="#2e401a" Font-Bold="True" Visible="False"></asp:Label>
             <asp:DropDownList ID="DropDownListUserValue" runat="server" ForeColor="#2e401a" Font-Bold="true"
             style="background-color: #f8f1d9" Visible="False">
             </asp:DropDownList>

@@ -15,8 +15,10 @@
     <form id="form1" runat="server">
     <div class="DDNavigation">
         <a runat="server" href="~/"><img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
-        <asp:LoginStatus ID="LoginStatus1" runat="server" />
+        <asp:LoginStatus ID="LoginStatus1" runat="server" class= "LoginPadding"/>
     </div>
+
+    
 
     <div>
         <%-- TODO: Enable partial rendering by setting the EnablePartialRendering attribute to "true" to provide a smoother browsing experience.
