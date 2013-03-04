@@ -25,6 +25,8 @@ public partial class Default2 : System.Web.UI.Page
         //END page authentication section
 
     }
+
+    //Process index change in drop-down list
     protected void DropDownListUserFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
         TechInventoryDataContext db = new TechInventoryDataContext();
@@ -150,10 +152,10 @@ public partial class Default2 : System.Web.UI.Page
         }
      }
 
+    //Method to populate the gridview with the linq query reults
     protected void FillGrid(object sender, IQueryable q)
     {
         GridView1.DataSource = q;
-        //GridView1.DataSourceID = String.Empty;
         GridView1.DataBind();
         GridView1.AutoGenerateColumns = true;
         GridView1.Visible = true;
