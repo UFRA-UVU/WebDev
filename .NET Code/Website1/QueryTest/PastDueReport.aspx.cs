@@ -51,7 +51,7 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
                             where equip.PurchDate <= expiryDate
                             select new
@@ -67,6 +67,8 @@ public partial class Default2 : System.Web.UI.Page
                                 SerialNumber = equip.SerialNum,
                                 Location = area.AreaName + " - " + equip.BldgID + " - " + dept.DeptName + " - " + equip.Room,
                                 PrimaryUser = u.UserLName + ", " + u.UserFName,
+                                IsPrimary = equip.UserPrimaryComp,
+                                FullTime = u.FullTime
                             };
 
             FillGrid(this, queryGrid);
@@ -76,6 +78,7 @@ public partial class Default2 : System.Web.UI.Page
         if (strVal1 == "3")
         {
             DateTime expiryDate = DateTime.Now.AddMonths(-33);
+            DateTime expiryLimit = DateTime.Now.AddMonths(-36);
 
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
@@ -84,9 +87,9 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
                             select new
                             {
                                 AreaName = area.AreaName,
@@ -108,7 +111,7 @@ public partial class Default2 : System.Web.UI.Page
         if (strVal1 == "6")
         {
             DateTime expiryDate = DateTime.Now.AddMonths(-30);
-
+            DateTime expiryLimit = DateTime.Now.AddMonths(-36);
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
@@ -116,9 +119,9 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
                             select new
                             {
                                 AreaName = area.AreaName,
@@ -140,7 +143,7 @@ public partial class Default2 : System.Web.UI.Page
         if (strVal1 == "12")
         {
             DateTime expiryDate = DateTime.Now.AddMonths(-24);
-
+            DateTime expiryLimit = DateTime.Now.AddMonths(-36);
             var queryGrid = from equip in db.Equipments
                             join mod in db.Models on equip.ModelID equals mod.ModelID
                             join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
@@ -148,9 +151,9 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
                             select new
                             {
                                 AreaName = area.AreaName,

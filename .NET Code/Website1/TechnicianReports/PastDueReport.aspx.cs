@@ -51,7 +51,7 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
                             where equip.PurchDate <= expiryDate
                             select new
@@ -84,7 +84,7 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
                             where equip.PurchDate <= expiryDate
                             select new
@@ -116,7 +116,7 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
                             where equip.PurchDate <= expiryDate
                             select new
@@ -148,7 +148,7 @@ public partial class Default2 : System.Web.UI.Page
                             join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
                             join area in db.Areas on equip.AreaID equals area.AreaID
                             join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp != null
+                            where equip.UserPrimaryComp == true
                             where u.FullTime == true
                             where equip.PurchDate <= expiryDate
                             select new
