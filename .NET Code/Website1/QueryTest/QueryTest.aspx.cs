@@ -24,14 +24,15 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack)
+
+        if (IsPostBack && (runGrid == true))
         {
             //Populate the GridView with the custom select command for the data source
-            if (runGrid == true)
-            {
-                GenerateGrid(sender, e);
-            }
+
+            GenerateGrid(sender, e);
+
         }
+        
     }
 
     //Method to process index changes in DropDownList1
@@ -49,14 +50,17 @@ public partial class Default2 : System.Web.UI.Page
             GridView1.Visible = false;
             isUserFltr = false;
         }
+        if (DropDownList1.SelectedValue == "All")
+        {
+            isUserFltr = false;
+            runGrid = false;
+            Response.Redirect(Request.Url.AbsoluteUri);
+            GridView1.Visible = true;
+        }
         if (DropDownList1.SelectedValue != "0")
         {
             isUserFltr = false;
-            if (DropDownList1.SelectedValue == "All")
-            {
-                isUserFltr = false;
-                GenerateGrid(sender, e);
-            }
+
             //Fill the filter value drop-down list
             if (DropDownList1.SelectedValue == "DeptID")
             {
@@ -145,13 +149,13 @@ public partial class Default2 : System.Web.UI.Page
             DropDownList2.Visible = true;
 
             //Set runGrid to true so the GridView will set and bind to the correct data source.
-            runGrid = true;
         }
     }
 
     protected void ButtonSubmit_Click(object sender, EventArgs e)
     {
-
+        runGrid = true;
+        Page_Load(sender, e);
     }
     protected void GenerateGrid(object sender, EventArgs e)
     {
@@ -167,17 +171,7 @@ public partial class Default2 : System.Web.UI.Page
 
         //String used for the select command for the data source
         string strMySQLGrid = null;
-        if (DropDownList1.SelectedValue == "All")
-        {
-            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as UVUInvID, Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model' FROM Equipment 
-            Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
-            Inner Join Dept on dept.deptID = Equipment.deptID
-            Inner Join Area on Area.AreaID = Equipment.AreaID
-            Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
-            Inner Join Model on Model.ModelID = Equipment.ModelID
-            Inner Join Users on Users.UserUVID = Equipment.UserUVID
-            Inner Join Mfg on Mfg.MfgID = Model.MfgID");
-        }
+
         if (isUserFltr)
         {
             strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model'
