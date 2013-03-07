@@ -44,12 +44,12 @@ public partial class Default2 : System.Web.UI.Page
         GridView1.Visible = false;
 
         //Set values of DropDownList2 based on contents of DropDownList1
-        if (DropDownList1.SelectedValue == "0")
-        {
-            runGrid = false;
-            GridView1.Visible = false;
-            isUserFltr = false;
-        }
+        //if (DropDownList1.SelectedValue == "0")
+        //{
+        //    runGrid = false;
+        //    GridView1.Visible = false;
+        //    isUserFltr = false;
+        //}
         if (DropDownList1.SelectedValue == "All")
         {
             isUserFltr = false;
@@ -57,7 +57,7 @@ public partial class Default2 : System.Web.UI.Page
             Response.Redirect(Request.Url.AbsoluteUri);
             GridView1.Visible = true;
         }
-        if (DropDownList1.SelectedValue != "0")
+        if (DropDownList1.SelectedValue != "All")
         {
             isUserFltr = false;
 
@@ -157,9 +157,19 @@ public partial class Default2 : System.Web.UI.Page
         runGrid = true;
         Page_Load(sender, e);
     }
+
+    //Fill the Grid
     protected void GenerateGrid(object sender, EventArgs e)
     {
-        //Fill the Grid
+        //If filter set to all data reload the page.  Stops processing method.
+        if (DropDownList1.SelectedValue == "All")
+        {
+            isUserFltr = false;
+            runGrid = false;
+            Response.Redirect(Request.Url.AbsoluteUri);
+            GridView1.Visible = true;
+        }
+
         //String acting as the INNER JOIN portion of the query
         string joinGrid = String.Format(@"Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
                                         Inner Join Dept on dept.deptID = Equipment.deptID

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="QueryTest.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Language="C#" MasterPageFile="Site.master" AutoEventWireup="true" CodeFile="QueryTest.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -16,7 +16,6 @@
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
             onselectedindexchanged="DropDownList1_SelectedIndexChanged">
-            <asp:ListItem Selected="True" Value="0">(Choose a Filter)</asp:ListItem>
             <asp:ListItem Value="All">All Data</asp:ListItem>
             <asp:ListItem Value="DeptID">Department</asp:ListItem>
             <asp:ListItem>Room</asp:ListItem>
