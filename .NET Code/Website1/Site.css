@@ -138,6 +138,68 @@ div.DDNavigation a:hover
     
 }
 
+/*TabNav*/
+
+ul#main-nav li 
+{
+    float: left;
+    position: relative;
+    display: inline;    
+}
+
+ul#main-nav li a 
+{
+  position: relative;    
+  width: 140px;    
+  height: 29px;    
+  display: block;    
+  background-image: url('../images/tabs.png');    
+  background-position: center center;    
+  color: #44403b;    
+  text-decoration: none;    
+  font-size: 14px;    
+  padding-top: 12px;    
+  text-align: left;    
+  padding-left: 30px;    
+  font-weight: bold;}
+  
+ul#main-nav li.home a 
+{ background-image: url('../images/tab-home.png');
+}
+
+ul#main-nav li.current a 
+{ background-position: top;    
+  color: #ffffff;}
+  
+ul#main-nav li a:hover 
+{ background-position: bottom;    
+  color: #ffffff;}
+  
+ul#main-nav li.current a:hover 
+{ background-position: top; /*To Prevent the Current tab from changing colour on hover*/    
+  color: #ffffff;    
+}
+
+ul#main-nav li.allEquipment 
+{    
+  z-index: 100;
+}
+/*ul#main-nav li.home 
+{ 
+  z-index: 100;
+}*/
+ul#main-nav li.users 
+{    
+  z-index: 99;
+}
+ul#main-nav li.pastDue 
+{    
+  z-index: 98;
+}
+
+
+
+
 /* Login */
 
 .LoginPadding
