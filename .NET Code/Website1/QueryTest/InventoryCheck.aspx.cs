@@ -20,6 +20,9 @@ public partial class QueryTest_InventoryCheck : System.Web.UI.Page
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+        //Add filter by user, type, room
+        //Add columns: Check date, uvuinvid, otherid, MakeModel
+        
         TechInventoryDataContext db = new TechInventoryDataContext();
         int index = Convert.ToInt32(e.CommandArgument);
         GridViewRow row = GridView1.Rows[index];
