@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TechInventory" Class="TechInventoryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=TechInventory;Persist Security Info=True;User ID=INFO4430" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TechInventoryConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Area" Member="Areas">
+    <Type Name="Area">
+      <Column Name="AreaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AreaName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Area_User" Member="Users" ThisKey="AreaID" OtherKey="AreaID" Type="User" />
+      <Association Name="Area_Equipment" Member="Equipments" ThisKey="AreaID" OtherKey="AreaID" Type="Equipment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bldg" Member="Bldgs">
+    <Type Name="Bldg">
+      <Column Name="BldgID" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BldgName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Bldg_Equipment" Member="Equipments" ThisKey="BldgID" OtherKey="BldgID" Type="Equipment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dept" Member="Depts">
+    <Type Name="Dept">
+      <Column Name="DeptID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Dept_User" Member="Users" ThisKey="DeptID" OtherKey="DeptID" Type="User" />
+      <Association Name="Dept_Equipment" Member="Equipments" ThisKey="DeptID" OtherKey="DeptID" Type="Equipment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipType" Member="EquipTypes">
+    <Type Name="EquipType">
+      <Column Name="EquipTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EquipTypeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="EquipType_Equipment" Member="Equipments" ThisKey="EquipTypeID" OtherKey="EquipTypeID" Type="Equipment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mfg" Member="Mfgs">
+    <Type Name="Mfg">
+      <Column Name="MfgID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MfgName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Mfg_Model" Member="Models" ThisKey="MfgID" OtherKey="MfgID" Type="Model" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Model" Member="Models">
+    <Type Name="Model">
+      <Column Name="ModelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MfgID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Model_Equipment" Member="Equipments" ThisKey="ModelID" OtherKey="ModelID" Type="Equipment" />
+      <Association Name="Mfg_Model" Member="Mfg" ThisKey="MfgID" OtherKey="MfgID" Type="Mfg" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserUVID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserFName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FullTime" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PhoneExt" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="CellPhone" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Bday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="DeptID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Equipment" Member="Equipments" ThisKey="UserUVID" OtherKey="UserUVID" Type="Equipment" />
+      <Association Name="Area_User" Member="Area" ThisKey="AreaID" OtherKey="AreaID" Type="Area" IsForeignKey="true" />
+      <Association Name="Dept_User" Member="Dept" ThisKey="DeptID" OtherKey="DeptID" Type="Dept" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Equipment" Member="Equipments">
+    <Type Name="Equipment">
+      <Column Name="EquipID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UVUInvID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="OtherInvID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PurchDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ModelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EquipTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SerialNum" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UserPrimaryComp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserUVID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="DeptID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="BldgID" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Room" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Other" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvCheck" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Area_Equipment" Member="Area" ThisKey="AreaID" OtherKey="AreaID" Type="Area" IsForeignKey="true" />
+      <Association Name="Bldg_Equipment" Member="Bldg" ThisKey="BldgID" OtherKey="BldgID" Type="Bldg" IsForeignKey="true" />
+      <Association Name="Dept_Equipment" Member="Dept" ThisKey="DeptID" OtherKey="DeptID" Type="Dept" IsForeignKey="true" />
+      <Association Name="EquipType_Equipment" Member="EquipType" ThisKey="EquipTypeID" OtherKey="EquipTypeID" Type="EquipType" IsForeignKey="true" />
+      <Association Name="Model_Equipment" Member="Model" ThisKey="ModelID" OtherKey="ModelID" Type="Model" IsForeignKey="true" />
+      <Association Name="User_Equipment" Member="User" ThisKey="UserUVID" OtherKey="UserUVID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
