@@ -10,19 +10,19 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //BEGIN page authentication section
-        ADAuthStrings authString = new ADAuthStrings();
-        authString.AuthorizedGroup = "UFRAGroup";
+        ////BEGIN page authentication section
+        //ADAuthStrings authString = new ADAuthStrings();
+        //authString.AuthorizedGroup = "UFRAGroup";
 
-        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        {
+        //if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
+        //{
 
-        }
-        else
-        {
-            Server.Transfer("AuthFailed.aspx", true);
-        }
-        //END page authentication section
+        //}
+        //else
+        //{
+        //    Server.Transfer("AuthFailed.aspx", true);
+        //}
+        ////END page authentication section
 
     }
 

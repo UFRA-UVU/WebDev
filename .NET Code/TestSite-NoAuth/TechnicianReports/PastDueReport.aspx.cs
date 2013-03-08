@@ -10,20 +10,20 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //BEGIN page authentication section
-        ADAuthStrings authString = new ADAuthStrings();
-        authString.AuthorizedGroup = "AdminGroup";
+        ////BEGIN page authentication section
+        //ADAuthStrings authString = new ADAuthStrings();
+        //authString.AuthorizedGroup = "AdminGroup";
 
-        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        {
-            //   success
+        //if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
+        //{
+        //    //   success
 
-        }
-        else
-        {
-            Server.Transfer("AuthFailed.aspx", true);
-        }
-        //END page authentication section
+        //}
+        //else
+        //{
+        //    Server.Transfer("AuthFailed.aspx", true);
+        //}
+        ////END page authentication section
     }
     
     protected void BtnSubmit_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ public partial class Default2 : System.Web.UI.Page
         //Invoke new SQL connection
         TechInventoryDataContext db = new TechInventoryDataContext();
         string strVal1 = DropDownListDateRange.SelectedValue;
-        
+        DateTime expiryLimit = DateTime.Now.AddMonths(-36);
         //Past Due Query
         if (strVal1 == "PastDue")
         {
@@ -86,7 +86,7 @@ public partial class Default2 : System.Web.UI.Page
                             join u in db.Users on equip.UserUVID equals u.UserUVID
                             where equip.UserPrimaryComp == true
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
                             select new
                             {
                                 AreaName = area.AreaName,
@@ -118,7 +118,7 @@ public partial class Default2 : System.Web.UI.Page
                             join u in db.Users on equip.UserUVID equals u.UserUVID
                             where equip.UserPrimaryComp == true
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
                             select new
                             {
                                 AreaName = area.AreaName,
@@ -150,7 +150,7 @@ public partial class Default2 : System.Web.UI.Page
                             join u in db.Users on equip.UserUVID equals u.UserUVID
                             where equip.UserPrimaryComp == true
                             where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
+                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
                             select new
                             {
                                 AreaName = area.AreaName,

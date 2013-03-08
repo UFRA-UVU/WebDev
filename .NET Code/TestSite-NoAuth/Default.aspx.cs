@@ -11,55 +11,55 @@ public partial class _Default : System.Web.UI.Page {
 
     protected void Page_Load(object sender, EventArgs e) 
     {
-        //*** Debug code to view authentication data
-        //Response.Write("Hello, " + Server.HtmlEncode(User.Identity.Name));
+    //    //*** Debug code to view authentication data
+    //    //Response.Write("Hello, " + Server.HtmlEncode(User.Identity.Name));
 
-        //FormsIdentity id = (FormsIdentity)User.Identity;
-        //FormsAuthenticationTicket ticket = id.Ticket;
+    //    //FormsIdentity id = (FormsIdentity)User.Identity;
+    //    //FormsAuthenticationTicket ticket = id.Ticket;
 
-        //Response.Write("<p/>TicketName: " + ticket.Name);
-        //Response.Write("<br/>Cookie Path: " + ticket.CookiePath);
-        //Response.Write("<br/>Ticket Expiration: " +
-        //                ticket.Expiration.ToString());
-        //Response.Write("<br/>Expired: " + ticket.Expired.ToString());
-        //Response.Write("<br/>Persistent: " + ticket.IsPersistent.ToString());
-        //Response.Write("<br/>IssueDate: " + ticket.IssueDate.ToString());
-        //Response.Write("<br/>UserData: " + ticket.UserData);
-        //Response.Write("<br/>Version: " + ticket.Version.ToString());
-        //*** END Debug Code
+    //    //Response.Write("<p/>TicketName: " + ticket.Name);
+    //    //Response.Write("<br/>Cookie Path: " + ticket.CookiePath);
+    //    //Response.Write("<br/>Ticket Expiration: " +
+    //    //                ticket.Expiration.ToString());
+    //    //Response.Write("<br/>Expired: " + ticket.Expired.ToString());
+    //    //Response.Write("<br/>Persistent: " + ticket.IsPersistent.ToString());
+    //    //Response.Write("<br/>IssueDate: " + ticket.IssueDate.ToString());
+    //    //Response.Write("<br/>UserData: " + ticket.UserData);
+    //    //Response.Write("<br/>Version: " + ticket.Version.ToString());
+    //    //*** END Debug Code
 
-        //Instantiate an object from the ADAuthStrings class to pull LDAP info for connecting to Active Directory
-        ADAuthStrings authString = new ADAuthStrings();
+    //    //Instantiate an object from the ADAuthStrings class to pull LDAP info for connecting to Active Directory
+    //    ADAuthStrings authString = new ADAuthStrings();
         
-        //Call CheckUserAuthentication method in ADAuthStrings class to check if logged on user is a member of the AD group name specified authString.authorizedGroup property
-        if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        {
-            //If success, just load the page
+    //    //Call CheckUserAuthentication method in ADAuthStrings class to check if logged on user is a member of the AD group name specified authString.authorizedGroup property
+    //    if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
+    //    {
+    //        //If success, just load the page
 
-            System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
-            if (visibleTables.Count == 0)
-            {
-                throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
-            }
+    //        System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
+    //        if (visibleTables.Count == 0)
+    //        {
+    //            throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
+    //        }
 
 
-            Menu1.DataSource = visibleTables;
-            Menu1.DataBind();
-        }
-        else
-        {
-            //If authentication fails, load the login page
-            Server.Transfer("~/login.aspx", true);
-        }
+    //        Menu1.DataSource = visibleTables;
+    //        Menu1.DataBind();
+    //    }
+    //    else
+    //    {
+    //        //If authentication fails, load the login page
+    //        Server.Transfer("~/login.aspx", true);
+    //    }
 
-        //System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
-        //if (visibleTables.Count == 0)
-        //{
-        //    throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
-        //}
+    //    //System.Collections.IList visibleTables = ASP.global_asax.DefaultModel.VisibleTables;
+    //    //if (visibleTables.Count == 0)
+    //    //{
+    //    //    throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
+    //    //}
 
-        //Menu1.DataSource = visibleTables;
-        //Menu1.DataBind();
+    //    //Menu1.DataSource = visibleTables;
+    //    //Menu1.DataBind();
     }
 
     //Default buttons that redirect to appropriate report pages
