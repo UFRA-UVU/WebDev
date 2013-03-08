@@ -14,7 +14,8 @@
 
     <form id="form1" runat="server">
     <div class="DDNavigation">
-        <a runat="server" href="~/QueryTest/"><img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
+        <a runat="server" href="~/"><img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
+        <asp:LoginStatus ID="LoginStatus1" runat="server" class= "LoginPadding"/>
     </div>
 
     

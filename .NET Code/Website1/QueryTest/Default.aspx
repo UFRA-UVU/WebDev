@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" MasterPageFile="Site.master" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -25,9 +25,9 @@
         <div <!--style="width:300px; float:left; padding-right:100px;"--> >
             <ul id="main-nav">
                 
-                <li class = "allEquipment"><a href="TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
-                <li class = "users"><a href="UserReports/UserReport.aspx" >User Reports</a></li>
-                <li class = "pastDue"><a href="TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
+                <li class = "allEquipment"><a href="~/TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
+                <li class = "users"><a href="~/UserReports/UserReport.aspx" >User Reports</a></li>
+                <li class = "pastDue"><a href="~/TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
                
             
             
