@@ -26,7 +26,7 @@
                 SortExpression="InvCheck" />
             <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
                 SortExpression="UVUInvID" />
-            <asp:ButtonField CommandName="test" Text="Button" />
+            <asp:ButtonField CommandName="test" Text="Button" ButtonType="Button" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSrcGridInvCheck" runat="server" 

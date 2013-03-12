@@ -39,21 +39,33 @@
     <div>
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSourceGrid">
+            DataSourceID="SqlDataSourceGrid"
+            onrowcommand="GridView1_RowCommand">
             <Columns>
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:Button ID="Button1" runat="server" CausesValidation="false"
+                            OnClientClick="return confirm('Are you sure you want to update the Last Checked value for this item?')"
+                            Text="Inventory Check" UseSubmitBehavior="True"
+                            CommandName="InventoryCheck" 
+                            CommandArgument='<%#Eval("UVUInvID") %>'/>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
                     SortExpression="UVUInvID" />
                 <asp:BoundField DataField="Primary User" HeaderText="Primary User" 
-                    SortExpression="Primary User" />
+                    SortExpression="Primary User" ReadOnly="True" />
                 <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                 <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
+                <asp:BoundField DataField="Last Checked" HeaderText="Last Checked" 
+                    SortExpression="Last Checked" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceValue" runat="server" 
             ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
             SelectCommand="SELECT EquipID FROM Equipment"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSourceGrid" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT Equipment.UVUInvID as UVUInvID, Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as Type, Model.ModelName as Model FROM [Equipment] 
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT Equipment.UVUInvID as UVUInvID, Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as Type, Model.ModelName as Model, Equipment.InvCheck as 'Last Checked' FROM [Equipment] 
             Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
             Inner Join Dept on dept.deptID = Equipment.deptID
             Inner Join Area on Area.AreaID = Equipment.AreaID

@@ -184,7 +184,7 @@ public partial class Default2 : System.Web.UI.Page
 
         if (isUserFltr)
         {
-            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model'
+            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
                                             FROM EQUIPMENT 
                                             {0}
                                             WHERE {1}= '{2}'", joinGrid, selectCol, DropDownList2.Text);
@@ -192,7 +192,7 @@ public partial class Default2 : System.Web.UI.Page
 
         if (!isUserFltr && (DropDownList1.SelectedValue != "All"))
         {
-            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model'
+            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
                                             FROM EQUIPMENT 
                                             {0}
                                             WHERE {1}.{2} = '{3}'", joinGrid, selectTbl, selectCol, DropDownList2.Text);
@@ -211,4 +211,39 @@ public partial class Default2 : System.Web.UI.Page
         GridView1.DataBind();
         GridView1.Visible = true;
     }
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        //Add filter by user, type, room
+        //Add columns: Check date, uvuinvid, otherid, MakeModel
+        
+        TechInventoryDataContext db = new TechInventoryDataContext();
+        
+        //int index = Convert.ToInt32(e.CommandArgument);
+        //GridViewRow row = GridView1.Rows[index];
+
+        string uvuInvID = Convert.ToString(e.CommandArgument);
+        ButtonField b = new ButtonField();
+        DateTime now = DateTime.Now;
+        string date = now.ToShortDateString();
+        var query = (from equip in db.Equipments
+                     where equip.UVUInvID == uvuInvID
+                     select equip).Single();
+        query.InvCheck = now;
+
+        try
+        {
+            // Save the changes.
+            db.SubmitChanges();
+        }
+        // Detect concurrency conflicts.
+        catch (InRowChangingEventException)
+        {
+            // Resolve conflicts.
+            //db.ChangeConflicts.ResolveAll();
+        }
+        GridView1.DataBind();
+        
+    }
+
 }
