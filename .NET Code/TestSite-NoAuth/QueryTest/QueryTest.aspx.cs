@@ -127,7 +127,7 @@ public partial class Default2 : System.Web.UI.Page
             //String to hold the complete SQL query statement
             if (DropDownList1.SelectedValue == "UserUVID")
             {
-                strMySQL = String.Format("SELECT DISTINCT Users.UserLName + ', ' + Users.UserFName as 'Primary User' FROM {1} {2}", selectCol, selectTbl, join);
+                strMySQL = String.Format("SELECT DISTINCT Users.UserLName + ', ' + Users.UserFName as 'Primary User' FROM {1} {2} ORDER BY 'Primary User'", selectCol, selectTbl, join);
                 selectCol = "(Users.UserLName + ', ' + Users.UserFName)";
                 isUserFltr = true;
             }
@@ -212,25 +212,31 @@ public partial class Default2 : System.Web.UI.Page
         GridView1.Visible = true;
     }
 
+    //Method for handling the button click event on the row.  
+    //Gets the UVUInvID from the selected row and uses that as the filter for the SQL update query
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        //Add filter by user, type, room
-        //Add columns: Check date, uvuinvid, otherid, MakeModel
-        
+        //Instantiate new instance of SQL database connection
         TechInventoryDataContext db = new TechInventoryDataContext();
-        
-        //int index = Convert.ToInt32(e.CommandArgument);
-        //GridViewRow row = GridView1.Rows[index];
 
+        //Convert command argument from button to string
         string uvuInvID = Convert.ToString(e.CommandArgument);
+        
         ButtonField b = new ButtonField();
+        
+        //Get current datetime value and convert to string
         DateTime now = DateTime.Now;
         string date = now.ToShortDateString();
+
+        //Linq query for a single UVUInventory record
         var query = (from equip in db.Equipments
                      where equip.UVUInvID == uvuInvID
                      select equip).Single();
+
+        //Set the InvCheck value for the queried record to current datetime
         query.InvCheck = now;
 
+        //Try/Catch to submit changes to the database
         try
         {
             // Save the changes.
@@ -242,6 +248,7 @@ public partial class Default2 : System.Web.UI.Page
             // Resolve conflicts.
             //db.ChangeConflicts.ResolveAll();
         }
+        //Rebind data in gridview.  Updated datetime value should be visible in grid.
         GridView1.DataBind();
         
     }
