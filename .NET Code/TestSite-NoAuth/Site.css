@@ -138,7 +138,13 @@ div.DDNavigation a:hover
     
 }
 
+
+
 /*TabNav*/
+
+#wrapper {
+	background-color: #557630;
+}
 
 ul#main-nav 
 { 
@@ -155,52 +161,60 @@ ul#main-nav li
 ul#main-nav li a 
 {
   position: relative;    
-  width: 140px;    
-  height: 29px;    
-  display: block;    
-  background-image: url (DynamicData/Content/Images/UFRA_Tabs.png);    
+  width: 150px;    
+  height: 25px;    
+  display: block;   
+  background-image: url(DynamicData/Content/Images/UFRA_Tabs_XSmall_Long_Adjust3.png);  
   background-position: center center;    
-  color: #44403b;    
+  color: #2e401a;    
   text-decoration: none;    
   font-size: 14px;    
-  padding-top: 12px;    
+  padding-top: 12px;  
   text-align: left;    
-  padding-left: 30px;    
+  padding-left: 15px;    
   font-weight: bold;}
   
 ul#main-nav li.home a 
-{ background-image: url (DynamicData/Content/Images/UFRA_Tabs_Home.png); 
+{ background-image: url(DynamicData/Content/Images/UFRA_Tabs_Home_XSmall_Long_Adjust3.png); 
 }
+
 
 ul#main-nav li.current a 
 { background-position: top;    
-  color: #ffffff;}
+  color: #000000;}
   
 ul#main-nav li a:hover 
-{ background-position: bottom;    
-  color: #ffffff;}
+{ background-position: bottom;   
+  color: #000000;}
   
 ul#main-nav li.current a:hover 
-{ background-position: top; /*To Prevent the Current tab from changing colour on hover*/    
-  color: #ffffff;    
+{ background-position: top; /*To Prevent the Current tab from changing colour on hover */  
+  color: #000000;    
 }
 
-ul#main-nav li.allEquipment 
+ul#main-nav li.current 
 {    
   z-index: 100;
 }
-/*ul#main-nav li.home 
+ul#main-nav li.home
 { 
   z-index: 100;
-}*/
-ul#main-nav li.users 
+  
+}
+ul#main-nav li.allEquipment 
 {    
   z-index: 99;
 }
-ul#main-nav li.pastDue 
+ul#main-nav li.users 
 {    
   z-index: 98;
 }
+ul#main-nav li.pastDue 
+{    
+  z-index: 97;
+  /*width: 170px; */  
+}
+
 
 
 
