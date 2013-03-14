@@ -4,19 +4,6 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div>
-<ul id="main-nav">
-                
-                <li class = "current"><a href="Default.aspx" >Home</a></li>
-                <li class = "allEquipment"><a href="TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
-                <li class = "users"><a href="UserReports/UserReport.aspx" >User Reports</a></li>
-                <li class = "pastDue"><a href="TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
-                                  
-            </ul>
-</div>
-<br />
-<br />
-
     <!--<asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server" />
 
     <h2 class="DDSubHeader">My tables</h2>
@@ -33,12 +20,18 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>-->
-    <div id="wrapper">
-    <br />
     <h2 class="DDSubHeader">Choose a Report</h2>
     <p />
-        <div> <!--style="width:300px; float:left; padding-right:100px;"-->
+        <div <!--style="width:300px; float:left; padding-right:100px;"--> >
+            <ul id="main-nav">
+                
+                <li class = "allEquipment"><a href="TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
+                <li class = "users"><a href="UserReports/UserReport.aspx" >User Reports</a></li>
+                <li class = "pastDue"><a href="TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
+               
             
+            
+            </ul>
           
             <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        
@@ -64,8 +57,6 @@ Inner Join Model on Model.ModelID = Equipment.ModelID
 Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
 Inner Join Mfg on Mfg.MfgID = Model.MfgID
 Order By Type"></asp:SqlDataSource>
-
-</div>
 </asp:Content>
 
 

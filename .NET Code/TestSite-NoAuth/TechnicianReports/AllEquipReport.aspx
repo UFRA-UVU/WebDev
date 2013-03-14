@@ -9,23 +9,7 @@
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>-->
-    <div>
-    <ul id="main-nav">
-                
-                <li class = "home"><a href="../Default.aspx" >Home</a></li>
-                <li class = "current"><a href="AllEquipReport.aspx" >Equipment Reports</a></li>
-                <li class = "users"><a href="../UserReports/UserReport.aspx" >User Reports</a></li>
-                <li class = "pastDue"><a href="PastDueReport.aspx" >Past Due Reports</a></li>
-                          
-            </ul>
-
-    </div>  
-    <br />
-    <br />
-    <div id="wrapper" class="Content1">    
-    <br />      
-        
-        
+    <div class="Content1">
         <asp:Label ID="LabelEquipFilter" runat="server" Text="Choose a Filter" 
             Width="150px" ForeColor="#2e401a" Font-Bold="true"></asp:Label>
         <asp:DropDownList ID="DropDownListEquipFilter" runat="server" Width="203px" 
