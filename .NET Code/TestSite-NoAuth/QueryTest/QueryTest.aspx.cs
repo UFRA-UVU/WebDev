@@ -170,6 +170,7 @@ public partial class Default2 : System.Web.UI.Page
             GridView1.Visible = true;
         }
 
+
         //String acting as the INNER JOIN portion of the query
         string joinGrid = String.Format(@"Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
                                         Inner Join Dept on dept.deptID = Equipment.deptID
@@ -181,21 +182,39 @@ public partial class Default2 : System.Web.UI.Page
 
         //String used for the select command for the data source
         string strMySQLGrid = null;
+        string selectStmnt = @"SELECT Area.AreaName as 'Area',
+                                      Equipment.BldgID as 'Building',
+                                      Equipment.DeptID as 'Department',
+                                      Equipment.Room as 'Room',
+                                      Equipment.UVUInvID as 'UVUInvID', 
+                                      Users.UserLName + ', ' + Users.UserFName as 'Primary User', 
+                                      EquipType.EquipTypeName as 'Type', 
+                                      Model.ModelName as 'Model',
+                                      CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary Computer',
+                                      Equipment.InvCheck as 'Last Checked' ";
 
         if (isUserFltr)
         {
-            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
+            strMySQLGrid = String.Format(@"{0}
                                             FROM EQUIPMENT 
-                                            {0}
-                                            WHERE {1}= '{2}'", joinGrid, selectCol, DropDownList2.Text);
+                                            {1}
+                                            WHERE {2}= '{3}'", selectStmnt, joinGrid, selectCol, DropDownList2.Text);            
+//            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
+//                                            FROM EQUIPMENT 
+//                                            {0}
+//                                            WHERE {1}= '{2}'", joinGrid, selectCol, DropDownList2.Text);
         }
 
         if (!isUserFltr && (DropDownList1.SelectedValue != "All"))
         {
-            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
+            strMySQLGrid = String.Format(@"{0}
                                             FROM EQUIPMENT 
-                                            {0}
-                                            WHERE {1}.{2} = '{3}'", joinGrid, selectTbl, selectCol, DropDownList2.Text);
+                                            {1}
+                                            WHERE {2}.{3} = '{4}'", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text);
+//            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
+//                                            FROM EQUIPMENT 
+//                                            {0}
+//                                            WHERE {1}.{2} = '{3}'", joinGrid, selectTbl, selectCol, DropDownList2.Text);
         }
 
         //Set the ViewState for the grid to the select string
@@ -207,6 +226,7 @@ public partial class Default2 : System.Web.UI.Page
         //Set the Gridview datasourceID
         GridView1.DataSourceID = "SqlDataSourceGrid";
 
+        if (!Page.IsPostBack)
         //Re-bind Gridview
         GridView1.DataBind();
         GridView1.Visible = true;
@@ -216,40 +236,45 @@ public partial class Default2 : System.Web.UI.Page
     //Gets the UVUInvID from the selected row and uses that as the filter for the SQL update query
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        //Instantiate new instance of SQL database connection
-        TechInventoryDataContext db = new TechInventoryDataContext();
-
-        //Convert command argument from button to string
-        string uvuInvID = Convert.ToString(e.CommandArgument);
-        
-        ButtonField b = new ButtonField();
-        
-        //Get current datetime value and convert to string
-        DateTime now = DateTime.Now;
-        string date = now.ToShortDateString();
-
-        //Linq query for a single UVUInventory record
-        var query = (from equip in db.Equipments
-                     where equip.UVUInvID == uvuInvID
-                     select equip).Single();
-
-        //Set the InvCheck value for the queried record to current datetime
-        query.InvCheck = now;
-
-        //Try/Catch to submit changes to the database
-        try
+        string eventString = e.CommandName.ToString();
+        if (e.CommandName == "InventoryCheck")
         {
-            // Save the changes.
-            db.SubmitChanges();
+            //Instantiate new instance of SQL database connection
+            TechInventoryDataContext db = new TechInventoryDataContext();
+
+            //Convert command argument from button to string
+            string uvuInvID = Convert.ToString(e.CommandArgument);
+
+            ButtonField b = new ButtonField();
+
+            //Get current datetime value and convert to string
+            DateTime now = DateTime.Now;
+            string date = now.ToShortDateString();
+
+            //Linq query for a single UVUInventory record
+            var query = (from equip in db.Equipments
+                         where equip.UVUInvID == uvuInvID
+                         select equip).Single();
+
+            //Set the InvCheck value for the queried record to current datetime
+            query.InvCheck = now;
+
+            //Try/Catch to submit changes to the database
+            try
+            {
+                // Save the changes.
+                db.SubmitChanges();
+            }
+            // Detect concurrency conflicts.
+            catch (InRowChangingEventException)
+            {
+                // Resolve conflicts.
+                //db.ChangeConflicts.ResolveAll();
+            }
+            //Rebind data in gridview.  Updated datetime value should be visible in grid.
+            GridView1.DataBind();
+            ViewState.Clear();
         }
-        // Detect concurrency conflicts.
-        catch (InRowChangingEventException)
-        {
-            // Resolve conflicts.
-            //db.ChangeConflicts.ResolveAll();
-        }
-        //Rebind data in gridview.  Updated datetime value should be visible in grid.
-        GridView1.DataBind();
         
     }
 

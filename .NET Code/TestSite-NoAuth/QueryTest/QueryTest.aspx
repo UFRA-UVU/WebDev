@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="Site.master" AutoEventWireup="true" CodeFile="QueryTest.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Language="C#" MasterPageFile="Site.master" AutoEventWireup="true" CodeFile="QueryTest.aspx.cs" EnableEventValidation="true" Inherits="Default2" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -42,36 +42,53 @@
             DataSourceID="SqlDataSourceGrid"
             onrowcommand="GridView1_RowCommand">
             <Columns>
-                <asp:TemplateField ShowHeader="False">
-                    <ItemTemplate>
-                        <asp:Button ID="Button1" runat="server" CausesValidation="false"
-                            OnClientClick="return confirm('Are you sure you want to update the Last Checked value for this item?')"
-                            Text="Inventory Check" UseSubmitBehavior="True"
-                            CommandName="InventoryCheck" 
-                            CommandArgument='<%#Eval("UVUInvID") %>'/>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
+                <asp:BoundField DataField="Building" HeaderText="Building" 
+                    SortExpression="Building" />
+                <asp:BoundField DataField="Department" HeaderText="Department" 
+                    SortExpression="Department" />
+                <asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
                 <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
                     SortExpression="UVUInvID" />
                 <asp:BoundField DataField="Primary User" HeaderText="Primary User" 
                     SortExpression="Primary User" ReadOnly="True" />
                 <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                 <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
-                <asp:BoundField DataField="Last Checked" HeaderText="Last Checked" 
+                <asp:BoundField DataField="Primary Computer" HeaderText="Primary Computer" 
+                    SortExpression="Primary Computer" />
+                <asp:BoundField DataField="Last Checked" dataformatstring="{0:MMMM d, yyyy}" HeaderText="Last Checked" 
                     SortExpression="Last Checked" />
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:Button ID="Button1" runat="server" CausesValidation="false"
+                            OnClientClick="return confirm('Are you sure you want to update the Last Checked value for this item?')"
+                            Text="Check" UseSubmitBehavior="True"
+                            CommandName="InventoryCheck" 
+                            CommandArgument='<%#Eval("UVUInvID") %>'/>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceValue" runat="server" 
             ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
             SelectCommand="SELECT EquipID FROM Equipment"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSourceGrid" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT Equipment.UVUInvID as UVUInvID, Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as Type, Model.ModelName as Model, Equipment.InvCheck as 'Last Checked' FROM [Equipment] 
-            Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
-            Inner Join Dept on dept.deptID = Equipment.deptID
-            Inner Join Area on Area.AreaID = Equipment.AreaID
-            Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
-            Inner Join Model on Model.ModelID = Equipment.ModelID
-            Inner Join Users on Users.UserUVID = Equipment.UserUVID
-            Inner Join Mfg on Mfg.MfgID = Model.MfgID"></asp:SqlDataSource>
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT Area.AreaName as 'Area',
+                                    Equipment.BldgID as 'Building',
+                                    Equipment.DeptID as 'Department',
+                                    Equipment.Room as 'Room',
+                                    Equipment.UVUInvID as 'UVUInvID', 
+                                    Users.UserLName + ', ' + Users.UserFName as 'Primary User', 
+                                    EquipType.EquipTypeName as 'Type', 
+                                    Model.ModelName as 'Model',
+                                    CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary Computer',
+                                    Equipment.InvCheck as 'Last Checked' FROM [Equipment] 
+                                    Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
+                                    Inner Join Dept on dept.deptID = Equipment.deptID
+                                    Inner Join Area on Area.AreaID = Equipment.AreaID
+                                    Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
+                                    Inner Join Model on Model.ModelID = Equipment.ModelID
+                                    Inner Join Users on Users.UserUVID = Equipment.UserUVID
+                                    Inner Join Mfg on Mfg.MfgID = Model.MfgID"></asp:SqlDataSource>
     </div>
 </asp:Content>
