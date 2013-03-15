@@ -133,7 +133,7 @@ public partial class Default2 : System.Web.UI.Page
             }
             else if (DropDownList1.SelectedValue == "Room")
             {
-                strMySQL = String.Format("SELECT DISTINCT Equipment.Room FROM {1}", selectCol, selectTbl, join);
+                strMySQL = String.Format("SELECT DISTINCT Equipment.Room FROM {1} WHERE Equipment.Room IS NOT NULL", selectCol, selectTbl, join);
             }
             else
             {
@@ -226,8 +226,8 @@ public partial class Default2 : System.Web.UI.Page
         //Set the Gridview datasourceID
         GridView1.DataSourceID = "SqlDataSourceGrid";
 
-        if (!Page.IsPostBack)
         //Re-bind Gridview
+        if (!Page.IsPostBack)
         GridView1.DataBind();
         GridView1.Visible = true;
     }

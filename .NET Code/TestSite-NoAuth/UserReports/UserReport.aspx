@@ -34,12 +34,23 @@
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="true"
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True"
              
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-            CellPadding="2" ForeColor="Black" 
-            GridLines="None" ViewStateMode="Enabled">
+            CellPadding="5" ForeColor="Black" 
+            GridLines="None" ViewStateMode="Enabled" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
+            <Columns>
+                <asp:BoundField DataField="LastName" HeaderText="LastName" />
+                <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
+                <asp:BoundField DataField="PhoneExt" HeaderText="PhoneExt" />
+                <asp:BoundField DataField="HomePhone" HeaderText="HomePhone" />
+                <asp:BoundField DataField="CellPhone" HeaderText="CellPhone" />
+                <asp:BoundField DataField="Birthday" dataformatstring="{0:MMMM d}" HeaderText="Birthday" />
+                <asp:BoundField DataField="email" HeaderText="email" />
+                <asp:BoundField DataField="AreaName" HeaderText="AreaName" />
+                <asp:BoundField DataField="Department" HeaderText="Department" />
+            </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
             <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
