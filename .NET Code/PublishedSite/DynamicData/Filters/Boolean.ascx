@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="BooleanFilter, App_Web_41s1ngw1" %>
+﻿<%@ control language="C#" inherits="BooleanFilter, App_Web_aamcvotz" %>
 
 <asp:DropDownList runat="server" ID="DropDownList1" AutoPostBack="True" CssClass="DDFilter"
     OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">

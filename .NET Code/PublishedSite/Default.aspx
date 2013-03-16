@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_23om3fks" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_binxecuy" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -22,7 +22,17 @@
     </asp:GridView>-->
     <h2 class="DDSubHeader">Choose a Report</h2>
     <p />
-        <div style="width:300px; float:left; padding-right:100px;">
+        <div <!--style="width:300px; float:left; padding-right:100px;"--> >
+            <ul id="main-nav">
+                
+                <li class = "allEquipment"><a href="TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
+                <li class = "users"><a href="UserReports/UserReport.aspx" >User Reports</a></li>
+                <li class = "pastDue"><a href="TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
+               
+            
+            
+            </ul>
+          
             <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        
         <br /> <br />

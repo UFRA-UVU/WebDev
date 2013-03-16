@@ -1,7 +1,7 @@
 ﻿/*	Global classes	*/
 body
 {
-    background-color: #557630;
+    background-color: #ffffff;
 }
 
 input
@@ -16,7 +16,7 @@ input
 .DDMainHeader
 {
 	font: small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;
-	color:#f8f1d9;
+	color:#2e401a;
 	padding-bottom: 12px;
     border-bottom: 1px dotted #bbbbbb;
 }
@@ -26,7 +26,7 @@ input
 {
 	margin-bottom: 10px;
     font: bold 1.2em Trebuchet MS, Arial, sans-serif;
-    color: #f8f1d9;
+    color: #2e401a;
 }
 
 .DD 
@@ -135,6 +135,81 @@ div.DDNavigation a:hover
 {
     color: #2e401a;
     text-decoration: underline !important;
+    
+}
+
+/*TabNav*/
+
+ul#main-nav 
+{ 
+ margin-left: 20px;
+}
+ul#main-nav li 
+{    
+ float: left;    
+ position: relative;    
+ margin-left: -20px;    
+ display: inline;
+}
+
+ul#main-nav li a 
+{
+  position: relative;    
+  width: 140px;    
+  height: 29px;    
+  display: block;    
+  background-image: url (DynamicData/Content/Images/UFRA_Tabs.png);    
+  background-position: center center;    
+  color: #44403b;    
+  text-decoration: none;    
+  font-size: 14px;    
+  padding-top: 12px;    
+  text-align: left;    
+  padding-left: 30px;    
+  font-weight: bold;}
+  
+ul#main-nav li.home a 
+{ background-image: url (DynamicData/Content/Images/UFRA_Tabs_Home.png); 
+}
+
+ul#main-nav li.current a 
+{ background-position: top;    
+  color: #ffffff;}
+  
+ul#main-nav li a:hover 
+{ background-position: bottom;    
+  color: #ffffff;}
+  
+ul#main-nav li.current a:hover 
+{ background-position: top; /*To Prevent the Current tab from changing colour on hover*/    
+  color: #ffffff;    
+}
+
+ul#main-nav li.allEquipment 
+{    
+  z-index: 100;
+}
+/*ul#main-nav li.home 
+{ 
+  z-index: 100;
+}*/
+ul#main-nav li.users 
+{    
+  z-index: 99;
+}
+ul#main-nav li.pastDue 
+{    
+  z-index: 98;
+}
+
+
+
+
+/* Login */
+
+.LoginPadding
+{
+    padding-left: 8px;
     
 }
 

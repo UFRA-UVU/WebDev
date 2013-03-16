@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_hb4weuj4" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_2qes423z" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -11,7 +11,7 @@
     </div>-->
     <div class="Content1">
         <asp:Label ID="LabelUserFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#2e401a" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownListUserFilter" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
@@ -23,9 +23,9 @@
         </asp:DropDownList>
         <p />
             <asp:Label ID="LabelUserValue" runat="server" Text="Select a Value" 
-                Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+                Width="150px" ForeColor="#2e401a" Font-Bold="True" Visible="False"></asp:Label>
             <asp:DropDownList ID="DropDownListUserValue" runat="server" ForeColor="#2e401a" Font-Bold="true"
-            style="background-color: #f8f1d9">
+            style="background-color: #f8f1d9" Visible="False">
             </asp:DropDownList>
             
             <p />
@@ -34,12 +34,23 @@
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="false" AllowSorting="true"
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True"
              
             BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-            CellPadding="2" ForeColor="Black" 
-            GridLines="None" ViewStateMode="Enabled">
+            CellPadding="5" ForeColor="Black" 
+            GridLines="None" ViewStateMode="Enabled" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
+            <Columns>
+                <asp:BoundField DataField="LastName" HeaderText="LastName" />
+                <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
+                <asp:BoundField DataField="PhoneExt" HeaderText="PhoneExt" />
+                <asp:BoundField DataField="HomePhone" HeaderText="HomePhone" />
+                <asp:BoundField DataField="CellPhone" HeaderText="CellPhone" />
+                <asp:BoundField DataField="Birthday" dataformatstring="{0:MMMM d}" HeaderText="Birthday" />
+                <asp:BoundField DataField="email" HeaderText="email" />
+                <asp:BoundField DataField="AreaName" HeaderText="AreaName" />
+                <asp:BoundField DataField="Department" HeaderText="Department" />
+            </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
             <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
