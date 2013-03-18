@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/FieldTemplates/Boolean.ascx" hash="219c45237" filehash="971da56cf3fe3099" flags="110000" assembly="App_Web_elhebmvb" type="ASP.dynamicdata_fieldtemplates_boolean_ascx">
+    <filedeps>
+        <filedep name="/TestSite-NoAuth/DynamicData/FieldTemplates/Boolean.ascx" />
+        <filedep name="/TestSite-NoAuth/DynamicData/FieldTemplates/Boolean.ascx.cs" />
+    </filedeps>
+</preserve>

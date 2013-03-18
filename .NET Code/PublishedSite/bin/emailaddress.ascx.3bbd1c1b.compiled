@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/FieldTemplates/EmailAddress.ascx" hash="219c45237" filehash="9c2339355b3db300" flags="110000" assembly="App_Web_elhebmvb" type="ASP.dynamicdata_fieldtemplates_emailaddress_ascx">
+    <filedeps>
+        <filedep name="/TestSite-NoAuth/DynamicData/FieldTemplates/EmailAddress.ascx" />
+        <filedep name="/TestSite-NoAuth/DynamicData/FieldTemplates/EmailAddress.ascx.cs" />
+    </filedeps>
+</preserve>
