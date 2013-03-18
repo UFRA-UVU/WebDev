@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="Default_InsertEntityTemplate, App_Web_0mpsa0wi" %>
+﻿<%@ control language="C#" inherits="Default_InsertEntityTemplate, App_Web_20sekkm1" %>
 
 <%@ Reference Control="~/DynamicData/EntityTemplates/Default.ascx" %>
 
