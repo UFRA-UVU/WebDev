@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/PageTemplates/List.aspx" hash="219c45237" filehash="a54c80e4005aead4" flags="110000" assembly="App_Web_zv1gh3sy" type="ASP.querytest_dynamicdata_pagetemplates_list_aspx">
+    <filedeps>
+        <filedep name="/TestSite-NoAuth/DynamicData/Content/GridViewPager.ascx" />
+        <filedep name="/TestSite-NoAuth/DynamicData/Content/GridViewPager.ascx.cs" />
+        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/PageTemplates/List.aspx" />
+        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/PageTemplates/List.aspx.cs" />
+        <filedep name="/TestSite-NoAuth/Site.master" />
+        <filedep name="/TestSite-NoAuth/Site.master.cs" />
+    </filedeps>
+</preserve>

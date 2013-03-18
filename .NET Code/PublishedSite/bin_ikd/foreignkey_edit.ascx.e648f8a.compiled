@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/ForeignKey_Edit.ascx" hash="219c45237" filehash="2fd7e4d7a39b44ad" flags="110000" assembly="App_Web_d5nqurjo" type="ASP.querytest_dynamicdata_fieldtemplates_foreignkey_edit_ascx">
+    <filedeps>
+        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/ForeignKey_Edit.ascx" />
+        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/ForeignKey_Edit.ascx.cs" />
+    </filedeps>
+</preserve>

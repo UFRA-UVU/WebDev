@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/PageTemplates/Edit.aspx" hash="219c45237" filehash="efa00650c62fa6ae" flags="110000" assembly="App_Web_2fqd2nif" type="ASP.dynamicdata_pagetemplates_edit_aspx">
+    <filedeps>
+        <filedep name="/TestSite-NoAuth/DynamicData/PageTemplates/Edit.aspx" />
+        <filedep name="/TestSite-NoAuth/DynamicData/PageTemplates/Edit.aspx.cs" />
+        <filedep name="/TestSite-NoAuth/Site.master" />
+        <filedep name="/TestSite-NoAuth/Site.master.cs" />
+    </filedeps>
+</preserve>

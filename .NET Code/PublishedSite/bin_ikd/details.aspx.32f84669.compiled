@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/PageTemplates/Details.aspx" hash="219c45237" filehash="b455474953b96001" flags="110000" assembly="App_Web_zv1gh3sy" type="ASP.querytest_dynamicdata_pagetemplates_details_aspx">
+    <filedeps>
+        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/PageTemplates/Details.aspx" />
+        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/PageTemplates/Details.aspx.cs" />
+        <filedep name="/TestSite-NoAuth/Site.master" />
+        <filedep name="/TestSite-NoAuth/Site.master.cs" />
+    </filedeps>
+</preserve>
