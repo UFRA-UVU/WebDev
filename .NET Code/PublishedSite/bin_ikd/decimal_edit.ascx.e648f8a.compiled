@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Decimal_Edit.ascx" hash="219c45237" filehash="1b4903f200bfde96" flags="110000" assembly="App_Web_d5nqurjo" type="ASP.querytest_dynamicdata_fieldtemplates_decimal_edit_ascx">
-    <filedeps>
-        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Decimal_Edit.ascx" />
-        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Decimal_Edit.ascx.cs" />
-    </filedeps>
-</preserve>

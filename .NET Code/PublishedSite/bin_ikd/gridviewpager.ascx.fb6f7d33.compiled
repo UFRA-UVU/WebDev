@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/Content/GridViewPager.ascx" hash="219c45237" filehash="cb8d38fcec40964e" flags="110000" assembly="App_Web_3hmiqlag" type="ASP.querytest_dynamicdata_content_gridviewpager_ascx">
-    <filedeps>
-        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/Content/GridViewPager.ascx" />
-        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/Content/GridViewPager.ascx.cs" />
-    </filedeps>
-</preserve>

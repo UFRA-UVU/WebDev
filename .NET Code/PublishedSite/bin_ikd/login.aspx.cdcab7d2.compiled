@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/login.aspx" hash="219c45237" filehash="de172417b9df8e1a" flags="110000" assembly="App_Web_qp0ijlht" type="ASP.login_aspx">
-    <filedeps>
-        <filedep name="/TestSite-NoAuth/login.aspx" />
-        <filedep name="/TestSite-NoAuth/login.aspx.cs" />
-        <filedep name="/TestSite-NoAuth/Site.master" />
-        <filedep name="/TestSite-NoAuth/Site.master.cs" />
-    </filedeps>
-</preserve>
