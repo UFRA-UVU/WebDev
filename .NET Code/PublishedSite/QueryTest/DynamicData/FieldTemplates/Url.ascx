@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="UrlField, App_Web_wsbataru" %>
+﻿<%@ control language="C#" inherits="UrlField, App_Web_hcvdzsrh" %>
 
 <asp:HyperLink ID="HyperLinkUrl" runat="server" Text="<%# FieldValueString %>" Target="_blank" />
 

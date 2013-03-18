@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="Decimal_EditField, App_Web_txrrf5ju" %>
+﻿<%@ control language="C#" inherits="Decimal_EditField, App_Web_vanaeegb" %>
 
 <asp:TextBox ID="TextBox1" runat="server" CssClass="DDTextBox" Text='<%# FieldValueEditString %>' Columns="10"></asp:TextBox>
 
