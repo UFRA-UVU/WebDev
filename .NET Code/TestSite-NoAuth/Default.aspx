@@ -38,7 +38,21 @@
     <div id="wrapper">
     <br />
     <h2 class="DDSubHeader">Choose a Report</h2>
+<<<<<<< HEAD
     
+=======
+    <p />
+        <div ><!--style="width:300px; float:left; padding-right:100px;"--> 
+            <ul id="main-nav">
+                
+                <li class = "allEquipment"><a href="TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
+                <li class = "users"><a href="UserReports/UserReport.aspx" >User Reports</a></li>
+                <li class = "pastDue"><a href="TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
+               
+            
+            
+            </ul>
+>>>>>>> 296e1630c86d23fb33abc5fc61ecf3c8499c5648
           
             <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        

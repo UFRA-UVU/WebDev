@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/EmailAddress.ascx" hash="219c45237" filehash="72d29baf2969bd2c" flags="110000" assembly="App_Web_dbn1f5hd" type="ASP.querytest_dynamicdata_fieldtemplates_emailaddress_ascx">
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/EmailAddress.ascx" hash="219c45237" filehash="72d29baf2969bd2c" flags="110000" assembly="App_Web_iiscvyiu" type="ASP.querytest_dynamicdata_fieldtemplates_emailaddress_ascx">
     <filedeps>
         <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/EmailAddress.ascx" />
         <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/EmailAddress.ascx.cs" />
