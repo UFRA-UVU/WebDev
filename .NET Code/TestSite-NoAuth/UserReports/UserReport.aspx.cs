@@ -157,7 +157,7 @@ public partial class Default2 : System.Web.UI.Page
     {
         GridView1.DataSource = q;
         GridView1.DataBind();
-        GridView1.AutoGenerateColumns = true;
+        //GridView1.AutoGenerateColumns = true;
         GridView1.Visible = true;
     }
     
