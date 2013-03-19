@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/EntityTemplates/Default_Insert.ascx" hash="219c45237" filehash="3d70c39594db087c" flags="110000" assembly="App_Web_t0bqb1yn" type="ASP.dynamicdata_entitytemplates_default_insert_ascx">
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/EntityTemplates/Default_Insert.ascx" hash="219c45237" filehash="3d70c39594db087c" flags="110000" assembly="App_Web_rdc2j352" type="ASP.dynamicdata_entitytemplates_default_insert_ascx">
     <filedeps>
         <filedep name="/TestSite-NoAuth/DynamicData/EntityTemplates/Default.ascx" />
         <filedep name="/TestSite-NoAuth/DynamicData/EntityTemplates/Default.ascx.cs" />

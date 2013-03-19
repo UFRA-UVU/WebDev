@@ -60,6 +60,9 @@ public partial class Default2 : System.Web.UI.Page
         if (DropDownList1.SelectedValue != "All")
         {
             isUserFltr = false;
+            DropDownList3.Visible = false;
+            LabelRoom.Visible = false;
+
 
             //Fill the filter value drop-down list
             if (DropDownList1.SelectedValue == "DeptID")
@@ -69,6 +72,8 @@ public partial class Default2 : System.Web.UI.Page
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
+                DropDownList3.Visible = true;
+                LabelRoom.Visible = true;
 
             }
             if (DropDownList1.SelectedValue == "EquipTypeID")
@@ -78,6 +83,9 @@ public partial class Default2 : System.Web.UI.Page
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
+                DropDownList3.Visible = false;
+                LabelRoom.Visible = false;
+
 
             }
             if (DropDownList1.SelectedValue == "AreaID")
@@ -87,6 +95,9 @@ public partial class Default2 : System.Web.UI.Page
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
+                DropDownList3.Visible = false;
+                LabelRoom.Visible = false;
+
 
             }
             if (DropDownList1.SelectedValue == "UserUVID")
@@ -94,6 +105,8 @@ public partial class Default2 : System.Web.UI.Page
                 selectCol = "Primary User";
                 selectTbl = "Users";
                 selectTblKey = DropDownList1.SelectedValue;
+                DropDownList3.Visible = false;
+                LabelRoom.Visible = false;
                 selectTblVal = DropDownList2.Text;
 
             }
@@ -104,6 +117,9 @@ public partial class Default2 : System.Web.UI.Page
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
+                DropDownList3.Visible = false;
+                LabelRoom.Visible = false;
+
 
             }
             if (DropDownList1.SelectedValue == "Room")
@@ -112,6 +128,9 @@ public partial class Default2 : System.Web.UI.Page
                 selectTbl = "Equipment";
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
+                DropDownList3.Visible = false;
+                LabelRoom.Visible = false;
+
 
             }
             //INNNER JOIN statement for select query
@@ -131,13 +150,15 @@ public partial class Default2 : System.Web.UI.Page
                 selectCol = "(Users.UserLName + ', ' + Users.UserFName)";
                 isUserFltr = true;
             }
-            else if (DropDownList1.SelectedValue == "Room")
-            {
-                strMySQL = String.Format("SELECT DISTINCT Equipment.Room FROM {1} WHERE Equipment.Room IS NOT NULL", selectCol, selectTbl, join);
-            }
+            //else if (DropDownList1.SelectedValue == "DeptID")
+            //{
+            //    strMySQL = String.Format("SELECT DISTINCT Equipment.Room FROM {1} {3} WHERE (Dept.DeptName = '{2}') and (Equipment.Room IS NOT NULL)", selectCol, selectTbl, DropDownList2.SelectedValue, join);
+            //    string pause = null;
+            //}
             else
             {
                 strMySQL = String.Format("SELECT DISTINCT {1}.{0} FROM {1} {2}", selectCol, selectTbl, join);
+
             }
 
             //Set ViewState to value of strMySQL; used to set the data source select command
@@ -207,10 +228,30 @@ public partial class Default2 : System.Web.UI.Page
 
         if (!isUserFltr && (DropDownList1.SelectedValue != "All"))
         {
-            strMySQLGrid = String.Format(@"{0}
+            if (DropDownList1.SelectedValue == "DeptID")
+            {
+                if (DropDownList3.SelectedValue != "")
+                {
+                    string room = DropDownList3.SelectedValue;
+                    strMySQLGrid = String.Format(@"{0}
+                                            FROM EQUIPMENT 
+                                            {1}
+                                            WHERE ({2}.{3} = '{4}') AND (Equipment.Room = '{5}')", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text, room);
+                }
+
+            }
+            else
+            {
+                strMySQLGrid = String.Format(@"{0}
                                             FROM EQUIPMENT 
                                             {1}
                                             WHERE {2}.{3} = '{4}'", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text);
+
+            }
+//            strMySQLGrid = String.Format(@"{0}
+//                                            FROM EQUIPMENT 
+//                                            {1}
+//                                            WHERE {2}.{3} = '{4}'", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text);
 //            strMySQLGrid = String.Format(@"SELECT Equipment.UVUInvID as 'UVUInvID', Users.UserLName + ', ' + Users.UserFName as 'Primary User', EquipType.EquipTypeName as 'Type', Model.ModelName as 'Model', Equipment.InvCheck as 'Last Checked'
 //                                            FROM EQUIPMENT 
 //                                            {0}
@@ -278,4 +319,12 @@ public partial class Default2 : System.Web.UI.Page
         
     }
 
+    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DropDownList2.SelectedValue == "DeptName")
+        {
+
+        }
+        
+    }
 }

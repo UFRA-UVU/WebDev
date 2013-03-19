@@ -11,39 +11,56 @@
     </div>-->
     <div class="Content1">
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#003300" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
             onselectedindexchanged="DropDownList1_SelectedIndexChanged">
             <asp:ListItem Value="All">All Data</asp:ListItem>
             <asp:ListItem Value="DeptID">Department</asp:ListItem>
-            <asp:ListItem>Room</asp:ListItem>
             <asp:ListItem Value="UserUVID">Primary User</asp:ListItem>
             <asp:ListItem Value="ModelID">Model</asp:ListItem>
             <asp:ListItem Value="EquipTypeID">Type</asp:ListItem>
         </asp:DropDownList>
         <p />
-            <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-                Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False"></asp:Label>
-            <asp:DropDownList ID="DropDownList2" runat="server" 
-        DataSourceID="SqlDataSourceValue" DataTextField="EquipID" 
-        DataValueField="EquipID" Visible="False" AutoPostBack="True">
-    </asp:DropDownList>
+        <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
+            Width="150px" ForeColor="#003300" Font-Bold="True" Visible="False"></asp:Label>
+        <asp:DropDownList ID="DropDownList2" runat="server" 
+            DataSourceID="SqlDataSourceValue" DataTextField="EquipID" 
+            DataValueField="EquipID" Visible="False" AutoPostBack="True" 
+                onselectedindexchanged="DropDownList2_SelectedIndexChanged">
+        </asp:DropDownList>
+        <p />
             
-            <p />
-            <asp:Button ID="ButtonSubmit" runat="server" Text="Generate Report" 
-                    onclick="ButtonSubmit_Click" Width="135px" />
+            <asp:Label ID="LabelRoom" runat="server" Text="Choose Room" Width="150px" ForeColor="#003300" Font-Bold="True" Visible="False">
+            </asp:Label>
+            
+            <asp:DropDownList ID="DropDownList3" runat="server" 
+                DataSourceID="SqlDataSourceRoom" DataTextField="Room" DataValueField="Room" 
+                Visible="False">
+                <asp:ListItem Value="All">All Rooms</asp:ListItem>
+            </asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSourceRoom" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT DISTINCT [Room] FROM [Equipment] 
+JOIN Dept on Equipment.DeptID = Dept.DeptID
+WHERE ([DeptName] = @DeptName) ORDER BY [Room]">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="DropDownList2" 
+                        DefaultValue="Utah Fire and Rescue Academy" Name="DeptName" 
+                        PropertyName="SelectedValue" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            
+        <p />
+        <asp:Button ID="ButtonSubmit" runat="server" Text="Generate Report" 
+                onclick="ButtonSubmit_Click" Width="135px" />
     </div>
 
     <div>
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
-            onrowcommand="GridView1_RowCommand" BackColor="LightGoldenrodYellow" 
-            BorderColor="Tan" BorderWidth="1px" CellPadding="5" ForeColor="Black" 
-            GridLines="None">
-            <AlternatingRowStyle BackColor="PaleGoldenrod" />
+            onrowcommand="GridView1_RowCommand">
             <Columns>
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
                 <asp:BoundField DataField="Building" HeaderText="Building" 
@@ -71,15 +88,6 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
-            <FooterStyle BackColor="Tan" />
-            <HeaderStyle BackColor="Tan" Font-Bold="True" />
-            <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
-                HorizontalAlign="Center" />
-            <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
-            <SortedAscendingCellStyle BackColor="#FAFAE7" />
-            <SortedAscendingHeaderStyle BackColor="#DAC09E" />
-            <SortedDescendingCellStyle BackColor="#E1DB9C" />
-            <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceValue" runat="server" 
             ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
