@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Boolean_Edit.ascx" hash="219c45237" filehash="ad7867b053f3bdb6" flags="110000" assembly="App_Web_cnbbvjz2" type="ASP.querytest_dynamicdata_fieldtemplates_boolean_edit_ascx">
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Boolean_Edit.ascx" hash="219c45237" filehash="ad7867b053f3bdb6" flags="110000" assembly="App_Web_fyhkddnz" type="ASP.querytest_dynamicdata_fieldtemplates_boolean_edit_ascx">
     <filedeps>
         <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Boolean_Edit.ascx" />
         <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Boolean_Edit.ascx.cs" />
