@@ -22,7 +22,7 @@
     </asp:GridView>-->
     <h2 class="DDSubHeader">Choose a Report</h2>
     <p />
-        <div <!--style="width:300px; float:left; padding-right:100px;"--> >
+        <div ><!--style="width:300px; float:left; padding-right:100px;"--> 
             <ul id="main-nav">
                 
                 <li class = "allEquipment"><a href="TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
