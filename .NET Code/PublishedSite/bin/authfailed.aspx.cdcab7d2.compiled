@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/AuthFailed.aspx" hash="219c45237" filehash="bd097ca4b32da3b7" flags="110000" assembly="App_Web_5xhud3f4" type="ASP.authfailed_aspx">
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/AuthFailed.aspx" hash="219c45237" filehash="bd097ca4b32da3b7" flags="110000" assembly="App_Web_cxcykse3" type="ASP.authfailed_aspx">
     <filedeps>
         <filedep name="/TestSite-NoAuth/AuthFailed.aspx" />
         <filedep name="/TestSite-NoAuth/AuthFailed.aspx.cs" />
