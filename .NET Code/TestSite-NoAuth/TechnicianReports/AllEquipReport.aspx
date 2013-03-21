@@ -76,7 +76,7 @@ WHERE ([DeptName] = @DeptName) ORDER BY [Room]">
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
-            onrowcommand="GridView1_RowCommand">
+            onrowcommand="GridView1_RowCommand" CellPadding="4">
             <Columns>
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
                 <asp:BoundField DataField="Building" HeaderText="Building" 
