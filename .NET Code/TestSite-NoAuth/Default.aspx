@@ -5,6 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
  <div id="tabwrapper">
+     <h2 class="DDSubHeader">Choose a Report</h2>
      <ul id="main-nav">
                 
                <li class = "current"><a href="Default.aspx" >Home</a></li>
@@ -15,8 +16,7 @@
                                   
      </ul>
  </div>
- <br />
- <br />
+
    
     <!--<asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server" />
 
@@ -37,11 +37,7 @@
 
     <div id="wrapper">
     <br />
-    <h2 class="DDSubHeader">Choose a Report</h2>
-
-
-          
-            <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
+<%--            <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        
         <br /> <br />
 
@@ -56,7 +52,8 @@
         <asp:Button class="buttonFontWeight" ID="btnModifyTables" runat="server" Text="Edit Tables" 
             Width="300px" onclick="btnModifyTables_Click" />
         </div>
-        <p />
+        <p />--%>
+        </div>
 
     <asp:SqlDataSource ID="AllEquipDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT EquipType.EquipTypeName as 'Type', Equipment.UVUInvID, Equipment.OtherInvID, Mfg.MfgName + ' ' + Model.ModelName as 'Model', Equipment.PurchDate, Equipment.SerialNum, CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary', Equipment.UserUVID, Equipment.DeptID, Equipment.BldgID, Equipment.Room, Equipment.Comments, Equipment.Other
@@ -66,7 +63,7 @@ Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
 Inner Join Mfg on Mfg.MfgID = Model.MfgID
 Order By Type"></asp:SqlDataSource>
 
-</div>
+
 </asp:Content>
 
 

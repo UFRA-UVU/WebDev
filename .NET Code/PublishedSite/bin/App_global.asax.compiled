@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="8" virtualPath="/TestSite-NoAuth/global.asax" hash="12293643" filehash="fffff9f7e46018e3" flags="150000" assembly="App_global.asax" type="ASP.global_asax">
+<preserve resultType="8" virtualPath="/TestSite-NoAuth/global.asax" hash="53a8adc9" filehash="1c72d0773bf5" flags="150000" assembly="App_global.asax" type="ASP.global_asax">
     <filedeps>
         <filedep name="/TestSite-NoAuth/global.asax" />
     </filedeps>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/PageTemplates/ListDetails.aspx" hash="219c45237" filehash="beba1bf0ca969c2c" flags="110000" assembly="App_Web_r1lrem0b" type="ASP.dynamicdata_pagetemplates_listdetails_aspx">
+<preserve resultType="3" virtualPath="/TestSite-NoAuth/DynamicData/PageTemplates/ListDetails.aspx" hash="a8635ca7d" filehash="2db7263eee1cd547" flags="110000" assembly="App_Web_iw1vmrrj" type="ASP.dynamicdata_pagetemplates_listdetails_aspx">
     <filedeps>
         <filedep name="/TestSite-NoAuth/DynamicData/Content/GridViewPager.ascx" />
         <filedep name="/TestSite-NoAuth/DynamicData/Content/GridViewPager.ascx.cs" />
