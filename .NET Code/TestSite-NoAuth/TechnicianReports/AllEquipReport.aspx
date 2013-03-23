@@ -37,14 +37,14 @@
             <asp:ListItem Value="UserUVID">Primary User</asp:ListItem>
             <asp:ListItem Value="ModelID">Model</asp:ListItem>
             <asp:ListItem Value="EquipTypeID">Type</asp:ListItem>
+            <asp:ListItem Value="BldgID">Building</asp:ListItem>
         </asp:DropDownList>
         <p />
         <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
             Width="150px" ForeColor="#003300" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataSourceID="SqlDataSourceValue" DataTextField="EquipID" 
-            DataValueField="EquipID" Visible="False" AutoPostBack="True" 
-                onselectedindexchanged="DropDownList2_SelectedIndexChanged">
+            DataValueField="EquipID" Visible="False" AutoPostBack="True">
         </asp:DropDownList>
         <p />
             
@@ -54,16 +54,18 @@
             <asp:DropDownList ID="DropDownList3" runat="server" 
                 DataSourceID="SqlDataSourceRoom" DataTextField="Room" DataValueField="Room" 
                 Visible="False">
-                <asp:ListItem Value="All">All Rooms</asp:ListItem>
+                <asp:ListItem Value="All" Selected="True">All Rooms</asp:ListItem>
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSourceRoom" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT DISTINCT [Room] FROM [Equipment] 
-JOIN Dept on Equipment.DeptID = Dept.DeptID
-WHERE ([DeptName] = @DeptName) ORDER BY [Room]">
+                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select 'All Rooms' as Room from [Equipment]
+UNION
+select Room from [Equipment]
+JOIN Bldg on Equipment.BldgID = Bldg.BldgID
+WHERE ([BldgName] = @BldgName)
+Group By [Room]">
                 <SelectParameters>
-                    <asp:ControlParameter ControlID="DropDownList2" 
-                        DefaultValue="Utah Fire and Rescue Academy" Name="DeptName" 
-                        PropertyName="SelectedValue" />
+                    <asp:ControlParameter ControlID="DropDownList2" Name="BldgName" 
+                        PropertyName="SelectedValue" DefaultValue="" />
                 </SelectParameters>
             </asp:SqlDataSource>
             

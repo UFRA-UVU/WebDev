@@ -43,13 +43,7 @@ public partial class Default2 : System.Web.UI.Page
         DropDownList2.Visible = false;
         GridView1.Visible = false;
 
-        //Set values of DropDownList2 based on contents of DropDownList1
-        //if (DropDownList1.SelectedValue == "0")
-        //{
-        //    runGrid = false;
-        //    GridView1.Visible = false;
-        //    isUserFltr = false;
-        //}
+
         if (DropDownList1.SelectedValue == "All")
         {
             isUserFltr = false;
@@ -63,8 +57,7 @@ public partial class Default2 : System.Web.UI.Page
             DropDownList3.Visible = false;
             LabelRoom.Visible = false;
 
-
-            //Fill the filter value drop-down list
+            //Assign variables to be used during population of Queried Drop-down Lists
             if (DropDownList1.SelectedValue == "DeptID")
             {
                 selectCol = "DeptName";
@@ -72,9 +65,8 @@ public partial class Default2 : System.Web.UI.Page
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
-                DropDownList3.Visible = true;
-                LabelRoom.Visible = true;
-
+                DropDownList3.Visible = false;
+                LabelRoom.Visible = false;
             }
             if (DropDownList1.SelectedValue == "EquipTypeID")
             {
@@ -85,8 +77,6 @@ public partial class Default2 : System.Web.UI.Page
                 isUserFltr = false;
                 DropDownList3.Visible = false;
                 LabelRoom.Visible = false;
-
-
             }
             if (DropDownList1.SelectedValue == "AreaID")
             {
@@ -97,8 +87,6 @@ public partial class Default2 : System.Web.UI.Page
                 isUserFltr = false;
                 DropDownList3.Visible = false;
                 LabelRoom.Visible = false;
-
-
             }
             if (DropDownList1.SelectedValue == "UserUVID")
             {
@@ -108,7 +96,6 @@ public partial class Default2 : System.Web.UI.Page
                 DropDownList3.Visible = false;
                 LabelRoom.Visible = false;
                 selectTblVal = DropDownList2.Text;
-
             }
             if (DropDownList1.SelectedValue == "ModelID")
             {
@@ -119,19 +106,15 @@ public partial class Default2 : System.Web.UI.Page
                 isUserFltr = false;
                 DropDownList3.Visible = false;
                 LabelRoom.Visible = false;
-
-
             }
-            if (DropDownList1.SelectedValue == "Room")
+            if (DropDownList1.SelectedValue == "BldgID")
             {
-                selectCol = "Room";
-                selectTbl = "Equipment";
+                selectCol = "BldgName";
+                selectTbl = "Bldg";
                 selectTblVal = DropDownList2.Text;
                 isUserFltr = false;
-                DropDownList3.Visible = false;
-                LabelRoom.Visible = false;
-
-
+                DropDownList3.Visible = true;
+                LabelRoom.Visible = true;
             }
             //INNNER JOIN statement for select query
             string join = String.Format("INNER JOIN EQUIPMENT on EQUIPMENT.{0} = {1}.{0}", DropDownList1.SelectedValue, selectTbl);
@@ -139,22 +122,17 @@ public partial class Default2 : System.Web.UI.Page
             //Placeholder for string holding select query
             string strMySQL = null;
 
-            //Set DropDownList Text and Value field properties
+            //Set DropDownList2 Text and Value properties based on variable assignment in the DropDown1_IndexChanged Method
             DropDownList2.DataTextField = selectCol;
             DropDownList2.DataValueField = selectCol;
 
             //String to hold the complete SQL query statement
-            if (DropDownList1.SelectedValue == "UserUVID")
+            if (DropDownList1.SelectedValue == "UserUVID") //Filters based on user require a different SQL Query string, which is defined here.
             {
                 strMySQL = String.Format("SELECT DISTINCT Users.UserLName + ', ' + Users.UserFName as 'Primary User' FROM {1} {2} ORDER BY 'Primary User'", selectCol, selectTbl, join);
                 selectCol = "(Users.UserLName + ', ' + Users.UserFName)";
                 isUserFltr = true;
             }
-            //else if (DropDownList1.SelectedValue == "DeptID")
-            //{
-            //    strMySQL = String.Format("SELECT DISTINCT Equipment.Room FROM {1} {3} WHERE (Dept.DeptName = '{2}') and (Equipment.Room IS NOT NULL)", selectCol, selectTbl, DropDownList2.SelectedValue, join);
-            //    string pause = null;
-            //}
             else
             {
                 strMySQL = String.Format("SELECT DISTINCT {1}.{0} FROM {1} {2}", selectCol, selectTbl, join);
@@ -164,17 +142,18 @@ public partial class Default2 : System.Web.UI.Page
             //Set ViewState to value of strMySQL; used to set the data source select command
             ViewState["MySQL"] = strMySQL;
             SqlDataSourceValue.SelectCommand = ViewState["MySQL"].ToString();
+            DropDownList3.Items.Insert(0, "All");
 
             //Set value objects to visible
             LabelValue.Visible = true;
             DropDownList2.Visible = true;
 
-            //Set runGrid to true so the GridView will set and bind to the correct data source.
         }
     }
 
     protected void ButtonSubmit_Click(object sender, EventArgs e)
     {
+        //Set runGrid to true so the GridView will bind to the correct data source.
         runGrid = true;
         Page_Load(sender, e);
     }
@@ -239,9 +218,9 @@ public partial class Default2 : System.Web.UI.Page
 
         if (!isUserFltr && (DropDownList1.SelectedValue != "All"))
         {
-            if (DropDownList1.SelectedValue == "DeptID")
+            if (DropDownList1.SelectedValue == "BldgID")
             {
-                if (DropDownList3.SelectedValue != "")
+                if (DropDownList3.SelectedValue != "All Rooms")
                 {
                     string room = DropDownList3.SelectedValue;
                     strMySQLGrid = String.Format(@"{0}
@@ -333,15 +312,5 @@ public partial class Default2 : System.Web.UI.Page
             GridView1.DataBind();
             ViewState.Clear();
         }
-
-    }
-
-    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (DropDownList2.SelectedValue == "DeptName")
-        {
-
-        }
-
     }
 }

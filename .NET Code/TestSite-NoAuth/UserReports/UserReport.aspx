@@ -49,12 +49,8 @@
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowSorting="True"
-             
-            BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-            CellPadding="5" ForeColor="Black" 
-            GridLines="None" ViewStateMode="Enabled" AutoGenerateColumns="False">
-            <AlternatingRowStyle BackColor="PaleGoldenrod" />
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 
+            ViewStateMode="Enabled" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="LastName" HeaderText="LastName" />
                 <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
@@ -66,15 +62,6 @@
                 <asp:BoundField DataField="AreaName" HeaderText="AreaName" />
                 <asp:BoundField DataField="Department" HeaderText="Department" />
             </Columns>
-            <FooterStyle BackColor="Tan" />
-            <HeaderStyle BackColor="Tan" Font-Bold="True" />
-            <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
-                HorizontalAlign="Center" />
-            <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
-            <SortedAscendingCellStyle BackColor="#FAFAE7" />
-            <SortedAscendingHeaderStyle BackColor="#DAC09E" />
-            <SortedDescendingCellStyle BackColor="#E1DB9C" />
-            <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSrcAllEquip" runat="server" 
         ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT EquipType.EquipTypeName as 'Type', Equipment.UVUInvID, Equipment.OtherInvID, Mfg.MfgName + ' ' + Model.ModelName as 'Model', Equipment.PurchDate, Equipment.SerialNum, CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary', Equipment.UserUVID, Equipment.DeptID, Equipment.BldgID, Equipment.Room, Equipment.Comments, Equipment.Other
