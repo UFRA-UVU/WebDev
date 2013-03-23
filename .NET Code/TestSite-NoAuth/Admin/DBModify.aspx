@@ -5,10 +5,22 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server" />
-    <div class="DDNavigation">
-        <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
-    </div>
+    <%--<div class="DDNavigation">
+        <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
+    </div>--%>
     <h2 class="DDSubHeader">Tech Tracker Table Listing</h2>
+
+    <div <%--id="tabwrapper"--%>>     
+     <ul id="main-nav">
+                
+               <li class = "home"><a href="../Default.aspx" >Home</a></li>
+               <li class = "allEquipment"><a href="../TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
+               <li class = "users"><a href="../UserReports/UserReport.aspx" >User Reports</a></li>
+               <li class = "pastDue"><a href="../TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
+               <li class = "current"><a href="DBModify.aspx" >Edit Tables</a></li>
+                                  
+     </ul>
+ </div>
 
     <br /><br />
 

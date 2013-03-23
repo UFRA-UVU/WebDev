@@ -3,7 +3,7 @@
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+    <h2 class="DDSubHeader">Equipment Report</h2>
     <div>
     <ul id="main-nav">
                 
@@ -11,7 +11,7 @@
                 <li class = "current"><a href="AllEquipReport.aspx" >Equipment Reports</a></li>
                 <li class = "users"><a href="../UserReports/UserReport.aspx" >User Reports</a></li>
                 <li class = "pastDue"><a href="PastDueReport.aspx" >Past Due Reports</a></li>
-                          
+                <li class = "editTable"><a href="../Admin/DBModify.aspx" >Edit Tables</a></li>          
             </ul>
 
     </div>  

@@ -4,8 +4,8 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<%--<h2 class="DDSubHeader">Choose a Report</h2>--%>
- <div <%--id="tabwrapper"--%>>     
+<h2 class="DDSubHeader">Choose a Report</h2>
+ <div id="tabwrapper">     
      <ul id="main-nav">
                 
                <li class = "current"><a href="Default.aspx" >Home</a></li>
