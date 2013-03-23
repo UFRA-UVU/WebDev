@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Utah Fire and Rescue Academy Technology Tracker</title>
-    <link href="~/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Site2.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
