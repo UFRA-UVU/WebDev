@@ -18,9 +18,6 @@
     <br />
     <br />
           
-
-
-
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>-->

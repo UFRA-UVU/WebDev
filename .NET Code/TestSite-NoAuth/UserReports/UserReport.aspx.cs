@@ -8,202 +8,201 @@ using System.Data;
 
 public partial class Default2 : System.Web.UI.Page
 {
+    // Strings specified during the population of the drop-down lists.  
+    public static string selectTbl = null;  //Used to specify the table for SQL queries
+    public static string selectTblKey = null;  // Used to specify a table primary key.
+    public static string selectTblVal = null; // Used to specify a column value for the WHERE clause
+    public static string selectCol = null;  //Used to specify the column to use during select Drop-downlist queries and the Where clause in the Grid population.
+
+    //Bool to determine if the Grid's data source will be rebound
+    public static bool runGrid = false;
+
+    //Bool to specify whethe report involves a user filter
+    public static bool isUserFltr = false;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        ////BEGIN page authentication section
-        //ADAuthStrings authString = new ADAuthStrings();
-        //authString.AuthorizedGroup = "UFRAGroup";
 
-        //if (authString.CheckUserAuthentication(HttpContext.Current.User.Identity.Name.ToString()))
-        //{
+        if (IsPostBack && (runGrid == true))
+        {
+            //Populate the GridView with the custom select command for the data source
 
-        //}
-        //else
-        //{
-        //    Server.Transfer("AuthFailed.aspx", true);
-        //}
-        ////END page authentication section
+            GenerateGrid(sender, e);
+
+        }
 
     }
 
-    //Process index change in drop-down list
-    protected void DropDownListUserFilter_SelectedIndexChanged(object sender, EventArgs e)
+    //Method to process index changes in DropDownList1
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        TechInventoryDataContext db = new TechInventoryDataContext();
-        string strFilter = DropDownListUserFilter.SelectedValue;
+        //Set visibility of value objects to false
+        LabelValue.Visible = false;
+        DropDownList2.Visible = false;
+        GridView1.Visible = false;
 
-        if (strFilter == "DeptID")
+
+        if (DropDownList1.SelectedValue == "All")
         {
-            var query = from dept in db.Depts
-                         select new 
-                         { 
-                             DeptName = dept.DeptName, 
-                             DeptID = dept.DeptID
-                         };
-            FillDDL(this, query, strFilter);
+            isUserFltr = false;
+            runGrid = false;
+            Response.Redirect(Request.Url.AbsoluteUri);
+            GridView1.Visible = true;
         }
-        else if (strFilter == "AreaID")
+        if (DropDownList1.SelectedValue != "All")
         {
-            var query = from area in db.Areas
-                        select new
-                        {
-                            AreaName = area.AreaName,
-                            AreaID = area.AreaID
-                        };
-            FillDDL(this, query, strFilter);
-        }        
+            isUserFltr = false;
+
+            //Assign variables to be used during population of Queried Drop-down Lists
+            if (DropDownList1.SelectedValue == "DeptID")
+            {
+                selectCol = "DeptName";
+                selectTbl = "Dept";
+                selectTblKey = DropDownList1.SelectedValue;
+                selectTblVal = DropDownList2.Text;
+                isUserFltr = false;
+            }
+
+            if (DropDownList1.SelectedValue == "AreaID")
+            {
+                selectCol = "AreaName";
+                selectTbl = "Area";
+                selectTblKey = DropDownList1.SelectedValue;
+                selectTblVal = DropDownList2.Text;
+                isUserFltr = false;
+            }
+
+            //INNNER JOIN statement for select query
+            string join = String.Format("INNER JOIN Users on Users.{0} = {1}.{0}", DropDownList1.SelectedValue, selectTbl);
+
+            //Placeholder for string holding select query
+            string strMySQL = null;
+
+            //Set DropDownList2 Text and Value properties based on variable assignment in the DropDown1_IndexChanged Method
+            DropDownList2.DataTextField = selectCol;
+            DropDownList2.DataValueField = selectCol;
+
+            //String to hold the complete SQL query statement
+
+            strMySQL = String.Format("SELECT DISTINCT {0}.{1} FROM {0} {2}", selectTbl, selectCol, join);
+
+            //Set ViewState to value of strMySQL; used to set the data source select command
+            ViewState["MySQL"] = strMySQL;
+            SqlDataSourceValue.SelectCommand = ViewState["MySQL"].ToString();
+
+            //Set value objects to visible
+            LabelValue.Visible = true;
+            DropDownList2.Visible = true;
+
+        }
     }
 
-    //Method to fill the drop-down list
-    protected void FillDDL(object sender, IQueryable q, string strFilter)
+    protected void ButtonSubmit_Click(object sender, EventArgs e)
     {
-        DropDownListUserValue.DataSource = q;
-        if (strFilter == "DeptID")
-        {
-            DropDownListUserValue.DataTextField = "DeptName";
-            DropDownListUserValue.DataValueField = "DeptID";
-        }
-        if (strFilter == "AreaID")
-        {
-            DropDownListUserValue.DataTextField = "AreaName";
-            DropDownListUserValue.DataValueField = "AreaID";
-        }
-        LabelUserValue.Visible = true;
-        DropDownListUserValue.Visible = true;
-        DropDownListUserValue.DataBind();
-
+        //Set runGrid to true so the GridView will bind to the correct data source.
+        runGrid = true;
+        Page_Load(sender, e);
     }
 
-    protected void BtnSubmit_Click(object sender, EventArgs e)
+    //Fill the Grid
+    protected void GenerateGrid(object sender, EventArgs e)
     {
-        TechInventoryDataContext db = new TechInventoryDataContext();
-        ReturnResults(sender);
+        //If filter set to all data reload the page.  Stops processing method.
+        if (DropDownList1.SelectedValue == "All")
+        {
+            isUserFltr = false;
+            runGrid = false;
+            Response.Redirect(Request.Url.AbsoluteUri);
+            GridView1.Visible = true;
+        }
+
+
+        //String acting as the INNER JOIN portion of the query
+        string joinGrid = String.Format(@"Inner Join Dept on Dept.DeptID = Users.DeptID
+                                        Inner Join Area on Area.AreaID = Users.AreaID");
+
+        //String used for the select command for the data source
+        string strMySQLGrid = null;
+        string selectStmnt = @"SELECT UserLName as 'Last Name',
+                                      UserFName as 'First Name',
+                                      Title as 'Title',
+                                      PhoneExt as 'Phone Extension',
+                                      HomePhone as 'Home Phone',
+                                      CellPhone as 'Cell Phone',
+                                      Bday as 'Birthday',
+                                      Email as 'Email',
+                                      Area.AreaName as 'Area',
+                                      Dept.DeptName as 'Department'";
+
+
+        if (!isUserFltr && (DropDownList1.SelectedValue != "All"))
+        {
+            strMySQLGrid = String.Format(@"{0}
+                                            FROM Users 
+                                            {1}
+                                            WHERE {2}.{3} = '{4}'", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text);
+            BindData(strMySQLGrid);
+        }
     }
-    
-    private void ReturnResults(object sender)
+
+    //Method to bind the SQL data to a ViewState so that it can be reused by the grid during grid population
+    private void BindData(string strMySQLGrid)
     {
-        TechInventoryDataContext db = new TechInventoryDataContext();
-        string strVal1 = DropDownListUserFilter.SelectedValue;
-        string strVal2 = DropDownListUserValue.SelectedValue;
+        //Set the ViewState for the grid to the select string
+        ViewState["MySQL"] = strMySQLGrid;
 
-        if (strVal1 == "All")
-        {
+        //Set the data source select command to the contents of the ViewState
+        SqlDataSourceGrid.SelectCommand = ViewState["MySQL"].ToString();
 
-            var queryGrid = from user in db.Users
-                            join dept in db.Depts on user.DeptID equals dept.DeptID
-                            join area in db.Areas on user.AreaID equals area.AreaID
-                            orderby user.UserLName
-                            select new
-                            {
-                                LastName = user.UserLName,
-                                FirstName = user.UserFName,
-                                PhoneExt = user.PhoneExt,
-                                HomePhone = user.HomePhone,
-                                CellPhone = user.CellPhone,
-                                Birthday = user.Bday,
-                                email = user.Email,
-                                AreaName = area.AreaName,
-                                Department = user.DeptID,
-                            };
-
-            FillGrid(this, queryGrid);
-        };
-        if (strVal1 == "DeptID")
-        {
-            var queryGrid = from user in db.Users
-                            join dept in db.Depts on user.DeptID equals dept.DeptID
-                            join area in db.Areas on user.AreaID equals area.AreaID
-                            where user.DeptID.ToString() == strVal2
-                            orderby user.UserLName
-                            select new
-                            {
-                                LastName = user.UserLName,
-                                FirstName = user.UserFName,
-                                PhoneExt = user.PhoneExt,
-                                HomePhone = user.HomePhone,
-                                CellPhone = user.CellPhone,
-                                Birthday = user.Bday,
-                                email = user.Email,
-                                AreaName = area.AreaName,
-                                Department = user.DeptID,
-                            };
-            FillGrid(this, queryGrid);
-        }
-        if (strVal1 == "AreaID")
-        {
-            var queryGrid = from user in db.Users
-                            join dept in db.Depts on user.DeptID equals dept.DeptID
-                            join area in db.Areas on user.AreaID equals area.AreaID
-                            where user.AreaID.ToString() == strVal2
-                            orderby user.UserLName
-                            select new
-                            {
-                                LastName = user.UserLName,
-                                FirstName = user.UserFName,
-                                PhoneExt = user.PhoneExt,
-                                HomePhone = user.HomePhone,
-                                CellPhone = user.CellPhone,
-                                Birthday = user.Bday,
-                                email = user.Email,
-                                AreaName = area.AreaName,
-                                Department = user.DeptID,
-                            };
-            FillGrid(this, queryGrid);
-        }
-     }
-
-    //Method to populate the gridview with the linq query reults
-    protected void FillGrid(object sender, IQueryable q)
-    {
-        GridView1.DataSource = q;
-        GridView1.DataBind();
-        //GridView1.AutoGenerateColumns = true;
+        //Set the Gridview datasourceID
+        GridView1.DataSourceID = "SqlDataSourceGrid";
+        if (!Page.IsPostBack)
+            GridView1.DataBind();
         GridView1.Visible = true;
     }
-    
-    //
-    //   STUFF BEING WORKED ON FOR SORTING
-    //
-    
-    //private string ConvertSortDirectionToSql(SortDirection sortDirection)
-    //{
-    //    string newSortDirection = String.Empty;
 
-    //    switch (sortDirection)
-    //    {
-    //        case SortDirection.Ascending:
-    //            newSortDirection = "ASC";
-    //            break;
+    //Method for handling the button click event on the row.  
+    //Gets the UVUInvID from the selected row and uses that as the filter for the SQL update query
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        string eventString = e.CommandName.ToString();
+        if (e.CommandName == "InventoryCheck")
+        {
+            //Instantiate new instance of SQL database connection
+            TechInventoryDataContext db = new TechInventoryDataContext();
 
-    //        case SortDirection.Descending:
-    //            newSortDirection = "DESC";
-    //            break;
-    //    }
+            //Convert command argument from button to string
+            string uvuInvID = Convert.ToString(e.CommandArgument);
 
-    //    return newSortDirection;
-    //}
+            ButtonField b = new ButtonField();
 
-    //protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    //{
-    //    GridView1.PageIndex = e.NewPageIndex;
-    //    GridView1.DataBind();
-    //}
+            //Get current datetime value and convert to string
+            DateTime now = DateTime.Now;
+            string date = now.ToShortDateString();
 
-    //protected void gridView_Sorting(object sender, GridViewSortEventArgs e, GridView g)
-    //{
-    //    //Response.Write(GridView1.DataSource.GetType()); //Add this line
+            //Linq query for a single UVUInventory record
+            var query = (from equip in db.Equipments
+                         where equip.UVUInvID == uvuInvID
+                         select equip).Single();
 
-    //    string strTest = g.DataSource.ToString();
-    //    DataTable dataTable = g.DataSource as DataTable;
+            //Set the InvCheck value for the queried record to current datetime
+            query.InvCheck = now;
 
-    //    if (dataTable != null)
-    //    {
-    //        DataView dataView = new DataView(dataTable);
-    //        dataView.Sort = e.SortExpression + " " + ConvertSortDirectionToSql(e.SortDirection);
-
-    //        g.DataSource = dataView;
-    //        GridView1.DataBind();
-    //    }
-    //}
-
+            //Try/Catch to submit changes to the database
+            try
+            {
+                // Save the changes.
+                db.SubmitChanges();
+            }
+            // Detect concurrency conflicts.
+            catch (InRowChangingEventException)
+            {
+                // Resolve conflicts.
+                //db.ChangeConflicts.ResolveAll();
+            }
+            //Rebind data in gridview.  Updated datetime value should be visible in grid.
+            GridView1.DataBind();
+            ViewState.Clear();
+        }
+    }
 }
