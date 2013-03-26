@@ -181,7 +181,7 @@ ul#main-nav li.home a
 
 ul#main-nav li.current a 
 { background-position: top;    
-  color: #000000;}
+  color: #f8f1d9;}
   
 ul#main-nav li a:hover 
 { background-position: bottom;   
@@ -189,7 +189,7 @@ ul#main-nav li a:hover
   
 ul#main-nav li.current a:hover 
 { background-position: top; /*To Prevent the Current tab from changing colour on hover */  
-  color: #000000;    
+  color: #f8f1d9;    
 }
 
 ul#main-nav li.current 
