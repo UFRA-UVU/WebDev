@@ -101,6 +101,7 @@ Group By [Room]">
              Dept.DeptName as 'Department'
 FROM Users
              Inner Join Dept on dept.deptID = Users.deptID
-             Inner Join Area on Area.AreaID = Users.AreaID"></asp:SqlDataSource>
+             Inner Join Area on Area.AreaID = Users.AreaID
+             WHERE NonPerson is null or NonPerson = 0"></asp:SqlDataSource>
     </div>
 </asp:Content>
