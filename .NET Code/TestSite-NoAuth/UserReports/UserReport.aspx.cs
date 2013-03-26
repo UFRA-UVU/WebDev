@@ -84,7 +84,7 @@ public partial class Default2 : System.Web.UI.Page
 
             //String to hold the complete SQL query statement
 
-            strMySQL = String.Format("SELECT DISTINCT {0}.{1} FROM {0} {2} WHERE Users.NonPerson is null or Users.NonPerson = 0", selectTbl, selectCol, join);
+            strMySQL = String.Format("SELECT DISTINCT {0}.{1} FROM {0} {2} WHERE Users.NonPerson != 1", selectTbl, selectCol, join);
 
             //Set ViewState to value of strMySQL; used to set the data source select command
             ViewState["MySQL"] = strMySQL;
@@ -140,7 +140,7 @@ public partial class Default2 : System.Web.UI.Page
             strMySQLGrid = String.Format(@"{0}
                                             FROM Users 
                                             {1}
-                                            WHERE {2}.{3} = '{4}' and (NonPerson is null or NonPerson = 0)", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text);
+                                            WHERE {2}.{3} = '{4}' and NonPerson != 1", selectStmnt, joinGrid, selectTbl, selectCol, DropDownList2.Text);
             BindData(strMySQLGrid);
         }
     }

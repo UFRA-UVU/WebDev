@@ -102,6 +102,6 @@ Group By [Room]">
 FROM Users
              Inner Join Dept on dept.deptID = Users.deptID
              Inner Join Area on Area.AreaID = Users.AreaID
-             WHERE NonPerson is null or NonPerson = 0"></asp:SqlDataSource>
+             WHERE NonPerson != 1"></asp:SqlDataSource>
     </div>
 </asp:Content>
