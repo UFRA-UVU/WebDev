@@ -4,7 +4,6 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<h2 class="DDSubHeader">Choose a Report</h2>
  <div id="tabwrapper">     
      <ul id="main-nav">
                 
@@ -36,7 +35,7 @@
     </asp:GridView>-->
     <br />
     <br />
-    <div id="wrapper">
+    <div style="background-color: #557630">
     <br />
 <%--            <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        
@@ -55,7 +54,7 @@
         </div>
         <p />--%>
         </div>
-
+        <h2 class="DDSubHeader">Choose a Report</h2>
     <asp:SqlDataSource ID="AllEquipDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT EquipType.EquipTypeName as 'Type', Equipment.UVUInvID, Equipment.OtherInvID, Mfg.MfgName + ' ' + Model.ModelName as 'Model', Equipment.PurchDate, Equipment.SerialNum, CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary', Equipment.UserUVID, Equipment.DeptID, Equipment.BldgID, Equipment.Room, Equipment.Comments, Equipment.Other
 FROM  dbo.Equipment

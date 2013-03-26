@@ -8,8 +8,6 @@
     <%--<div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>--%>
-    <h2 class="DDSubHeader">Tech Tracker Table Listing</h2>
-
     <div <%--id="tabwrapper"--%>>     
      <ul id="main-nav">
                 
@@ -21,18 +19,25 @@
                                   
      </ul>
  </div>
-
+ <br />
+<br />
+ <div style="background-color: #557630"><br /></div>
+ <h2 class="DDSubHeader">Tech Tracker Table Listing</h2>
     <br /><br />
 
-    <asp:GridView ID="Menu1" runat="server" AutoGenerateColumns="false"
-        CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
+    <asp:GridView ID="Menu1" runat="server" AutoGenerateColumns="False"
+        CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th">
         <Columns>
-            <asp:TemplateField HeaderText="Table Name" SortExpression="TableName">
+            <asp:TemplateField HeaderText="Table Name" SortExpression="TableName" HeaderStyle-ForeColor="#557630">
                 <ItemTemplate>
                     <asp:DynamicHyperLink ID="HyperLink1" runat="server"><%# Eval("DisplayName") %></asp:DynamicHyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
+
+<HeaderStyle CssClass="th"></HeaderStyle>
+
+<RowStyle CssClass="td"></RowStyle>
     </asp:GridView>
     
 
