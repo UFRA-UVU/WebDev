@@ -89,19 +89,20 @@ Group By [Room]">
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSourceGrid" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT UserLName as 'Last Name',
-             UserFName as 'First Name',
-             Title as 'Title',
-             PhoneExt as 'Phone Extension',
-             HomePhone as 'Home Phone',
-             CellPhone as 'Cell Phone',
-             Bday as 'Birthday',
-             Email as 'Email',
-             Area.AreaName as 'Area',
-             Dept.DeptName as 'Department'
-FROM Users
-             Inner Join Dept on dept.deptID = Users.deptID
-             Inner Join Area on Area.AreaID = Users.AreaID
-             WHERE NonPerson != 1"></asp:SqlDataSource>
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
+            SelectCommand="SELECT UserLName as 'Last Name',
+                     UserFName as 'First Name',
+                     Title as 'Title',
+                     PhoneExt as 'Phone Extension',
+                     HomePhone as 'Home Phone',
+                     CellPhone as 'Cell Phone',
+                     Bday as 'Birthday',
+                     Email as 'Email',
+                     Area.AreaName as 'Area',
+                     Dept.DeptName as 'Department'
+                FROM Users
+                     Inner Join Dept on dept.deptID = Users.deptID
+                     Inner Join Area on Area.AreaID = Users.AreaID
+                 WHERE NonPerson != 1"></asp:SqlDataSource>
     </div>
 </asp:Content>

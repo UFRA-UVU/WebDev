@@ -17,20 +17,14 @@ public partial class Default2 : System.Web.UI.Page
     //Bool to determine if the Grid's data source will be rebound
     public static bool runGrid = false;
 
-    //Bool to specify whethe report involves a user filter
-    public static bool isUserFltr = false;
-
     protected void Page_Load(object sender, EventArgs e)
     {
 
         if (IsPostBack && (runGrid == true))
         {
             //Populate the GridView with the custom select command for the data source
-
             GenerateGrid(sender, e);
-
         }
-
     }
 
     //Method to process index changes in DropDownList1
@@ -44,15 +38,12 @@ public partial class Default2 : System.Web.UI.Page
 
         if (DropDownList1.SelectedValue == "All")
         {
-            isUserFltr = false;
             runGrid = false;
             Response.Redirect(Request.Url.AbsoluteUri);
             GridView1.Visible = true;
         }
         if (DropDownList1.SelectedValue != "All")
         {
-            isUserFltr = false;
-
             //Assign variables to be used during population of Queried Drop-down Lists
             if (DropDownList1.SelectedValue == "DeptID")
             {
@@ -60,7 +51,6 @@ public partial class Default2 : System.Web.UI.Page
                 selectTbl = "Dept";
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
-                isUserFltr = false;
             }
 
             if (DropDownList1.SelectedValue == "AreaID")
@@ -69,7 +59,6 @@ public partial class Default2 : System.Web.UI.Page
                 selectTbl = "Area";
                 selectTblKey = DropDownList1.SelectedValue;
                 selectTblVal = DropDownList2.Text;
-                isUserFltr = false;
             }
 
             //INNNER JOIN statement for select query
@@ -93,7 +82,6 @@ public partial class Default2 : System.Web.UI.Page
             //Set value objects to visible
             LabelValue.Visible = true;
             DropDownList2.Visible = true;
-
         }
     }
 
@@ -110,12 +98,10 @@ public partial class Default2 : System.Web.UI.Page
         //If filter set to all data reload the page.  Stops processing method.
         if (DropDownList1.SelectedValue == "All")
         {
-            isUserFltr = false;
             runGrid = false;
             Response.Redirect(Request.Url.AbsoluteUri);
             GridView1.Visible = true;
         }
-
 
         //String acting as the INNER JOIN portion of the query
         string joinGrid = String.Format(@"Inner Join Dept on Dept.DeptID = Users.DeptID
@@ -135,7 +121,7 @@ public partial class Default2 : System.Web.UI.Page
                                       Dept.DeptName as 'Department'";
 
 
-        if (!isUserFltr && (DropDownList1.SelectedValue != "All"))
+        if (DropDownList1.SelectedValue != "All")
         {
             strMySQLGrid = String.Format(@"{0}
                                             FROM Users 
@@ -159,50 +145,5 @@ public partial class Default2 : System.Web.UI.Page
         if (!Page.IsPostBack)
             GridView1.DataBind();
         GridView1.Visible = true;
-    }
-
-    //Method for handling the button click event on the row.  
-    //Gets the UVUInvID from the selected row and uses that as the filter for the SQL update query
-    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        string eventString = e.CommandName.ToString();
-        if (e.CommandName == "InventoryCheck")
-        {
-            //Instantiate new instance of SQL database connection
-            TechInventoryDataContext db = new TechInventoryDataContext();
-
-            //Convert command argument from button to string
-            string uvuInvID = Convert.ToString(e.CommandArgument);
-
-            ButtonField b = new ButtonField();
-
-            //Get current datetime value and convert to string
-            DateTime now = DateTime.Now;
-            string date = now.ToShortDateString();
-
-            //Linq query for a single UVUInventory record
-            var query = (from equip in db.Equipments
-                         where equip.UVUInvID == uvuInvID
-                         select equip).Single();
-
-            //Set the InvCheck value for the queried record to current datetime
-            query.InvCheck = now;
-
-            //Try/Catch to submit changes to the database
-            try
-            {
-                // Save the changes.
-                db.SubmitChanges();
-            }
-            // Detect concurrency conflicts.
-            catch (InRowChangingEventException)
-            {
-                // Resolve conflicts.
-                //db.ChangeConflicts.ResolveAll();
-            }
-            //Rebind data in gridview.  Updated datetime value should be visible in grid.
-            GridView1.DataBind();
-            ViewState.Clear();
-        }
     }
 }
