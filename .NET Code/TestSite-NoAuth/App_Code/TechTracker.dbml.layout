@@ -45,47 +45,27 @@
         <classShapeMoniker Id="2b674a4c-b6f3-44c7-904a-735398ae897c" />
       </nodes>
     </associationConnector>
-    <classShape Id="2bc8d62a-debe-496c-8880-1f6f41dab344" absoluteBounds="5.375, 1.75, 2, 3.1170068359375">
-      <DataClassMoniker Name="/TechInventoryDataContext/User" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9045da46-a338-41bc-9546-fe681d513d41" absoluteBounds="5.39, 2.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(4.125 : 1.96875); (5.375 : 1.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/TechInventoryDataContext/Area/Area_User" />
-      <nodes>
-        <classShapeMoniker Id="a78e3e6f-b713-45dd-be86-66e252b3013d" />
-        <classShapeMoniker Id="2bc8d62a-debe-496c-8880-1f6f41dab344" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.15625); (6.375 : 1.15625); (6.375 : 1.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/TechInventoryDataContext/Dept/Dept_User" />
-      <nodes>
-        <classShapeMoniker Id="fcedc73b-7770-42c1-b7d7-127769cb6878" />
-        <classShapeMoniker Id="2bc8d62a-debe-496c-8880-1f6f41dab344" />
-      </nodes>
-    </associationConnector>
     <classShape Id="6b1b9145-4630-4d6c-b843-7a1132eb2576" absoluteBounds="3.625, 3.875, 2, 3.8862125651041666">
       <DataClassMoniker Name="/TechInventoryDataContext/Equipment" />
       <nestedChildShapes>
         <elementListCompartment Id="9345207d-f1b5-4a11-970c-51e13e286b59" absoluteBounds="3.64, 4.335, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.78125 : 2.56899251302083); (3.78125 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.78125 : 2.56899251302083); (3.78125 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/TechInventoryDataContext/Area/Area_Equipment" />
       <nodes>
         <classShapeMoniker Id="a78e3e6f-b713-45dd-be86-66e252b3013d" />
         <classShapeMoniker Id="6b1b9145-4630-4d6c-b843-7a1132eb2576" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.84375 : 2.94399251302083); (2.84375 : 6.1963525390625); (3.29166666666667 : 6.1963525390625 : JumpStart); (3.45833333333333 : 6.1963525390625 : JumpEnd); (3.625 : 6.1963525390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.84375 : 2.94399251302083); (2.84375 : 5.78951103255208); (3.29166666666667 : 5.78951103255208 : JumpStart); (3.45833333333333 : 5.78951103255208 : JumpEnd); (3.625 : 5.78951103255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/TechInventoryDataContext/Bldg/Bldg_Equipment" />
       <nodes>
         <classShapeMoniker Id="88922567-3342-4ef6-9406-089cb72641ec" />
         <classShapeMoniker Id="6b1b9145-4630-4d6c-b843-7a1132eb2576" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(0.75 : 1.59699625651042); (0.375 : 1.59699625651042); (0.375 : 3.19399251302083); (2.625 : 3.19399251302083); (2.625 : 5.00442426953125); (2.76041666666667 : 5.00442426953125 : JumpStart); (2.92708333333333 : 5.00442426953125 : JumpEnd); (3.29166666666667 : 5.00442426953125 : JumpStart); (3.45833333333333 : 5.00442426953125 : JumpEnd); (3.625 : 5.00442426953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(0.75 : 1.59699625651042); (0.375 : 1.59699625651042); (0.375 : 3.19399251302083); (2.625 : 3.19399251302083); (2.625 : 6.80661379882812); (3.625 : 6.80661379882812)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/TechInventoryDataContext/Dept/Dept_Equipment" />
       <nodes>
         <classShapeMoniker Id="fcedc73b-7770-42c1-b7d7-127769cb6878" />
@@ -99,18 +79,38 @@
         <classShapeMoniker Id="6b1b9145-4630-4d6c-b843-7a1132eb2576" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.75 : 2.97199875651042); (3.86458333333333 : 2.97199875651042 : JumpStart); (3.69791666666667 : 2.97199875651042 : JumpEnd); (3.375 : 2.97199875651042); (3.375 : 7.01003455208333); (3.625 : 7.01003455208333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.75 : 2.97199875651042); (3.86458333333333 : 2.97199875651042 : JumpStart); (3.69791666666667 : 2.97199875651042 : JumpEnd); (3.375 : 2.97199875651042); (3.375 : 6.80661379882812); (3.625 : 6.80661379882812)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/TechInventoryDataContext/Model/Model_Equipment" />
       <nodes>
         <classShapeMoniker Id="2b674a4c-b6f3-44c7-904a-735398ae897c" />
         <classShapeMoniker Id="6b1b9145-4630-4d6c-b843-7a1132eb2576" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.5000005 : 4.8670068359375); (6.5000005 : 6.31411020052083); (5.625 : 6.31411020052083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="f8e032e0-6382-443e-af6d-484c92565416" absoluteBounds="6.75, 4.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/TechInventoryDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90640c41-6837-44a4-a0ef-667c4115de80" absoluteBounds="6.765, 4.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 6.314150390625); (5.625 : 6.314150390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/TechInventoryDataContext/User/User_Equipment" />
       <nodes>
-        <classShapeMoniker Id="2bc8d62a-debe-496c-8880-1f6f41dab344" />
+        <classShapeMoniker Id="f8e032e0-6382-443e-af6d-484c92565416" />
         <classShapeMoniker Id="6b1b9145-4630-4d6c-b843-7a1132eb2576" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.125 : 1.78125); (7.18228916666667 : 1.78125 : JumpStart); (7.34895583333333 : 1.78125 : JumpEnd); (7.78125 : 1.78125); (7.78125 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/TechInventoryDataContext/Area/Area_User" />
+      <nodes>
+        <classShapeMoniker Id="a78e3e6f-b713-45dd-be86-66e252b3013d" />
+        <classShapeMoniker Id="f8e032e0-6382-443e-af6d-484c92565416" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.15625); (7.2656225 : 1.15625); (7.2656225 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/TechInventoryDataContext/Dept/Dept_User" />
+      <nodes>
+        <classShapeMoniker Id="fcedc73b-7770-42c1-b7d7-127769cb6878" />
+        <classShapeMoniker Id="f8e032e0-6382-443e-af6d-484c92565416" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
