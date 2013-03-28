@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/m/DynamicData/PageTemplates/ListDetails.aspx" hash="219c45237" filehash="e3b66b8f1506581e" flags="110000" assembly="App_Web_ox0ktfd0" type="ASP.dynamicdata_pagetemplates_listdetails_aspx">
+    <filedeps>
+        <filedep name="/m/DynamicData/Content/GridViewPager.ascx" />
+        <filedep name="/m/DynamicData/Content/GridViewPager.ascx.cs" />
+        <filedep name="/m/DynamicData/PageTemplates/ListDetails.aspx" />
+        <filedep name="/m/DynamicData/PageTemplates/ListDetails.aspx.cs" />
+        <filedep name="/m/Site.master" />
+        <filedep name="/m/Site.master.cs" />
+    </filedeps>
+</preserve>

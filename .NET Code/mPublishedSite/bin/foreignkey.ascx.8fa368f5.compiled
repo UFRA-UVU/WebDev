@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/m/DynamicData/Filters/ForeignKey.ascx" hash="219c45237" filehash="80d77a723dda35dd" flags="110000" assembly="App_Web_r3shlf52" type="ASP.dynamicdata_filters_foreignkey_ascx">
+    <filedeps>
+        <filedep name="/m/DynamicData/Filters/ForeignKey.ascx" />
+        <filedep name="/m/DynamicData/Filters/ForeignKey.ascx.cs" />
+    </filedeps>
+</preserve>

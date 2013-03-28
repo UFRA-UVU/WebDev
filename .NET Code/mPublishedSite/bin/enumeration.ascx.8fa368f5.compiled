@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/m/DynamicData/Filters/Enumeration.ascx" hash="219c45237" filehash="dae7c09f2256ac19" flags="110000" assembly="App_Web_r3shlf52" type="ASP.dynamicdata_filters_enumeration_ascx">
+    <filedeps>
+        <filedep name="/m/DynamicData/Filters/Enumeration.ascx" />
+        <filedep name="/m/DynamicData/Filters/Enumeration.ascx.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/m/AuthFailed.aspx" hash="219c45237" filehash="90bae1be2b3ccb01" flags="110000" assembly="App_Web_4jb0hvvd" type="ASP.authfailed_aspx">
+    <filedeps>
+        <filedep name="/m/AuthFailed.aspx" />
+        <filedep name="/m/AuthFailed.aspx.cs" />
+        <filedep name="/m/Site.master" />
+        <filedep name="/m/Site.master.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/m/DynamicData/Filters/Boolean.ascx" hash="219c45237" filehash="bfc57573e18f7ef5" flags="110000" assembly="App_Web_r3shlf52" type="ASP.dynamicdata_filters_boolean_ascx">
+    <filedeps>
+        <filedep name="/m/DynamicData/Filters/Boolean.ascx" />
+        <filedep name="/m/DynamicData/Filters/Boolean.ascx.cs" />
+    </filedeps>
+</preserve>
