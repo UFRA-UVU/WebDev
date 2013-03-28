@@ -22,11 +22,11 @@
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>-->
-    <div id ="wrapper" class="Content1" style="padding: 10px">
+    <div id ="wrapper" class="Content1" >
     <br />
 
         <asp:Label ID="LabelDateRange" runat="server" Text="Choose a Past Due Report" 
-            Width="188px" ForeColor="#F8F1D9" Font-Bold="True" Height="23px"></asp:Label>
+            Width="188px" ForeColor="#2e401a" Font-Bold="True" Height="23px"  ></asp:Label>
             
         <asp:DropDownList ID="DropDownListDateRange" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
@@ -41,9 +41,7 @@
             <p />
             <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
                     onclick="BtnSubmit_Click" Width="135px" />
-    </div>
-
-    <div>
+    
         <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 
             ViewStateMode="Enabled">
         </asp:GridView>

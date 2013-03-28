@@ -24,7 +24,7 @@
  <div style="background-color: #557630"><br /></div>
  <h2 class="DDSubHeader">Tech Tracker Table Listing</h2>
     <br /><br />
-
+<div id="wrapper">
     <asp:GridView ID="Menu1" runat="server" AutoGenerateColumns="False"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th">
         <Columns>
@@ -48,6 +48,7 @@ Inner Join Model on Model.ModelID = Equipment.ModelID
 Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
 Inner Join Mfg on Mfg.MfgID = Model.MfgID
 Order By Type"></asp:SqlDataSource>
+</div>
 </asp:Content>
 
 

@@ -8,7 +8,7 @@ input
  {
  background-color: #f8f1d9;
  font-weight:bolder; 
- color:#284E36;
+ color:#2e401a;
  
  }
  
@@ -143,7 +143,9 @@ div.DDNavigation a:hover
 /*TabNav*/
 
 #wrapper {
-	background-color: #557630;
+	background-color: #E0E0E0;
+	padding: 10px;
+    width: 800px;
 }
 
 ul#main-nav 

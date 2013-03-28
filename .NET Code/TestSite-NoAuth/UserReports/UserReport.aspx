@@ -61,9 +61,7 @@ Group By [Room]">
         <p />
         <asp:Button ID="ButtonSubmit" runat="server" Text="Generate Report" 
                 onclick="ButtonSubmit_Click" Width="135px" />
-    </div>
-
-    <div>
+    
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"

@@ -24,7 +24,7 @@
     <div id="wrapper" class="Content1" style="padding: 10px">    
     <br />
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#F8F1D9"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
@@ -69,9 +69,7 @@ Group By [Room]">
         <p />
         <asp:Button ID="ButtonSubmit" runat="server" Text="Generate Report" 
                 onclick="ButtonSubmit_Click" Width="135px" />
-    </div>
-
-    <div>
+    
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
