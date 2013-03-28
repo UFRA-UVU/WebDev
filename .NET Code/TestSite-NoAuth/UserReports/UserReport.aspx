@@ -24,7 +24,7 @@
     <div id="wrapper" class="Content1" style="padding: 10px">    
     <br />
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#f8f1d9" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#2e401a" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
@@ -35,7 +35,7 @@
         </asp:DropDownList>
         <p />
         <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-            Width="150px" ForeColor="#f8f1d9" Font-Bold="True" Visible="False"></asp:Label>
+            Width="150px" ForeColor="#2e401a" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataValueField="EquipID" Visible="False" AutoPostBack="True" 
                 DataSourceID="SqlDataSourceValue" DataTextField="EquipID">

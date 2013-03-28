@@ -24,7 +24,7 @@
     <div id="wrapper" class="Content1" style="padding: 10px">    
     <br />
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9"></asp:Label>
+            Width="150px" Font-Bold="True" ForeColor="#2e401a"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
             AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
             style="background-color: #f8f1d9"
@@ -38,14 +38,14 @@
         </asp:DropDownList>
         <p />
         <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False"></asp:Label>
+            Width="150px" ForeColor="#2e401a" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataSourceID="SqlDataSourceValue" DataTextField="EquipID" 
             DataValueField="EquipID" Visible="False" AutoPostBack="True">
         </asp:DropDownList>
         <p />
             
-            <asp:Label ID="LabelRoom" runat="server" Text="Choose Room" Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False">
+            <asp:Label ID="LabelRoom" runat="server" Text="Choose Room" Width="150px" ForeColor="#2e401a" Font-Bold="True" Visible="False">
             </asp:Label>
             
             <asp:DropDownList ID="DropDownList3" runat="server" 
