@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Integer_Edit.ascx" hash="219c45237" filehash="8cd30caa79cf4b11" flags="110000" assembly="App_Web_xt1qkuah" type="ASP.querytest_dynamicdata_fieldtemplates_integer_edit_ascx">
-    <filedeps>
-        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Integer_Edit.ascx" />
-        <filedep name="/TestSite-NoAuth/QueryTest/DynamicData/FieldTemplates/Integer_Edit.ascx.cs" />
-    </filedeps>
-</preserve>

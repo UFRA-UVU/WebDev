@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/UserReports/UserReport.aspx" hash="219c45237" filehash="3446dde7780ed6d5" flags="110000" assembly="App_Web_kyjmv0vj" type="ASP.userreports_userreport_aspx">
-    <filedeps>
-        <filedep name="/TestSite-NoAuth/Site.master" />
-        <filedep name="/TestSite-NoAuth/Site.master.cs" />
-        <filedep name="/TestSite-NoAuth/UserReports/UserReport.aspx" />
-        <filedep name="/TestSite-NoAuth/UserReports/UserReport.aspx.cs" />
-    </filedeps>
-</preserve>

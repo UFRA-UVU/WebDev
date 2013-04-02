@@ -73,7 +73,7 @@ Group By [Room]">
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
-            onrowcommand="GridView1_RowCommand" CellPadding="4">
+            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="250px">
             <Columns>
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
                 <asp:BoundField DataField="Building" HeaderText="Building" 

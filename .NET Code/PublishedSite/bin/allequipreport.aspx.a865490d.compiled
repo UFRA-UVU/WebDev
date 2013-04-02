@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/TestSite-NoAuth/TechnicianReports/AllEquipReport.aspx" hash="219c45237" filehash="65e86725ed2376ea" flags="110000" assembly="App_Web_3elvgxqw" type="ASP.technicianreports_allequipreport_aspx">
-    <filedeps>
-        <filedep name="/TestSite-NoAuth/Site.master" />
-        <filedep name="/TestSite-NoAuth/Site.master.cs" />
-        <filedep name="/TestSite-NoAuth/TechnicianReports/AllEquipReport.aspx" />
-        <filedep name="/TestSite-NoAuth/TechnicianReports/AllEquipReport.aspx.cs" />
-    </filedeps>
-</preserve>
