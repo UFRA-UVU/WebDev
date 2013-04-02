@@ -3,7 +3,7 @@
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div>
+    <div>
 <ul id="main-nav">
                 
                 <li class = "home"><a href="../Default.aspx" >Home</a></li>

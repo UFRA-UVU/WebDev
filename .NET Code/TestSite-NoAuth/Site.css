@@ -12,6 +12,15 @@ input
  
  }
  
+ .floatright
+ {
+   float:right;      
+ }
+ 
+ .floatleft
+ {
+     float:left;
+ }
 
 .DDMainHeader
 {
