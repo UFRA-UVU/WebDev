@@ -4,9 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">    
  
-    <br />
-    <br />
-     <div style="background-color: #557630"><br /></div>
     <h2 class="DDSubHeader">Equipment Report</h2>     
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
@@ -65,11 +62,11 @@ Group By [Room]">
     </div>
 
     <div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
+        <asp:GridView ID="GridView1" runat="server" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
             onrowdatabound="gridview_RowDataBound"
-            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="800px">
+            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="100%">
             <Columns>
                 <asp:BoundField DataField="UVUInvID" HeaderText="Inv ID" 
                     SortExpression="UVUInvID" >

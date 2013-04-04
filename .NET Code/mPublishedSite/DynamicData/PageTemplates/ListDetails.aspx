@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="ListDetails, App_Web_itsxevdi" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="ListDetails, App_Web_y0dicror" %>
 
 <%@ Register src="~/DynamicData/Content/GridViewPager.ascx" tagname="GridViewPager" tagprefix="asp" %>
 

@@ -313,7 +313,7 @@ public partial class Default2 : System.Web.UI.Page
         foreach (TableCell myCell in e.Row.Cells)
         {
             myCell.Style.Add("word-break", "break-all");
-            myCell.Width = Unit.Percentage(9);
+            myCell.Width = Unit.Percentage(14);
         }
     }
 }
