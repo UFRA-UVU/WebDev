@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/m/DynamicData/FieldTemplates/Children.ascx" hash="219c45237" filehash="b1cb10e11f89429b" flags="110000" assembly="App_Web_w2t2aiew" type="ASP.dynamicdata_fieldtemplates_children_ascx">
-    <filedeps>
-        <filedep name="/m/DynamicData/FieldTemplates/Children.ascx" />
-        <filedep name="/m/DynamicData/FieldTemplates/Children.ascx.cs" />
-    </filedeps>
-</preserve>

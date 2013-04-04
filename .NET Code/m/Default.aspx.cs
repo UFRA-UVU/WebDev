@@ -186,7 +186,7 @@ public partial class Default2 : System.Web.UI.Page
                                       EquipType.EquipTypeName as 'Type', 
                                       Model.ModelName as 'Model',
                                       CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary',
-                                      Equipment.InvCheck as 'Last Checked' ";
+                                      Equipment.InvCheck as 'ChkDate' ";
 
         if (isUserFltr)
         {

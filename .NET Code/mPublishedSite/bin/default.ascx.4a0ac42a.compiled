@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/m/DynamicData/EntityTemplates/Default.ascx" hash="219c45237" filehash="dd8d7ab42f3b6498" flags="110000" assembly="App_Web_rm13ql1b" type="ASP.dynamicdata_entitytemplates_default_ascx">
-    <filedeps>
-        <filedep name="/m/DynamicData/EntityTemplates/Default.ascx" />
-        <filedep name="/m/DynamicData/EntityTemplates/Default.ascx.cs" />
-    </filedeps>
-</preserve>

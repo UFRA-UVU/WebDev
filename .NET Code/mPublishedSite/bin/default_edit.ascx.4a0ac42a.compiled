@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/m/DynamicData/EntityTemplates/Default_Edit.ascx" hash="219c45237" filehash="3f740bb46207245" flags="110000" assembly="App_Web_kpebdvqa" type="ASP.dynamicdata_entitytemplates_default_edit_ascx">
-    <filedeps>
-        <filedep name="/m/DynamicData/EntityTemplates/Default.ascx" />
-        <filedep name="/m/DynamicData/EntityTemplates/Default.ascx.cs" />
-        <filedep name="/m/DynamicData/EntityTemplates/Default_Edit.ascx" />
-        <filedep name="/m/DynamicData/EntityTemplates/Default_Edit.ascx.cs" />
-    </filedeps>
-</preserve>

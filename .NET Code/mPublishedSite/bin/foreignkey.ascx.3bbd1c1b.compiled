@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/m/DynamicData/FieldTemplates/ForeignKey.ascx" hash="219c45237" filehash="e4c7e8276757ef73" flags="110000" assembly="App_Web_w2t2aiew" type="ASP.dynamicdata_fieldtemplates_foreignkey_ascx">
-    <filedeps>
-        <filedep name="/m/DynamicData/FieldTemplates/ForeignKey.ascx" />
-        <filedep name="/m/DynamicData/FieldTemplates/ForeignKey.ascx.cs" />
-    </filedeps>
-</preserve>

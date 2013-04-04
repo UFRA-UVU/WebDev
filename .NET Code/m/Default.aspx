@@ -14,11 +14,12 @@
     <div id="wrapper" class="Content1" style="padding: 10px">    
     <br />
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True"></asp:Label>
+            Width="200px" ForeColor="#F8F1D9" Font-Bold="True" Font-Size="X-Large"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
-            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
+            AutoPostBack="True" ForeColor="#2e401a" Font-Bold="True" 
             style="background-color: #f8f1d9"
-            onselectedindexchanged="DropDownList1_SelectedIndexChanged">
+            onselectedindexchanged="DropDownList1_SelectedIndexChanged" 
+            Font-Size="X-Large">
             <asp:ListItem Value="All">All Data</asp:ListItem>
             <asp:ListItem Value="DeptID">Department</asp:ListItem>
             <asp:ListItem Value="UserUVID">Primary User</asp:ListItem>
@@ -28,19 +29,21 @@
         </asp:DropDownList>
         <p />
         <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-            Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False"></asp:Label>
+            Width="200px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False" 
+                Font-Size="X-Large"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataSourceID="SqlDataSourceValue" DataTextField="EquipID" 
-            DataValueField="EquipID" Visible="False" AutoPostBack="True">
+            DataValueField="EquipID" Visible="False" AutoPostBack="True" 
+                Font-Size="X-Large">
         </asp:DropDownList>
         <p />
             
-            <asp:Label ID="LabelRoom" runat="server" Text="Choose Room" Width="150px" ForeColor="#F8F1D9" Font-Bold="True" Visible="False">
-            </asp:Label>
+            <asp:Label ID="LabelRoom" runat="server" Text="Choose Room" Width="200px" 
+                ForeColor="#F8F1D9" Font-Bold="True" Visible="False" Font-Size="X-Large"></asp:Label>
             
             <asp:DropDownList ID="DropDownList3" runat="server" 
                 DataSourceID="SqlDataSourceRoom" DataTextField="Room" DataValueField="Room" 
-                Visible="False">
+                Visible="False" Font-Size="X-Large">
                 <asp:ListItem Value="All" Selected="True">All Rooms</asp:ListItem>
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSourceRoom" runat="server" 
@@ -58,7 +61,7 @@ Group By [Room]">
             
         <p />
         <asp:Button ID="ButtonSubmit" runat="server" Text="Generate Report" 
-                onclick="ButtonSubmit_Click" Width="135px" />
+                onclick="ButtonSubmit_Click" Font-Size="XX-Large" />
     </div>
 
     <div>
@@ -66,26 +69,38 @@ Group By [Room]">
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
             onrowdatabound="gridview_RowDataBound"
-            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="800px" 
-            ItemStyleWrap="true">
+            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="800px">
             <Columns>
-                <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
-                    SortExpression="UVUInvID" />
+                <asp:BoundField DataField="UVUInvID" HeaderText="Inv ID" 
+                    SortExpression="UVUInvID" >
+                <HeaderStyle Font-Size="X-Large" />
+                </asp:BoundField>
                 <asp:BoundField DataField="User" HeaderText="User" 
-                    SortExpression="User" ReadOnly="True" />
-                <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-                <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
+                    SortExpression="User" ReadOnly="True" >
+                <HeaderStyle Font-Size="X-Large" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" >
+                <HeaderStyle Font-Size="X-Large" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" >
+                <HeaderStyle Font-Size="X-Large" />
+                </asp:BoundField>
                 <asp:BoundField DataField="Primary" HeaderText="Primary" 
-                    SortExpression="Primary" />
-                <asp:BoundField DataField="Last Checked" dataformatstring="{0:MMMM d, yyyy}" HeaderText="Last Checked" 
-                    SortExpression="Last Checked" />
+                    SortExpression="Primary" >
+                <HeaderStyle Font-Size="X-Large" />
+                </asp:BoundField>
+                <asp:BoundField DataField="ChkDate" dataformatstring="{0:MMMM d, yyyy}" HeaderText="ChkDate" 
+                    SortExpression="ChkDate" >
+                <HeaderStyle Font-Size="X-Large" />
+                </asp:BoundField>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
                         <asp:Button ID="Button1" runat="server" CausesValidation="false"
                             OnClientClick="return confirm('Are you sure you want to update the Last Checked value for this item?')"
                             Text="Check" UseSubmitBehavior="True"
                             CommandName="InventoryCheck" 
-                            CommandArgument='<%#Eval("UVUInvID") %>'/>
+                            CommandArgument='<%#Eval("UVUInvID") %>' Font-Size="X-Large" Height="40px" 
+                            Width="100%"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -100,7 +115,7 @@ Group By [Room]">
                                     EquipType.EquipTypeName as 'Type', 
                                     Model.ModelName as 'Model',
                                     CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary',
-                                    Equipment.InvCheck as 'Last Checked' FROM [Equipment] 
+                                    Equipment.InvCheck as 'ChkDate' FROM [Equipment] 
                                     Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
                                     Inner Join Dept on dept.deptID = Equipment.deptID
                                     Inner Join Area on Area.AreaID = Equipment.AreaID
