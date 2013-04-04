@@ -35,7 +35,7 @@
     </asp:GridView>-->
     <br />
     <br />
-    <div style="background-color: #557630 ">
+    <div style="background-color: #336699 ">
     <br />
 <%--            <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        

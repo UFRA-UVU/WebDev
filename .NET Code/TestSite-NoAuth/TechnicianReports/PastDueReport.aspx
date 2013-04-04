@@ -15,7 +15,7 @@
 </div>
 <br />
 <br />
-<div style="background-color: #557630"><br /></div>
+<div style="background-color: #336699"><br /></div>
 <h2 class="DDSubHeader">Past Due Report</h2>
 
 
@@ -26,10 +26,10 @@
     <br />
 
         <asp:Label ID="LabelDateRange" runat="server" Text="Choose a Past Due Report" 
-            Width="188px" ForeColor="#2e401a" Font-Bold="True" Height="23px"  ></asp:Label>
+            Width="188px" ForeColor="#336699" Font-Bold="True" Height="23px"  ></asp:Label>
             
         <asp:DropDownList ID="DropDownListDateRange" runat="server" Width="203px" 
-            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
+            AutoPostBack="True" Height="25px" ForeColor="#336699" Font-Bold="true" 
             style="background-color: #f8f1d9">
             <asp:ListItem Selected="True">(choose)</asp:ListItem>
             <asp:ListItem Value="PastDue">Past Due</asp:ListItem>

@@ -16,7 +16,7 @@
     </div>  
     <br />
     <br />
-    <div style="background-color: #557630"><br /></div>
+    <div style="background-color: #336699"><br /></div>
     <h2 class="DDSubHeader">User Report</h2>      
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
@@ -24,9 +24,9 @@
     <div id="wrapper" class="Content1" style="padding: 10px">    
     <br />
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#2e401a" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#336699" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
-            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
+            AutoPostBack="True" Height="25px" ForeColor="#336699" Font-Bold="true" 
             style="background-color: #f8f1d9"
             onselectedindexchanged="DropDownList1_SelectedIndexChanged">
             <asp:ListItem Value="All">All Users</asp:ListItem>
@@ -35,7 +35,7 @@
         </asp:DropDownList>
         <p />
         <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-            Width="150px" ForeColor="#2e401a" Font-Bold="True" Visible="False"></asp:Label>
+            Width="150px" ForeColor="#336699" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataValueField="EquipID" Visible="False" AutoPostBack="True" 
                 DataSourceID="SqlDataSourceValue" DataTextField="EquipID">

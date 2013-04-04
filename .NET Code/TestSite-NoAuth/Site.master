@@ -10,9 +10,10 @@
     </asp:ContentPlaceHolder>
 </head>
 <body style="margin-left: 100px; margin-right: 100px;">
-    <h1 class="DDMainHeader" style="background-image:url(DynamicData/Content/Images/TechTrackerBanner800x100-3.jpg); width: 800px; height: 85px; color: #f8f1d9">UFRA Tech Tracker</h1>
-
+   
+    
     <form id="form1" runat="server">
+     <h1 class="DDMainHeader" style="background-image:url(DynamicData/Content/Images/TechTrackerBanner800x100-3.jpg); width: 800px; height: 85px; color: #f8f1d9">UFRA Tech Tracker</h1>
     <div class="DDNavigation">
         <a runat="server" href="~/"><img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
         <asp:LoginStatus ID="LoginStatus1" runat="server" class= "LoginPadding"/>

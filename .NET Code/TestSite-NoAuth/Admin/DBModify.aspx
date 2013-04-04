@@ -21,14 +21,14 @@
  </div>
  <br />
 <br />
- <div style="background-color: #557630"><br /></div>
+ <div style="background-color: #336699"><br /></div>
  <h2 class="DDSubHeader">Tech Tracker Table Listing</h2>
     <br /><br />
 <div id="wrapper">
     <asp:GridView ID="Menu1" runat="server" AutoGenerateColumns="False"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th">
         <Columns>
-            <asp:TemplateField HeaderText="Table Name" SortExpression="TableName" HeaderStyle-ForeColor="#557630">
+            <asp:TemplateField HeaderText="Table Name" SortExpression="TableName" HeaderStyle-ForeColor="#336699">
                 <ItemTemplate>
                     <asp:DynamicHyperLink ID="HyperLink1" runat="server"><%# Eval("DisplayName") %></asp:DynamicHyperLink>
                 </ItemTemplate>
