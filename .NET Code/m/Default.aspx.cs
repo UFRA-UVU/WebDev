@@ -147,7 +147,6 @@ public partial class Default2 : System.Web.UI.Page
             //Set value objects to visible
             LabelValue.Visible = true;
             DropDownList2.Visible = true;
-
         }
     }
 
@@ -182,15 +181,11 @@ public partial class Default2 : System.Web.UI.Page
 
         //String used for the select command for the data source
         string strMySQLGrid = null;
-        string selectStmnt = @"SELECT Area.AreaName as 'Area',
-                                      Equipment.BldgID as 'Building',
-                                      Equipment.DeptID as 'Department',
-                                      Equipment.Room as 'Room',
-                                      Equipment.UVUInvID as 'UVUInvID', 
-                                      Users.UserLName + ', ' + Users.UserFName as 'Primary User', 
+        string selectStmnt = @"SELECT Equipment.UVUInvID as 'UVUInvID', 
+                                      Users.UserLName + ', ' + Users.UserFName as 'User', 
                                       EquipType.EquipTypeName as 'Type', 
                                       Model.ModelName as 'Model',
-                                      CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary Computer',
+                                      CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary',
                                       Equipment.InvCheck as 'Last Checked' ";
 
         if (isUserFltr)
@@ -311,6 +306,14 @@ public partial class Default2 : System.Web.UI.Page
             //Rebind data in gridview.  Updated datetime value should be visible in grid.
             GridView1.DataBind();
             ViewState.Clear();
+        }
+    }
+    protected void gridview_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        foreach (TableCell myCell in e.Row.Cells)
+        {
+            myCell.Style.Add("word-break", "break-all");
+            myCell.Width = Unit.Percentage(9);
         }
     }
 }

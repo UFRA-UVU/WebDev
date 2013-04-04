@@ -65,22 +65,18 @@ Group By [Room]">
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
-            onrowcommand="GridView1_RowCommand" CellPadding="4">
+            onrowdatabound="gridview_RowDataBound"
+            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="800px" 
+            ItemStyleWrap="true">
             <Columns>
-                <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
-                <asp:BoundField DataField="Building" HeaderText="Building" 
-                    SortExpression="Building" />
-                <asp:BoundField DataField="Department" HeaderText="Department" 
-                    SortExpression="Department" />
-                <asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
                 <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
                     SortExpression="UVUInvID" />
-                <asp:BoundField DataField="Primary User" HeaderText="Primary User" 
-                    SortExpression="Primary User" ReadOnly="True" />
+                <asp:BoundField DataField="User" HeaderText="User" 
+                    SortExpression="User" ReadOnly="True" />
                 <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                 <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
-                <asp:BoundField DataField="Primary Computer" HeaderText="Primary Computer" 
-                    SortExpression="Primary Computer" />
+                <asp:BoundField DataField="Primary" HeaderText="Primary" 
+                    SortExpression="Primary" />
                 <asp:BoundField DataField="Last Checked" dataformatstring="{0:MMMM d, yyyy}" HeaderText="Last Checked" 
                     SortExpression="Last Checked" />
                 <asp:TemplateField ShowHeader="False">
@@ -98,15 +94,12 @@ Group By [Room]">
             ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
             SelectCommand="SELECT EquipID FROM Equipment"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSourceGrid" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT Area.AreaName as 'Area',
-                                    Equipment.BldgID as 'Building',
-                                    Equipment.DeptID as 'Department',
-                                    Equipment.Room as 'Room',
+            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT
                                     Equipment.UVUInvID as 'UVUInvID', 
-                                    Users.UserLName + ', ' + Users.UserFName as 'Primary User', 
+                                    Users.UserLName + ', ' + Users.UserFName as 'User', 
                                     EquipType.EquipTypeName as 'Type', 
                                     Model.ModelName as 'Model',
-                                    CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary Computer',
+                                    CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary',
                                     Equipment.InvCheck as 'Last Checked' FROM [Equipment] 
                                     Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
                                     Inner Join Dept on dept.deptID = Equipment.deptID
