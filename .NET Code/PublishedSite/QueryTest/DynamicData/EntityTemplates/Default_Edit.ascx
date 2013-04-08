@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="Default_EditEntityTemplate, App_Web_ghrnh5ka" %>
+﻿<%@ control language="C#" inherits="Default_EditEntityTemplate, App_Web_2s1u4wna" %>
 
 <%@ Reference Control="~/DynamicData/EntityTemplates/Default.ascx" %>
 <asp:EntityTemplate runat="server" ID="EntityTemplate1">

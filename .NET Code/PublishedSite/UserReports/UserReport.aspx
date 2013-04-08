@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_2n30w3w1" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Default2, App_Web_zv1uljlb" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -16,7 +16,7 @@
     </div>  
     <br />
     <br />
-    <div style="background-color: #557630"><br /></div>
+    <div style="background-color: #336699"><br /></div>
     <h2 class="DDSubHeader">User Report</h2>      
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
@@ -24,9 +24,9 @@
     <div id="wrapper" class="Content1" style="padding: 10px">    
     <br />
         <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#f8f1d9" Font-Bold="True"></asp:Label>
+            Width="150px" ForeColor="#336699" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
-            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
+            AutoPostBack="True" Height="25px" ForeColor="#336699" Font-Bold="true" 
             style="background-color: #f8f1d9"
             onselectedindexchanged="DropDownList1_SelectedIndexChanged">
             <asp:ListItem Value="All">All Users</asp:ListItem>
@@ -35,7 +35,7 @@
         </asp:DropDownList>
         <p />
         <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-            Width="150px" ForeColor="#f8f1d9" Font-Bold="True" Visible="False"></asp:Label>
+            Width="150px" ForeColor="#336699" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataValueField="EquipID" Visible="False" AutoPostBack="True" 
                 DataSourceID="SqlDataSourceValue" DataTextField="EquipID">
@@ -64,8 +64,9 @@ Group By [Room]">
     
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
+            onrowdatabound="gridview_RowDataBound"
             DataSourceID="SqlDataSourceGrid"
-            CellPadding="4">
+            CellPadding="4" Width="100%">
             <Columns>
                 <asp:BoundField DataField="Last Name" HeaderText="Last Name" 
                     SortExpression="Last Name" />
@@ -94,7 +95,7 @@ Group By [Room]">
                      PhoneExt as 'Phone Extension',
                      HomePhone as 'Home Phone',
                      CellPhone as 'Cell Phone',
-                     Bday as 'Birthday',
+                     DATENAME(month, users.Bday) + ' ' + DATENAME(day, users.bday) as 'Birthday',
                      Email as 'Email',
                      Area.AreaName as 'Area',
                      Dept.DeptName as 'Department'

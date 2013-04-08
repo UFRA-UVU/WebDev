@@ -1,10 +1,10 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_1yzicd1o" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="_Default, App_Web_fxuipwxb" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
- <div id="tabwrapper">     
+    <div id="tabwrapper">     
      <ul id="main-nav">
                 
                <li class = "current"><a href="Default.aspx" >Home</a></li>
@@ -15,7 +15,7 @@
                                   
      </ul>
  </div>
-
+ 
    
     <!--<asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server" />
 
@@ -35,7 +35,7 @@
     </asp:GridView>-->
     <br />
     <br />
-    <div style="background-color: #557630 ">
+    <div style="background-color: #336699 ">
     <br />
 <%--            <asp:Button ID="btnAllEquip" runat="server" Text="Equipment Reports" 
             onclick="btnAllEquip_Click" Width="300px" />        
@@ -55,6 +55,24 @@
         <p />--%>
         </div>
         <h2 class="DDSubHeader">Choose a Report</h2>
+
+        <div>
+        <p style="font-family:small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;">
+        
+            Welcome to Tech Tracker.<br /> 
+            Click on a tab above to select related reports.<br /><br />
+
+            <b>Equipment Reports</b> &nbsp &nbsp &nbsp	Filter by Department, User, Model, Type, or Building and Room. (Also used for inventory checks)<br /><br />
+            <b>User Reports</b>   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp;&nbsp; Produce staff lists by All Users, Department, or Area.<br /><br />
+            <b>Past Due Reports </b>&nbsp &nbsp &nbsp &nbsp&nbsp;	Select Past Due, or project computers coming due in the next 3, 6, or 12 months.<br /><br />
+            <b>Edit Tables</b>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp;&nbsp; Add, change, delete records—equipment, users, etc.—in the database tables.<br />
+ 
+ 
+        </p>
+ 
+ 
+        </div>
+        
     <asp:SqlDataSource ID="AllEquipDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT EquipType.EquipTypeName as 'Type', Equipment.UVUInvID, Equipment.OtherInvID, Mfg.MfgName + ' ' + Model.ModelName as 'Model', Equipment.PurchDate, Equipment.SerialNum, CASE WHEN (Equipment.UserPrimaryComp = 0 or Equipment.UserPrimaryComp IS NULL) THEN 'NO' ELSE 'YES' END as 'Primary', Equipment.UserUVID, Equipment.DeptID, Equipment.BldgID, Equipment.Room, Equipment.Comments, Equipment.Other
 FROM  dbo.Equipment

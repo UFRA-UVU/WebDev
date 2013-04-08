@@ -1,106 +1,77 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" enableeventvalidation="true" inherits="Default2, App_Web_5d3dm1wz" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" enableeventvalidation="true" inherits="Default2, App_Web_5nlyx01g" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h2 class="DDSubHeader">User Reports</h2>
-    <div>
-    <ul id="main-nav">
+<div>
+<ul id="main-nav">
                 
                 <li class = "home"><a href="../Default.aspx" >Home</a></li>
                 <li class = "allEquipment"><a href="../TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
-                <li class = "current"><a href="~/UserReports/UserReport.aspx" >User Reports</a></li>
-                <li class = "pastDue"><a href="../TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
+                <li class = "users"><a href="../UserReports/UserReport.aspx" >User Reports</a></li>
+                <li class = "current"><a href="PastDueReport.aspx" >Past Due Reports</a></li>
                 <li class = "editTable"><a href="../Admin/DBModify.aspx" >Edit Tables</a></li>          
             </ul>
+</div>
+<br />
+<br />
+<div style="background-color: #557630"><br /></div>
+<h2 class="DDSubHeader">Past Due Report</h2>
 
-    </div>  
-    <br />
-    <br />
-          
+
    <!-- <div class="DDNavigation">
         <a id="A1" runat="server" href="~/"><img id="Img1" alt="Back to home page" runat="server" src="~/DynamicData/Content/Images/back.gif" />Back to home page</a>
     </div>-->
-    <div id="wrapper" class="Content1">    
+    <div id ="wrapper" class="Content1" >
     <br />
-        <asp:Label ID="LabelFilter" runat="server" Text="Choose a Filter" 
-            Width="150px" ForeColor="#003300" Font-Bold="True"></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server" Width="203px" 
-            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
-            style="background-color: #f8f1d9"
-            onselectedindexchanged="DropDownList1_SelectedIndexChanged">
-            <asp:ListItem Value="All">All Users</asp:ListItem>
-            <asp:ListItem Value="AreaID">Area</asp:ListItem>
-            <asp:ListItem Value="DeptID">Department</asp:ListItem>
-        </asp:DropDownList>
-        <p />
-        <asp:Label ID="LabelValue" runat="server" Text="Select a Value" 
-            Width="150px" ForeColor="#003300" Font-Bold="True" Visible="False"></asp:Label>
-        <asp:DropDownList ID="DropDownList2" runat="server" 
-            DataValueField="EquipID" Visible="False" AutoPostBack="True" 
-                DataSourceID="SqlDataSourceValue" DataTextField="EquipID">
-        </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSourceValue" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
-                SelectCommand="SELECT [EquipID] FROM [Equipment]"></asp:SqlDataSource>
-        <p />
-            
-            <asp:SqlDataSource ID="SqlDataSourceRoom" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select 'All Rooms' as Room from [Equipment]
-UNION
-select Room from [Equipment]
-JOIN Bldg on Equipment.BldgID = Bldg.BldgID
-WHERE ([BldgName] = @BldgName)
-Group By [Room]">
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="DropDownList2" Name="BldgName" 
-                        PropertyName="SelectedValue" DefaultValue="" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-            
-        <p />
-        <asp:Button ID="ButtonSubmit" runat="server" Text="Generate Report" 
-                onclick="ButtonSubmit_Click" Width="135px" />
-    </div>
 
-    <div>
+        <asp:Label ID="LabelDateRange" runat="server" Text="Choose a Past Due Report" 
+            Width="188px" ForeColor="#2e401a" Font-Bold="True" Height="23px"  ></asp:Label>
+            
+        <asp:DropDownList ID="DropDownListDateRange" runat="server" Width="203px" 
+            AutoPostBack="True" Height="25px" ForeColor="#2e401a" Font-Bold="true" 
+            style="background-color: #f8f1d9">
+            <asp:ListItem Value="PastDue">Past Due</asp:ListItem>
+            <asp:ListItem Value="3">Expire in 3 Months</asp:ListItem>
+            <asp:ListItem Value="6">Expire in 6 Months</asp:ListItem>
+            <asp:ListItem Value="12">Expire in 12 Months</asp:ListItem>
+        </asp:DropDownList>
+
+            <p />
+            <asp:Button ID="BtnSubmit" runat="server" Text="Generate Report" 
+                    onclick="BtnSubmit_Click" Width="135px" />
+    
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSourceGrid"
-            CellPadding="4">
+            DataSourceID="SqlDataSourceGrid">
             <Columns>
-                <asp:BoundField DataField="Last Name" HeaderText="Last Name" 
-                    SortExpression="Last Name" />
-                <asp:BoundField DataField="First Name" HeaderText="First Name" 
-                    SortExpression="First Name" />
-                <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
-                <asp:BoundField DataField="Phone Extension" HeaderText="Phone Extension" 
-                    SortExpression="Phone Extension" />
-                <asp:BoundField DataField="Home Phone" HeaderText="Home Phone" 
-                    SortExpression="Home Phone" />
-                <asp:BoundField DataField="Cell Phone" HeaderText="Cell Phone" 
-                    SortExpression="Cell Phone" />
-                <asp:BoundField DataField="Birthday" HeaderText="Birthday" 
-                    SortExpression="Birthday" />
-                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
-                <asp:BoundField DataField="Department" HeaderText="Department" 
-                    SortExpression="Department" />
+                <asp:BoundField DataField="UVUInvID" HeaderText="UVUInvID" 
+                    SortExpression="UVUInvID" />
+                <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
+                <asp:BoundField DataField="Make" HeaderText="Make" SortExpression="Make" />
+                <asp:BoundField DataField="Primary User" HeaderText="Primary User" 
+                    SortExpression="Primary User" ReadOnly="True" />
+                <asp:BoundField DataField="Purchase Date" HeaderText="Purchase Date" 
+                    SortExpression="Purchase Date" DataFormatString="{0:MMMM d, yyyy}" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceGrid" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT UserLName as 'Last Name',
-             UserFName as 'First Name',
-             Title as 'Title',
-             PhoneExt as 'Phone Extension',
-             HomePhone as 'Home Phone',
-             CellPhone as 'Cell Phone',
-             Bday as 'Birthday',
-             Email as 'Email',
-             Area.AreaName as 'Area',
-             Dept.DeptName as 'Department'
-FROM Users
-             Inner Join Dept on dept.deptID = Users.deptID
-             Inner Join Area on Area.AreaID = Users.AreaID"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceGrid" runat="server"
+        ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="SELECT Equipment.UVUInvID as 'UVUInvID',
+                                    EquipType.EquipTypeName as 'Type',
+                                    Mfg.MfgName + ' ' + Model.ModelName 'Make',                                
+                                    Equipment.SerialNum as 'Serial Number',
+                                    Area.AreaName + ' - ' + Equipment.BldgID + ' - ' + Dept.DeptName + ' - ' + Equipment.Room as 'Location',
+                                    Users.UserLName + ', ' + Users.UserFName as 'Primary User',
+                                    Equipment.PurchDate as 'Purchase Date'
+                                    FROM Equipment
+                                    Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
+                                    Inner Join Dept on dept.deptID = Equipment.deptID
+                                    Inner Join Area on Area.AreaID = Equipment.AreaID
+                                    Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
+                                    Inner Join Model on Model.ModelID = Equipment.ModelID
+                                    Inner Join Users on Users.UserUVID = Equipment.UserUVID
+                                    Inner Join Mfg on Mfg.MfgID = Model.MfgID
+                                    WHERE (Equipment.PurchDate <= DATEADD(YEAR, -3, GETDATE())) and Users.FullTime = 'True'">
+        </asp:SqlDataSource>
     </div>
 </asp:Content>

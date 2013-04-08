@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" inherits="Site, App_Web_xvbsd4ir" %>
+﻿<%@ master language="C#" inherits="Site, App_Web_fwnjf5js" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,10 +9,11 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="margin-left: 100px; margin-right: 100px">
-    <h1 class="DDMainHeader">UFRA Tech Tracker</h1>
-
+<body style="margin-left: 100px; margin-right: 100px;">
+   
+    
     <form id="form1" runat="server">
+     <h1 class="DDMainHeader" style="background-image:url(DynamicData/Content/Images/TechTrackerBanner800x100-3.jpg); width: 800px; height: 85px; color: #f8f1d9">UFRA Tech Tracker</h1>
     <div class="DDNavigation">
         <a runat="server" href="~/"><img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
         <asp:LoginStatus ID="LoginStatus1" runat="server" class= "LoginPadding"/>
