@@ -115,7 +115,7 @@ public partial class Default2 : System.Web.UI.Page
                                       PhoneExt as 'Phone Extension',
                                       HomePhone as 'Home Phone',
                                       CellPhone as 'Cell Phone',
-                                      Bday as 'Birthday',
+                                      DATENAME(month, users.Bday) + ' ' + DATENAME(day, users.bday) as 'Birthday',
                                       Email as 'Email',
                                       Area.AreaName as 'Area',
                                       Dept.DeptName as 'Department'";
@@ -145,5 +145,13 @@ public partial class Default2 : System.Web.UI.Page
         if (!Page.IsPostBack)
             GridView1.DataBind();
         GridView1.Visible = true;
+    }
+    protected void gridview_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        foreach (TableCell myCell in e.Row.Cells)
+        {
+            myCell.Style.Add("word-break", "break-all");
+            myCell.Width = Unit.Percentage(10);
+        }
     }
 }

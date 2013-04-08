@@ -5,9 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.DirectoryServices;
+using System.Text;
 
 public partial class Default2 : System.Web.UI.Page
 {
+    //Bool to determine if the Grid's data source will be rebound
+    public static bool runGrid = false;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ////BEGIN page authentication section
@@ -24,213 +29,95 @@ public partial class Default2 : System.Web.UI.Page
         //    Server.Transfer("AuthFailed.aspx", true);
         //}
         ////END page authentication section
+        if (IsPostBack && (runGrid == true))
+        {
+            //Populate the GridView with the custom select command for the data source
+
+            GenerateGrid(sender, e);
+
+        }
     }
-    
+
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
-        TechInventoryDataContext db = new TechInventoryDataContext();
-        ReturnResults(sender);
+        //Set runGrid to true so the GridView will bind to the correct data source.
+        runGrid = true;
+        Page_Load(sender, e);
     }
-    
-    //Generate queries based on values in the drop-down lists and send to gridview data source
-    private void ReturnResults(object sender)
+    protected void GenerateGrid(object sender, EventArgs e)
     {
-        //Invoke new SQL connection
-        TechInventoryDataContext db = new TechInventoryDataContext();
         string strVal1 = DropDownListDateRange.SelectedValue;
         DateTime expiryLimit = DateTime.Now.AddMonths(-36);
-        //Past Due Query
-        if (strVal1 == "PastDue")
+        DateTime expiryDate = DateTime.Now;
+
+        //String acting as the INNER JOIN portion of the query
+        string joinGrid = String.Format(@"Inner Join Bldg on Bldg.BldgID = Equipment.BldgID
+                                        Inner Join Dept on dept.deptID = Equipment.deptID
+                                        Inner Join Area on Area.AreaID = Equipment.AreaID
+                                        Inner Join EquipType on EquipType.EquipTypeID = Equipment.EquipTypeID
+                                        Inner Join Model on Model.ModelID = Equipment.ModelID
+                                        Inner Join Users on Users.UserUVID = Equipment.UserUVID
+                                        Inner Join Mfg on Mfg.MfgID = Model.MfgID");
+
+        //String used for the select command for the data source
+        string strMySQLGrid = null;
+        string selectStmnt = @"SELECT 
+                                Equipment.UVUInvID as UVUInvID,
+                                EquipType.EquipTypeName as 'Type',
+                                Mfg.MfgName + ' ' + Model.ModelName 'Make',                                
+                                Equipment.SerialNum as 'Serial Number',
+                                Area.AreaName + ' - ' + Equipment.BldgID + ' - ' + Dept.DeptName + ' - ' + Equipment.Room as 'Location',
+                                Users.UserLName + ', ' + Users.UserFName as 'Primary User',
+                                Equipment.PurchDate as 'Purchase Date'";
+
+        //Set Value of expiryDate based on contents of DropDown
+        if (DropDownListDateRange.SelectedValue == "PastDue")
         {
-            DateTime expiryDate = DateTime.Now.AddYears(-3);
-
-            var queryGrid = from equip in db.Equipments
-                            join mod in db.Models on equip.ModelID equals mod.ModelID
-                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
-                            join dept in db.Depts on equip.DeptID equals dept.DeptID
-                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
-                            join area in db.Areas on equip.AreaID equals area.AreaID
-                            join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp == true
-                            where u.FullTime == true
-                            where equip.PurchDate <= expiryDate
-                            select new
-                            {
-                                AreaName = area.AreaName,
-                                BldgID = equip.BldgID,
-                                Department = equip.DeptID,
-                                Room = equip.Room,
-                                UVUInvID = equip.UVUInvID,
-                                Date = equip.PurchDate,
-                                Make = mfg.MfgName + " " + mod.ModelName,
-                                Type = etype.EquipTypeName,
-                                SerialNumber = equip.SerialNum,
-                                Location = area.AreaName + " - " + equip.BldgID + " - " + dept.DeptName + " - " + equip.Room,
-                                PrimaryUser = u.UserLName + ", " + u.UserFName,
-                            };
-
-            FillGrid(this, queryGrid);
-        };
-        
-        //Equipment coming due in 3 months query
-        if (strVal1 == "3")
-        {
-            DateTime expiryDate = DateTime.Now.AddMonths(-33);
-
-            var queryGrid = from equip in db.Equipments
-                            join mod in db.Models on equip.ModelID equals mod.ModelID
-                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
-                            join dept in db.Depts on equip.DeptID equals dept.DeptID
-                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
-                            join area in db.Areas on equip.AreaID equals area.AreaID
-                            join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp == true
-                            where u.FullTime == true
-                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
-                            select new
-                            {
-                                AreaName = area.AreaName,
-                                BldgID = equip.BldgID,
-                                Department = equip.DeptID,
-                                Room = equip.Room,
-                                UVUInvID = equip.UVUInvID,
-                                Date = equip.PurchDate,
-                                Make = mfg.MfgName + " " + mod.ModelName,
-                                Type = etype.EquipTypeName,
-                                SerialNumber = equip.SerialNum,
-                                Location = area.AreaName + " - " + equip.BldgID + " - " + dept.DeptName + " - " + equip.Room,
-                                PrimaryUser = u.UserLName + ", " + u.UserFName,
-                            };
-            FillGrid(this, queryGrid);
+            runGrid = false;
+            Response.Redirect(Request.Url.AbsoluteUri);
         }
-        
-        //Equipment coming due in 6 months query
-        if (strVal1 == "6")
+        else if (DropDownListDateRange.SelectedValue == "3")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-30);
+            expiryDate = DateTime.Now.AddMonths(-33);
 
-            var queryGrid = from equip in db.Equipments
-                            join mod in db.Models on equip.ModelID equals mod.ModelID
-                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
-                            join dept in db.Depts on equip.DeptID equals dept.DeptID
-                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
-                            join area in db.Areas on equip.AreaID equals area.AreaID
-                            join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp == true
-                            where u.FullTime == true
-                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
-                            select new
-                            {
-                                AreaName = area.AreaName,
-                                BldgID = equip.BldgID,
-                                Department = equip.DeptID,
-                                Room = equip.Room,
-                                UVUInvID = equip.UVUInvID,
-                                Date = equip.PurchDate,
-                                Make = mfg.MfgName + " " + mod.ModelName,
-                                Type = etype.EquipTypeName,
-                                SerialNumber = equip.SerialNum,
-                                Location = area.AreaName + " - " + equip.BldgID + " - " + dept.DeptName + " - " + equip.Room,
-                                PrimaryUser = u.UserLName + ", " + u.UserFName,
-                            };
-            FillGrid(this, queryGrid);
         }
-        
-        //Equipment coming due in 12 months query
-        if (strVal1 == "12")
+        else if (DropDownListDateRange.SelectedValue == "6")
         {
-            DateTime expiryDate = DateTime.Now.AddMonths(-24);
+            expiryDate = DateTime.Now.AddMonths(-30);
 
-            var queryGrid = from equip in db.Equipments
-                            join mod in db.Models on equip.ModelID equals mod.ModelID
-                            join mfg in db.Mfgs on mod.MfgID equals mfg.MfgID
-                            join dept in db.Depts on equip.DeptID equals dept.DeptID
-                            join etype in db.EquipTypes on equip.EquipTypeID equals etype.EquipTypeID
-                            join area in db.Areas on equip.AreaID equals area.AreaID
-                            join u in db.Users on equip.UserUVID equals u.UserUVID
-                            where equip.UserPrimaryComp == true
-                            where u.FullTime == true
-                            where (equip.PurchDate <= expiryDate) && (equip.PurchDate >= expiryLimit)
-                            select new
-                            {
-                                AreaName = area.AreaName,
-                                BldgID = equip.BldgID,
-                                Department = equip.DeptID,
-                                Room = equip.Room,
-                                UVUInvID = equip.UVUInvID,
-                                Date = equip.PurchDate,
-                                Make = mfg.MfgName + " " + mod.ModelName,
-                                Type = etype.EquipTypeName,
-                                SerialNumber = equip.SerialNum,
-                                Location = area.AreaName + " - " + equip.BldgID + " - " + dept.DeptName + " - " + equip.Room,
-                                PrimaryUser = u.UserLName + ", " + u.UserFName,
-                            };
-            FillGrid(this, queryGrid);
-        }        
+        }
+        else if (DropDownListDateRange.SelectedValue == "12")
+        {
+            expiryDate = DateTime.Now.AddMonths(-24);
+        }
+        strMySQLGrid = String.Format(@"{0}
+                                            FROM EQUIPMENT 
+                                            {1}
+                                            WHERE (Users.FullTime = 'True') and (Equipment.PurchDate <= '{2}') and (Equipment.PurchDate >= '{3}')", selectStmnt, joinGrid, expiryDate, expiryLimit);
+
+        BindData(strMySQLGrid);
+
     }
-
-    //Method to fill the contents of a grid view with an IQueryable argument
-    //protected void FillGrid(object sender, IQueryable q, GridViewSortEventArgs e)
-    //{
-    //    GridView1.DataSource = q;
-    //    //GridView1.DataSourceID = String.Empty;
-    //    gridView_Sorting(sender, e, GridView1);
-    //    //GridView1.DataBind();
-    //    GridView1.AutoGenerateColumns = true;
-    //    GridView1.Visible = true;
-    //    //GridView1.EnableSortingAndPagingCallbacks = true;
-    //}
-        protected void FillGrid(object sender, IQueryable q)
+    private void BindData(string strMySQLGrid)
     {
-        GridView1.DataSource = q;
-        GridView1.DataBind();
-        //GridView1.AutoGenerateColumns = true;
+        //Set the ViewState for the grid to the select string
+        ViewState["MySQL"] = strMySQLGrid;
+
+        //Set the data source select command to the contents of the ViewState
+        SqlDataSourceGrid.SelectCommand = ViewState["MySQL"].ToString();
+
+        //Set the Gridview datasourceID
+        GridView1.DataSourceID = "SqlDataSourceGrid";
+        if (!Page.IsPostBack)
+            GridView1.DataBind();
         GridView1.Visible = true;
     }
-    
-    //
-    //   STUFF BEING WORKED ON FOR SORTING
-    //
-    
-    //private string ConvertSortDirectionToSql(SortDirection sortDirection)
-    //{
-    //    string newSortDirection = String.Empty;
-
-    //    switch (sortDirection)
-    //    {
-    //        case SortDirection.Ascending:
-    //            newSortDirection = "ASC";
-    //            break;
-
-    //        case SortDirection.Descending:
-    //            newSortDirection = "DESC";
-    //            break;
-    //    }
-
-    //    return newSortDirection;
-    //}
-
-    //protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    //{
-    //    GridView1.PageIndex = e.NewPageIndex;
-    //    GridView1.DataBind();
-    //}
-
-    //protected void gridView_Sorting(object sender, GridViewSortEventArgs e, GridView g)
-    //{
-    //    //Response.Write(GridView1.DataSource.GetType()); //Add this line
-
-    //    string strTest = g.DataSource.ToString();
-    //    DataTable dataTable = g.DataSource as DataTable;
-
-    //    if (dataTable != null)
-    //    {
-    //        DataView dataView = new DataView(dataTable);
-    //        dataView.Sort = e.SortExpression + " " + ConvertSortDirectionToSql(e.SortDirection);
-
-    //        g.DataSource = dataView;
-    //        GridView1.DataBind();
-    //    }
-    //}
-
+    protected void gridview_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        foreach (TableCell myCell in e.Row.Cells)
+        {
+            myCell.Style.Add("word-break", "break-all");
+            myCell.Width = Unit.Percentage(20);
+        }
+    }
 }

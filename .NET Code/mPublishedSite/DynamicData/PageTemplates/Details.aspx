@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="Details, App_Web_y0dicror" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" inherits="Details, App_Web_2av5aaeo" %>
 
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">

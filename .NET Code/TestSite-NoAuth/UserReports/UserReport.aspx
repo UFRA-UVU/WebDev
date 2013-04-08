@@ -64,8 +64,9 @@ Group By [Room]">
     
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
+            onrowdatabound="gridview_RowDataBound"
             DataSourceID="SqlDataSourceGrid"
-            CellPadding="4">
+            CellPadding="4" Width="100%">
             <Columns>
                 <asp:BoundField DataField="Last Name" HeaderText="Last Name" 
                     SortExpression="Last Name" />
@@ -94,7 +95,7 @@ Group By [Room]">
                      PhoneExt as 'Phone Extension',
                      HomePhone as 'Home Phone',
                      CellPhone as 'Cell Phone',
-                     Bday as 'Birthday',
+                     DATENAME(month, users.Bday) + ' ' + DATENAME(day, users.bday) as 'Birthday',
                      Email as 'Email',
                      Area.AreaName as 'Area',
                      Dept.DeptName as 'Department'

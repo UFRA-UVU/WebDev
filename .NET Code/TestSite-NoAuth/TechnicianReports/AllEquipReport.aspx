@@ -73,7 +73,8 @@ Group By [Room]">
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSourceGrid"
-            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="250px">
+            onrowdatabound="gridview_RowDataBound"
+            onrowcommand="GridView1_RowCommand" CellPadding="4" Width="100%">
             <Columns>
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
                 <asp:BoundField DataField="Building" HeaderText="Building" 
@@ -97,7 +98,7 @@ Group By [Room]">
                             OnClientClick="return confirm('Are you sure you want to update the Last Checked value for this item?')"
                             Text="Check" UseSubmitBehavior="True"
                             CommandName="InventoryCheck" 
-                            CommandArgument='<%#Eval("UVUInvID") %>'/>
+                            CommandArgument='<%#Eval("UVUInvID") %>' Width="100%"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
