@@ -4,6 +4,11 @@ body
     background-color: #ffffff;
 }
 
+#banner
+{
+    background-image:url(DynamicData/Content/Images/TechTrackerBanner800x100-3.jpg);
+}
+
 input
  {
  background-color: #f8f1d9;

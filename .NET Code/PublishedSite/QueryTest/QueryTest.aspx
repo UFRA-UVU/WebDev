@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" enableeventvalidation="true" inherits="Default2, App_Web_5nlyx01g" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" enableeventvalidation="true" inherits="Default2, App_Web_smwvrjqm" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

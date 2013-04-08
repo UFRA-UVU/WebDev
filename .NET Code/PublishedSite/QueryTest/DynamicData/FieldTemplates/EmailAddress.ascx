@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="EmailAddressField, App_Web_vdgfwuqx" %>
+﻿<%@ control language="C#" inherits="EmailAddressField, App_Web_n1dqnm1v" %>
 
 <asp:HyperLink ID="HyperLink1" runat="server" Text="<%# FieldValueString %>" Target="_blank" />
 
