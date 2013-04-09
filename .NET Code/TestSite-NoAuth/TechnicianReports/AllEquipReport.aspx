@@ -54,7 +54,7 @@
                 <asp:ListItem Value="All" Selected="True">All Rooms</asp:ListItem>
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSourceRoom" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select 'All Rooms' as Room from [Equipment]
+                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select '[All Rooms]' as Room from [Equipment]
 UNION
 select Room from [Equipment]
 JOIN Bldg on Equipment.BldgID = Bldg.BldgID

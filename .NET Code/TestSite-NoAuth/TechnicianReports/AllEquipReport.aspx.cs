@@ -220,7 +220,7 @@ public partial class Default2 : System.Web.UI.Page
         {
             if (DropDownList1.SelectedValue == "BldgID")
             {
-                if (DropDownList3.SelectedValue != "All Rooms")
+                if (DropDownList3.SelectedValue != "[All Rooms]")
                 {
                     string room = DropDownList3.SelectedValue;
                     strMySQLGrid = String.Format(@"{0}
