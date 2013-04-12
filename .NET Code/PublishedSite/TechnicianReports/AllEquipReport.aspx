@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" enableeventvalidation="true" inherits="Default2, App_Web_hph2jzxj" %>
+﻿<%@ page language="C#" masterpagefile="~/Site.master" autoeventwireup="true" enableeventvalidation="true" inherits="Default2, App_Web_dsao2qnn" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -54,7 +54,7 @@
                 <asp:ListItem Value="All" Selected="True">All Rooms</asp:ListItem>
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSourceRoom" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select 'All Rooms' as Room from [Equipment]
+                ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" SelectCommand="select '[All Rooms]' as Room from [Equipment]
 UNION
 select Room from [Equipment]
 JOIN Bldg on Equipment.BldgID = Bldg.BldgID

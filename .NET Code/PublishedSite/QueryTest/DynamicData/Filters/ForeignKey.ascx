@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="ForeignKeyFilter, App_Web_odaawgil" %>
+﻿<%@ control language="C#" inherits="ForeignKeyFilter, App_Web_ytrcnli5" %>
 
 <asp:DropDownList runat="server" ID="DropDownList1" AutoPostBack="True" CssClass="DDFilter"
     OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">

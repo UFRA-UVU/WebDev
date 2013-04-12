@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="Enumeration_EditField, App_Web_n1dqnm1v" %>
+﻿<%@ control language="C#" inherits="Enumeration_EditField, App_Web_anafcrdr" %>
 
 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="DDDropDown" />
 

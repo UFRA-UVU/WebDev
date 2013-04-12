@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" inherits="DefaultEntityTemplate, App_Web_zdyomqtr" %>
+﻿<%@ control language="C#" inherits="DefaultEntityTemplate, App_Web_5uqfqfib" %>
 
 <asp:EntityTemplate runat="server" ID="EntityTemplate1">
     <ItemTemplate>
