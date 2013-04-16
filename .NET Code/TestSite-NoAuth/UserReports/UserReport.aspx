@@ -38,7 +38,10 @@
             Width="150px" ForeColor="#336699" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataValueField="EquipID" Visible="False" AutoPostBack="True" 
-                DataSourceID="SqlDataSourceValue" DataTextField="EquipID">
+                DataSourceID="SqlDataSourceValue" DataTextField="EquipID"
+                Width="203px" Height="25px" ForeColor="#336699" Font-Bold="true" 
+            style="background-color: #f8f1d9"
+                >
         </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSourceValue" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:TechInventoryConnectionString %>" 
