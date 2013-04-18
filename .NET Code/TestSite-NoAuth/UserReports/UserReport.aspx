@@ -8,7 +8,7 @@
                 
                 <li class = "home"><a href="../Default.aspx" >Home</a></li>
                 <li class = "allEquipment"><a href="../TechnicianReports/AllEquipReport.aspx" >Equipment Reports</a></li>
-                <li class = "current"><a href="~/UserReports/UserReport.aspx" >User Reports</a></li>
+                <li class = "current"><a href="UserReport.aspx" >User Reports</a></li>
                 <li class = "pastDue"><a href="../TechnicianReports/PastDueReport.aspx" >Past Due Reports</a></li>
                 <li class = "editTable"><a href="../Admin/DBModify.aspx" >Edit Tables</a></li>          
             </ul>
