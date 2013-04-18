@@ -41,7 +41,10 @@
             Width="150px" ForeColor="#336699" Font-Bold="True" Visible="False"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" 
             DataSourceID="SqlDataSourceValue" DataTextField="EquipID" 
-            DataValueField="EquipID" Visible="False" AutoPostBack="True">
+            DataValueField="EquipID" Visible="False" AutoPostBack="True"
+            Width="203px" Height="25px" ForeColor="#336699" Font-Bold="true" 
+            style="background-color: #f8f1d9">
+
         </asp:DropDownList>
         <p />
             
